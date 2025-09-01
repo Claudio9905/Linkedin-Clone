@@ -7,7 +7,7 @@ const MyInformazione = () => {
   const [nascondiBtn, setNascondiBtn] = useState("");
   return (
     <>
-      <Card className=" my-4">
+      <Card className=" my-4 animation-start all-card">
         <Card.Body>
           <Card.Title className=" fs-4">Informazioni</Card.Title>
           <Card.Text>
