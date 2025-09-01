@@ -1,0 +1,7 @@
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.btnHover:hover {
+  background-color: #f3f3f3 !important;
+}
