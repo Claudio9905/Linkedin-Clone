@@ -13,6 +13,7 @@ import MyPubblicazioni from "./MyPubblicazioni";
 import MyLingue from "./MyLingue";
 import MyInteressi from "./MyInteressi";
 import "../App.css";
+import NewsSection from "./NewsSection";
 const Profile = () => {
   return (
     <>
@@ -32,7 +33,10 @@ const Profile = () => {
             <MyLingue />
             <MyInteressi />
           </Col>
-          <Col lg={3}></Col>
+          <Col lg={3}>
+            {" "}
+            <NewsSection />{" "}
+          </Col>
         </Row>
       </Container>
     </>
