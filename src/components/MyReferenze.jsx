@@ -6,7 +6,7 @@ const MyReferenze = () => {
     <>
       <Card className=" my-4">
         <Card.Body>
-          <Card.Title className=" fs-4"> Referenze</Card.Title>
+          <Card.Title className=" fs-4 mb-4"> Referenze</Card.Title>
           <Tabs
             defaultActiveKey="profile"
             id="uncontrolled-tab-example"

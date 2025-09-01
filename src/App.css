@@ -76,13 +76,12 @@
 }
 .btnInteressi:hover {
   background-color: #f3f3f3 !important;
+  border-width: 2px;
 }
 .sfondoContainer {
   background-color: #f4f2ee;
 }
-.btnInteressi {
-  width: 150px;
-}
+
 .imgInteressi {
   width: 100px;
   height: 100px;

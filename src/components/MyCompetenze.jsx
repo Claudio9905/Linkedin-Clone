@@ -11,7 +11,7 @@ const MyCompetenze = () => {
     <>
       <Card className=" my-4">
         <Card.Body>
-          <Card.Title className=" fs-4 mb-0">JavaScript</Card.Title>
+          <Card.Title className=" fs-4 mb-4">JavaScript</Card.Title>
 
           <div className=" d-flex align-items-center">
             <PersonCircle className=" me-2" />
