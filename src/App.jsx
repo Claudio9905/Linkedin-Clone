@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap";
 import "./App.css";
 import MyNavbar from "./components/MyNavbar";
 import Profile from "./components/Profile";
+import MyFooter from "./components/footer/MyFooter";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Container fluid className="sfondoContainer">
         <MyNavbar />
         <Profile />
+        <MyFooter />
       </Container>
     </>
   );
