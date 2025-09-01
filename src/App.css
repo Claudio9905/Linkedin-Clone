@@ -64,6 +64,7 @@
   color: black;
   border: 1px solid black;
   border-radius: 2em;
+}
 .ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;

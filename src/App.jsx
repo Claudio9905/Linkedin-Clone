@@ -6,10 +6,7 @@ import MyFooter from "./components/footer/MyFooter";
 function App() {
   return (
     <>
-      <Profile />
-      <MyFooter />
       <Container fluid className="sfondoContainer">
-        <MyNavbar />
         <Profile />
         <MyFooter />
       </Container>
