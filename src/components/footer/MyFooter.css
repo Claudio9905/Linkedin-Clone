@@ -1,0 +1,26 @@
+ul {
+  list-style: none;
+}
+
+li a {
+  color: #666664;
+  text-decoration: none;
+}
+
+li a:hover {
+  text-decoration: underline;
+  color: #0a66c2;
+}
+/* li a:visited {
+  color: #8443ce;
+} */
+
+li {
+  margin-top: 1em;
+  font-size: small;
+  font-weight: 500;
+}
+p {
+  font-weight: 200;
+  color: #666664;
+}
