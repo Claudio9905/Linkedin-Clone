@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap";
 import "./App.css";
 import Profile from "./components/Profile";
 import MyFooter from "./components/footer/MyFooter";
@@ -7,6 +8,11 @@ function App() {
     <>
       <Profile />
       <MyFooter />
+      <Container fluid className="sfondoContainer">
+        <MyNavbar />
+        <Profile />
+        <MyFooter />
+      </Container>
     </>
   );
 }
