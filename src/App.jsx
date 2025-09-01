@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap";
 import "./App.css";
 import MyNavbar from "./components/MyNavbar";
 import Profile from "./components/Profile";
@@ -5,8 +6,10 @@ import Profile from "./components/Profile";
 function App() {
   return (
     <>
-      <MyNavbar />
-      <Profile />
+      <Container fluid className="sfondoContainer">
+        <MyNavbar />
+        <Profile />
+      </Container>
     </>
   );
 }

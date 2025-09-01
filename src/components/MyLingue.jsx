@@ -5,17 +5,17 @@ const MyLingue = () => {
     <>
       <Card className=" my-4">
         <Card.Body>
-          <Card.Title>Licenze e certificazioni</Card.Title>
+          <Card.Title className=" fs-4">Licenze e certificazioni</Card.Title>
 
-          <Card.Text className=" d-flex flex-column">
+          <div className=" d-flex flex-column">
             <h6>Inglese</h6>
             <p>Conoscenza Professionale</p>
-          </Card.Text>
+          </div>
           <hr />
-          <Card.Text className=" d-flex flex-column">
+          <div className=" d-flex flex-column">
             <h6>Italiano</h6>
             <p>Conoscenza madrelingue e bilingue</p>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
     </>

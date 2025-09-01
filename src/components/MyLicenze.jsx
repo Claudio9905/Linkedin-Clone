@@ -6,10 +6,12 @@ const MyLicenze = () => {
       {" "}
       <Card className=" my-4">
         <Card.Body>
-          <Card.Title className=" mb-0">Licenze e certificazioni</Card.Title>
+          <Card.Title className=" fs-4 mb-0">
+            Licenze e certificazioni
+          </Card.Title>
 
-          <Card.Text className=" d-flex">
-            <img src="https://www.placebear.com/100/100" alt="" />
+          <div className=" d-flex">
+            <img src="src/assets/cambridge_assessment_logo.jpeg" alt="" />
             <div className=" d-flex flex-column ms-2">
               <h6>
                 Cambridge English Level 2 Certificate in ESOL International
@@ -18,7 +20,7 @@ const MyLicenze = () => {
               <p>Cambridge University Press & Assessment</p>
               <small>Data di rilascio: lug 2014</small>
             </div>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
     </>

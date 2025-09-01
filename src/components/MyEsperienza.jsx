@@ -5,10 +5,10 @@ const MyEsperienza = () => {
     <>
       <Card className=" my-4">
         <Card.Body>
-          <Card.Title className=" mb-0">Esperienza</Card.Title>
+          <Card.Title className=" fs-4 mb-0">Esperienza</Card.Title>
 
-          <Card.Text className=" d-flex">
-            <img src="https://www.placebear.com/100/100" alt="" />
+          <div className=" d-flex">
+            <img src="src/assets/epicodeschool_logo.jpeg" alt="" />
             <div className=" d-flex flex-column ms-2">
               <h6>Teacher</h6>
               <p>EPICODE • Autonomo</p>
@@ -16,17 +16,13 @@ const MyEsperienza = () => {
                 giu 2019 - Presente • 6 anni 4 mesi <br /> Roma, Italia
               </small>
             </div>
-          </Card.Text>
+          </div>
         </Card.Body>
 
         <hr />
         <Card.Body>
-          <Card.Text className=" d-flex">
-            <img
-              src="https://www.placebear.com/100/100"
-              alt=""
-              className=" h-25 "
-            />
+          <div className=" d-flex">
+            <img src="src/assets/images.png" alt="" className=" h-25 " />
             <div className=" d-flex flex-column ms-2">
               <h6>Founder & Software Developer</h6>
               <p>Nucleode SRL</p>
@@ -41,7 +37,7 @@ const MyEsperienza = () => {
               </p>
               <div className=" d-flex align-items-center">
                 <figure>
-                  <img src="https://www.placebear.com/200/100" alt="" />
+                  <img src="src/assets/images.jpeg" alt="" />
                 </figure>
 
                 <div className=" d-flex flex-column ms-2">
@@ -54,13 +50,13 @@ const MyEsperienza = () => {
                 </div>
               </div>
             </div>
-          </Card.Text>
+          </div>
         </Card.Body>
         <hr />
         <Card.Body>
-          <Card.Text className=" d-flex">
+          <div className=" d-flex">
             <img
-              src="https://www.placebear.com/100/100"
+              src="src/assets/1631334944581.jpeg"
               alt=""
               className=" h-25 "
             />
@@ -80,7 +76,7 @@ const MyEsperienza = () => {
               <div className=" d-flex align-items-center ">
                 <figure>
                   {" "}
-                  <img src="https://www.placebear.com/200/100" alt="" />
+                  <img src="src/assets/1597918288566.jpeg" alt="" />
                 </figure>
 
                 <div className=" d-flex flex-column ms-2">
@@ -88,29 +84,29 @@ const MyEsperienza = () => {
                 </div>
               </div>
             </div>
-          </Card.Text>
+          </div>
         </Card.Body>
         <hr />
         <Card.Body>
-          <Card.Text className=" d-flex">
-            <img src="https://www.placebear.com/100/100" alt="" />
+          <div className=" d-flex">
+            <img src="src/assets/tecnest_srl_logo.jpeg" alt="" />
             <div className=" d-flex flex-column ms-2">
               <h6>Fronteend developer</h6>
               <p>Tecnes Srl - Supply Chain: Cultura e Soluzioni • Autonomo</p>
-              <small>feb 2020- ott 2020 • 9 mesi</small>
+              <small>feb 2020- 2020 • 9 mesi</small>
             </div>
-          </Card.Text>
+          </div>
         </Card.Body>
         <hr />
         <Card.Body>
-          <Card.Text className=" d-flex">
-            <img src="https://www.placebear.com/100/100" alt="" />
+          <div className=" d-flex">
+            <img src="src/assets/1631325045374.jpeg" alt="" />
             <div className=" d-flex flex-column ms-2">
-              <h6>Fronteend developer</h6>
+              <h6>Frontend developer</h6>
               <p>MV Labs • Freelance</p>
               <small>feb 2019 - mag 2020 • 1 anno</small>
             </div>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
     </>

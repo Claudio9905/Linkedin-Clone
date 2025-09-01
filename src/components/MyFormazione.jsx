@@ -5,10 +5,13 @@ const MyFormazione = () => {
     <>
       <Card className=" my-4">
         <Card.Body>
-          <Card.Title className=" mb-0">Formazione</Card.Title>
+          <Card.Title className=" fs-4 mb-0">Formazione</Card.Title>
 
-          <Card.Text className=" d-flex">
-            <img src="https://www.placebear.com/100/100" alt="" />
+          <div className=" d-flex">
+            <img
+              src="src/assets/universit_degli_studi_di_udine_logo.jpeg"
+              alt=""
+            />
             <div className=" d-flex flex-column ms-2">
               <h6>Universita degli Studi di Udine</h6>
               <p>
@@ -17,7 +20,7 @@ const MyFormazione = () => {
               </p>
               <small>2010-2013</small>
             </div>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
     </>

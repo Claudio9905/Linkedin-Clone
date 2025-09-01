@@ -4,9 +4,9 @@ import { ArrowRight } from "react-bootstrap-icons";
 const MyReferenze = () => {
   return (
     <>
-      <Card>
+      <Card className=" my-4">
         <Card.Body>
-          <Card.Title> Referenze</Card.Title>
+          <Card.Title className=" fs-4"> Referenze</Card.Title>
           <Tabs
             defaultActiveKey="profile"
             id="uncontrolled-tab-example"
@@ -20,7 +20,7 @@ const MyReferenze = () => {
             </Tab>
           </Tabs>
         </Card.Body>
-        <Button className=" bg-white text-black border-dark-subtle border-bottom-0 border-start-0 border-end-0 btnHover">
+        <Button className="bg-white text-secondary border-dark-subtle border-bottom-0 border-start-0 fs-4 fw-semibold border-end-0 btnHover">
           Mostra tutte le referenze <ArrowRight />
         </Button>
       </Card>

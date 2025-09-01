@@ -5,15 +5,15 @@ const MyPubblicazioni = () => {
     <>
       <Card className=" my-4">
         <Card.Body>
-          <Card.Title>Licenze e certificazioni</Card.Title>
+          <Card.Title className=" fs-4">Licenze e certificazioni</Card.Title>
 
-          <Card.Text className=" d-flex flex-column">
+          <div className=" d-flex flex-column">
             <h6>"Corti si nasce: linguaggi e tecniche del videoclip"</h6>
             <p>
               Tesi di laurea triennale in Scienze e Tecnologie Multimediali
               presso l'Università degli Studi di Udine.
             </p>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
     </>

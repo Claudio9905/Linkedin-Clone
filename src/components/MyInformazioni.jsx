@@ -7,9 +7,9 @@ const MyInformazione = () => {
   const [nascondiBtn, setNascondiBtn] = useState("");
   return (
     <>
-      <Card>
+      <Card className=" my-4">
         <Card.Body>
-          <Card.Title>Informazioni</Card.Title>
+          <Card.Title className=" fs-4">Informazioni</Card.Title>
           <Card.Text>
             Technology enthusiast and computer science expert with effective
             communication abilities. Frontend and mobile apps developer,

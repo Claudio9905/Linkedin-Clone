@@ -12,11 +12,11 @@ import MyReferenze from "./MyReferenze";
 import MyPubblicazioni from "./MyPubblicazioni";
 import MyLingue from "./MyLingue";
 import MyInteressi from "./MyInteressi";
-
+import "../App.css";
 const Profile = () => {
   return (
     <>
-      <Container fluid>
+      <Container>
         <Row>
           <Col lg={9}>
             {" "}
@@ -32,9 +32,7 @@ const Profile = () => {
             <MyLingue />
             <MyInteressi />
           </Col>
-          <Col lg={3}>
-            <h1>prova</h1>
-          </Col>
+          <Col lg={3}></Col>
         </Row>
       </Container>
     </>
