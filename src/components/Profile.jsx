@@ -1,6 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import MainProfile from "./MainProfile";
+
 import MyInformazione from "./MyInformazioni";
 import MyAttivita from "./MyAttivita";
 import MyEsperienza from "./MyEsperienza";
@@ -13,13 +15,15 @@ import MyPubblicazioni from "./MyPubblicazioni";
 import MyLingue from "./MyLingue";
 import MyInteressi from "./MyInteressi";
 import "../App.css";
+import NewsSection from "./NewsSection";
 const Profile = () => {
   return (
     <>
       <Container>
         <Row>
-          <Col lg={9}>
+          <Col md={7} lg={8}>
             {" "}
+            <MainProfile />
             <MyInformazione />
             <MyAttivita />
             <MyEsperienza />
@@ -32,7 +36,10 @@ const Profile = () => {
             <MyLingue />
             <MyInteressi />
           </Col>
-          <Col lg={3}></Col>
+          <Col md={5} lg={4}>
+            {" "}
+            <NewsSection />{" "}
+          </Col>
         </Row>
       </Container>
     </>

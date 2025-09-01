@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
 import "./App.css";
-import MyNavbar from "./components/MyNavbar";
 import Profile from "./components/Profile";
-import NewsSection from "./components/NewsSection";
+import MyFooter from "./components/footer/MyFooter";
+
 function App() {
   return (
     <>
