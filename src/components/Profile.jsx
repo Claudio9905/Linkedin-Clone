@@ -15,16 +15,15 @@ import MyPubblicazioni from "./MyPubblicazioni";
 import MyLingue from "./MyLingue";
 import MyInteressi from "./MyInteressi";
 import "../App.css";
+import NewsSection from "./NewsSection";
 const Profile = () => {
   return (
     <>
       <Container>
         <Row>
-          <Col xs={12} md={7}>
-            <MainProfile />
-          </Col>
-          <Col lg={9}>
+          <Col md={7} lg={8}>
             {" "}
+            <MainProfile />
             <MyInformazione />
             <MyAttivita />
             <MyEsperienza />
@@ -37,7 +36,10 @@ const Profile = () => {
             <MyLingue />
             <MyInteressi />
           </Col>
-          <Col lg={3}></Col>
+          <Col md={5} lg={4}>
+            {" "}
+            <NewsSection />{" "}
+          </Col>
         </Row>
       </Container>
     </>
