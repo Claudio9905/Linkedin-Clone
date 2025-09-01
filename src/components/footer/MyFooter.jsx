@@ -1,17 +1,16 @@
-import { Container, Row, Col, DropdownToggle } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "./MyFooter.css";
 import {
   QuestionCircle,
   Shield,
   Gear,
-  ChevronDown,
   CaretDownFill,
 } from "react-bootstrap-icons";
 import Dropdown from "react-bootstrap/Dropdown";
 
 export default function MyFooter() {
   return (
-    <footer style={{ backgroundColor: "#f4f2ee" }}>
+    <footer style={{ backgroundColor: "#f4f2ee" }} className="pe-5">
       <Container>
         <Row>
           <Col>
