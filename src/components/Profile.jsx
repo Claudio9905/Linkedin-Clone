@@ -23,7 +23,6 @@ const Profile = () => {
           <Col xs={12} md={7}>
             <MainProfile />
           </Col>
-          <Col xs={12} md={5}></Col>
           <Col lg={9}>
             {" "}
             <MyInformazione />
