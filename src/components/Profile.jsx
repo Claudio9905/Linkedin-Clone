@@ -1,6 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import MainProfile from "./MainProfile";
+
 import MyInformazione from "./MyInformazioni";
 import MyAttivita from "./MyAttivita";
 import MyEsperienza from "./MyEsperienza";
@@ -18,6 +20,9 @@ const Profile = () => {
     <>
       <Container>
         <Row>
+          <Col xs={12} md={7}>
+            <MainProfile />
+          </Col>
           <Col lg={9}>
             {" "}
             <MyInformazione />
