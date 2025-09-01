@@ -1,0 +1,22 @@
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btnHover:hover {
+  background-color: #f3f3f3 !important;
+  color: black !important;
+}
+.btnInteressi:hover {
+  background-color: #f3f3f3 !important;
+}
+.sfondoContainer {
+  background-color: #f4f2ee;
+}
+.btnInteressi {
+  width: 150px;
+}
+.imgInteressi {
+  width: 100px;
+  height: 100px;
+}
