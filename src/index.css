@@ -1,0 +1,21 @@
+.bg-gray {
+  background-color: #f4f2ee;
+}
+.outline-none {
+  outline: none;
+}
+.icons {
+  font-size: 1.5rem;
+}
+.recolor:hover {
+  color: black !important;
+}
+.link:hover {
+  text-decoration: underline !important;
+}
+.bl {
+  border-left: gray;
+}
+.prova {
+  color: #9d702c;
+}
