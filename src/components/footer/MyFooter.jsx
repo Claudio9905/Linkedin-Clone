@@ -1,6 +1,12 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, DropdownToggle } from "react-bootstrap";
 import "./MyFooter.css";
-import { QuestionCircle, Shield, Gear } from "react-bootstrap-icons";
+import {
+  QuestionCircle,
+  Shield,
+  Gear,
+  ChevronDown,
+  CaretDownFill,
+} from "react-bootstrap-icons";
 import Dropdown from "react-bootstrap/Dropdown";
 
 export default function MyFooter() {
@@ -17,17 +23,17 @@ export default function MyFooter() {
               </li>
               <li>
                 <a href="#" target="_blank">
-                  Informazioni sulla Community professionale
+                  Informativa sulla Community professionale
                 </a>
               </li>
               <li>
                 <a href="#" target="_blank">
-                  Privacy e condizioni
+                  Privacy e condizioni <CaretDownFill size={10} />
                 </a>
               </li>
               <li>
                 <a href="#" target="_blank">
-                  Salese Solutions
+                  Sales Solutions
                 </a>
               </li>
               <li>
@@ -131,7 +137,7 @@ export default function MyFooter() {
             </Dropdown>
           </Col>
           <p className="fs-6">
-            Linkedin Corporation © {new Date().getFullYear()}
+            LinkedIn Corporation © {new Date().getFullYear()}
           </p>
         </Row>
       </Container>
