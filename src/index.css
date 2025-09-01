@@ -19,3 +19,10 @@
 .prova {
   color: #9d702c;
 }
+.pointer {
+  cursor: pointer;
+}
+.b-top {
+  border: top;
+  border-top: gray;
+}

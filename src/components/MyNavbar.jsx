@@ -1,162 +1,435 @@
+import { useEffect, useRef, useState } from "react";
 import {
   Button,
+  Col,
   Container,
   Navbar,
   NavDropdown,
   NavLink,
+  Row,
 } from "react-bootstrap";
 import {
   BellFill,
   ChatDotsFill,
+  Grid3x3GapFill,
   HouseDoorFill,
-  HouseExclamation,
   PeopleFill,
+  PlusSquareFill,
   Search,
   SuitcaseLgFill,
 } from "react-bootstrap-icons";
 
 const MyNavbar = () => {
+  const [focused, setFocused] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const searchRef = useRef(null);
+
+  // se clicco fuori dalla barra di ricerca scompare
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowSearch(false);
+      }
+    };
+
+    if (showSearch) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showSearch]);
+
   return (
-    <Navbar className=" bg-white">
-      <Container>
-        <div className="d-flex align-items-center w-100">
-          <img src="/public/linkedin.png" alt="Logo" width={40} />
-          <div className="ms-3 d-flex align-items-center border border-1 border-secondary rounded-pill py-1">
+    <>
+      {/* Navbar Desktop */}
+
+      <Navbar className="d-none d-lg-flex bg-white">
+        <Container>
+          <div className="d-flex align-items-center w-100">
+            <img src="/public/linkedin.png" alt="Logo" width={40} />
+            <div
+              className={`ms-3 d-flex align-items-center rounded-pill py-1 ${
+                focused
+                  ? "border border-2 border-primary"
+                  : "border border-1 border-secondary"
+              }`}
+            >
+              <Search className="mx-2" />
+              <input
+                type="text"
+                placeholder="Cerca"
+                className=" border-0 rounded-pill outline-none"
+                style={{
+                  width: focused ? "220px" : "180px",
+                  transition: "all 1s ease",
+                }}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
+              />
+            </div>
+            <div className="ms-auto d-flex flex-1 align-items-center me-5">
+              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+                <HouseDoorFill className="icons" />
+                Home
+              </NavLink>
+              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+                <PeopleFill className="icons" />
+                Rete
+              </NavLink>
+              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+                <SuitcaseLgFill className="icons" />
+                Lavoro
+              </NavLink>
+              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-2">
+                <ChatDotsFill className="icons" />
+                Messagistica
+              </NavLink>
+              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+                <BellFill className="icons" />
+                Notifiche
+              </NavLink>
+
+              <div className="d-flex flex-column align-items-center">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                  alt="User"
+                  width={23}
+                  className=" rounded-circle"
+                />
+                <NavDropdown className="text-muted recolor" title="Tu">
+                  <NavDropdown.Item className="p-0">
+                    <Container fluid className="d-flex flex-column">
+                      <div className="d-flex justify-content-start align-items-center">
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                          alt="User"
+                          width={50}
+                          className=" rounded-circle"
+                        />
+                        <h4 className="ms-3">User Name</h4>
+                      </div>
+                      <div className="mt-2">
+                        <Button
+                          variant="outline-primary"
+                          className=" rounded-pill me-2"
+                        >
+                          Visualizza Profilo
+                        </Button>
+                        <Button variant="primary" className=" rounded-pill">
+                          Verifica
+                        </Button>
+                      </div>
+                    </Container>
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item>
+                    <div className="d-flex flex-column">
+                      <h4>Account</h4>
+                      <a
+                        href="#"
+                        className="text-muted text-decoration-none link"
+                      >
+                        Impostazioni e Privacy
+                      </a>
+                      <a
+                        href="#"
+                        className="text-muted text-decoration-none link"
+                      >
+                        Guida
+                      </a>
+                      <a
+                        href="#"
+                        className="text-muted text-decoration-none link"
+                      >
+                        Lingua
+                      </a>
+                    </div>
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item>
+                    <div className="d-flex flex-column">
+                      <h4>Gestisci</h4>
+                      <a
+                        href="#"
+                        className="text-muted text-decoration-none link"
+                      >
+                        Post e Attività
+                      </a>
+                      <a
+                        href="#"
+                        className="text-muted text-decoration-none link"
+                      >
+                        Account per la pubblicazione di lavori
+                      </a>
+                    </div>
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item>
+                    <div className="d-flex flex-column">
+                      <a
+                        href="#"
+                        className="text-muted text-decoration-none link"
+                      >
+                        Esci
+                      </a>
+                    </div>
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </div>
+            </div>
+            <div className="d-flex align-items-center recolor pointer">
+              <div className="d-flex flex-column align-items-center ">
+                <Grid3x3GapFill className="icons text-secondary recolor" />
+                <NavDropdown
+                  className="text-muted recolor"
+                  title="Per le aziende"
+                ></NavDropdown>
+              </div>
+              <a href="#" className="text-center prova">
+                Prova Premium per 0 <br />
+                EUR
+              </a>
+            </div>
+          </div>
+        </Container>
+      </Navbar>
+
+      {/* Navbar Tablet */}
+
+      <Navbar className="d-none d-md-flex d-lg-none bg-white">
+        <Container fluid>
+          <div className="d-flex align-items-center w-100">
+            <img src="/public/linkedin.png" alt="Logo" width={40} />
+            {/* se la barra di ricerca non è true allora viene mostrato tutta la nav */}
+            {!showSearch && (
+              <div className="align-items-center me-3 d-none d-md-flex flex-1 d-lg-none w-100">
+                <Row className="d-flex align-items-center w-100">
+                  <Col
+                    md={7}
+                    className="d-flex align-items-center justify-content-between"
+                  >
+                    {/* Icona lente che attiva la modalità ricerca */}
+                    <Search
+                      className="fs-4 text-secondary mx-3 recolor"
+                      role="button"
+                      onClick={() => setShowSearch(true)}
+                    />
+
+                    <a href="">
+                      <HouseDoorFill className="fs-4 text-secondary mx-3 recolor" />
+                    </a>
+                    <a href="">
+                      <PeopleFill className="fs-4 text-secondary mx-3 recolor" />
+                    </a>
+                    <a href="">
+                      <SuitcaseLgFill className="fs-4 text-secondary mx-3 recolor" />
+                    </a>
+                    <a href="">
+                      <ChatDotsFill className="fs-4 text-secondary mx-3 recolor" />
+                    </a>
+                    <a href="">
+                      <BellFill className="fs-4 text-secondary mx-3 recolor" />
+                    </a>
+                    <div className="d-flex flex-column align-items-center">
+                      <NavDropdown
+                        align="end"
+                        title={
+                          <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                            alt="User"
+                            width={30}
+                            className="rounded-circle"
+                          />
+                        }
+                        className="no-caret"
+                      >
+                        <NavDropdown.Item className="p-0">
+                          <Container fluid className="d-flex flex-column">
+                            <div className="d-flex justify-content-start align-items-center">
+                              <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                                alt="User"
+                                width={50}
+                                className="rounded-circle"
+                              />
+                              <h4 className="ms-3">User Name</h4>
+                            </div>
+                            <div className="mt-2">
+                              <Button
+                                variant="outline-primary"
+                                className="rounded-pill me-2"
+                              >
+                                Visualizza Profilo
+                              </Button>
+                              <Button
+                                variant="primary"
+                                className="rounded-pill"
+                              >
+                                Verifica
+                              </Button>
+                            </div>
+                          </Container>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <div className="d-flex flex-column">
+                            <h4>Account</h4>
+                            <a
+                              href="#"
+                              className="text-muted text-decoration-none link"
+                            >
+                              Impostazioni e Privacy
+                            </a>
+                            <a
+                              href="#"
+                              className="text-muted text-decoration-none link"
+                            >
+                              Guida
+                            </a>
+                            <a
+                              href="#"
+                              className="text-muted text-decoration-none link"
+                            >
+                              Lingua
+                            </a>
+                          </div>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <div className="d-flex flex-column">
+                            <h4>Gestisci</h4>
+                            <a
+                              href="#"
+                              className="text-muted text-decoration-none link"
+                            >
+                              Post e Attività
+                            </a>
+                            <a
+                              href="#"
+                              className="text-muted text-decoration-none link"
+                            >
+                              Account per la pubblicazione di lavori
+                            </a>
+                          </div>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <div className="d-flex flex-column">
+                            <a
+                              href="#"
+                              className="text-muted text-decoration-none link"
+                            >
+                              Esci
+                            </a>
+                          </div>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </div>
+                  </Col>
+                  <Col md={5} className="d-flex justify-content-between">
+                    <div className="d-flex w-100 align-items-center recolor pointer">
+                      <div className="d-flex align-items-center w-100 justify-content-center ">
+                        <NavDropdown
+                          className="text-muted recolor me-4"
+                          title={
+                            <Grid3x3GapFill className="icons text-secondary recolor" />
+                          }
+                        ></NavDropdown>
+                        <a href="#" className="text-center prova">
+                          Prova Premium per 0 <br />
+                          EUR
+                        </a>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+            )}
+            {/* se la barra di ricerca è true perché è stata cliccata la lente allora la barra di ricerca
+            compare e nasconde la nav  */}
+            {showSearch && (
+              <div
+                ref={searchRef}
+                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3"
+              >
+                <Search className="mx-2" />
+                <input
+                  type="text"
+                  placeholder="Cerca"
+                  autoFocus
+                  className="border-0 rounded-pill flex-grow-1 outline-none"
+                />
+              </div>
+            )}
+          </div>
+        </Container>
+      </Navbar>
+
+      {/* Navbar Mobile */}
+      <Navbar className="d-flex d-md-none bg-white">
+        <div className="d-flex px-2 align-items-center flex-grow-1 position-sticky">
+          <div>
+            <a href="">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                alt="User"
+                width={25}
+                className="rounded-circle"
+              />
+            </a>
+          </div>
+
+          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3">
             <Search className="mx-2" />
             <input
               type="text"
               placeholder="Cerca"
-              className=" border-0 rounded-pill outline-none"
+              autoFocus
+              className="border-0 rounded-pill flex-grow-1 outline-none"
             />
           </div>
-          <div className="ms-auto d-flex flex-1 align-items-center me-5">
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+          <div className="ms-3">
+            <ChatDotsFill className="display-6 text-secondary" />
+          </div>
+        </div>
+        <div className="d-flex position-fixed w-100 bottom-0 justify-content-between px-3 b-top">
+          <div>
+            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
               <HouseDoorFill className="icons" />
               Home
             </NavLink>
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+          </div>
+          <div>
+            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
               <PeopleFill className="icons" />
               Rete
             </NavLink>
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
-              <SuitcaseLgFill className="icons" />
-              Lavoro
+          </div>
+          <div>
+            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
+              <PlusSquareFill className="icons" />
+              Pubblica
             </NavLink>
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-2">
-              <ChatDotsFill className="icons" />
-              Messagistica
-            </NavLink>
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+          </div>
+          <div>
+            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
               <BellFill className="icons" />
               Notifiche
             </NavLink>
-
-            <div className="d-flex flex-column align-items-center">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-                alt="User"
-                width={23}
-                className=" rounded-circle"
-              />
-              <NavDropdown title="Tu">
-                <NavDropdown.Item className="p-0">
-                  <Container fluid className="d-flex flex-column">
-                    <div className="d-flex justify-content-start align-items-center">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-                        alt="User"
-                        width={50}
-                        className=" rounded-circle"
-                      />
-                      <h4 className="ms-3">User Name</h4>
-                    </div>
-                    <div className="mt-2">
-                      <Button
-                        variant="outline-primary"
-                        className=" rounded-pill me-2"
-                      >
-                        Visualizza Profilo
-                      </Button>
-                      <Button variant="primary" className=" rounded-pill">
-                        Verifica
-                      </Button>
-                    </div>
-                  </Container>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <div className="d-flex flex-column">
-                    <h4>Account</h4>
-                    <a
-                      href="#"
-                      className="text-muted text-decoration-none link"
-                    >
-                      Impostazioni e Privacy
-                    </a>
-                    <a
-                      href="#"
-                      className="text-muted text-decoration-none link"
-                    >
-                      Guida
-                    </a>
-                    <a
-                      href="#"
-                      className="text-muted text-decoration-none link"
-                    >
-                      Lingua
-                    </a>
-                  </div>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <div className="d-flex flex-column">
-                    <h4>Gestisci</h4>
-                    <a
-                      href="#"
-                      className="text-muted text-decoration-none link"
-                    >
-                      Post e Attività
-                    </a>
-                    <a
-                      href="#"
-                      className="text-muted text-decoration-none link"
-                    >
-                      Account per la pubblicazione di lavori
-                    </a>
-                  </div>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <div className="d-flex flex-column">
-                    <a
-                      href="#"
-                      className="text-muted text-decoration-none link"
-                    >
-                      Esci
-                    </a>
-                  </div>
-                </NavDropdown.Item>
-              </NavDropdown>
-            </div>
           </div>
-          <div className="d-flex align-items-center">
-            <div className="d-flex flex-column align-items-center me-2">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-                alt="User"
-                width={23}
-                className=" rounded-circle"
-              />
-              <NavDropdown title="Per le aziende"></NavDropdown>
-            </div>
-            <a href="#" className="text-center prova">
-              Prova Premium per 0 <br />
-              EUR
-            </a>
+          <div>
+            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
+              <SuitcaseLgFill className="icons" />
+              Lavoro
+            </NavLink>
           </div>
         </div>
-      </Container>
-    </Navbar>
+      </Navbar>
+    </>
   );
 };
 
