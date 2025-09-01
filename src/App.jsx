@@ -7,8 +7,6 @@ function App() {
   return (
     <>
       <Container fluid className="sfondoContainer">
-        <MyNavbar />
-
         <Profile />
         <MyFooter />
       </Container>
