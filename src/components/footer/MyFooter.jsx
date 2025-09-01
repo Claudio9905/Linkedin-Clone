@@ -11,51 +11,77 @@ export default function MyFooter() {
           <Col>
             <ul>
               <li>
-                <a href="#">Informazioni</a>
+                <a href="#" target="_blank">
+                  Informazioni
+                </a>
               </li>
               <li>
-                <a href="#">Informazioni sulla Community professionale</a>
+                <a href="#" target="_blank">
+                  Informazioni sulla Community professionale
+                </a>
               </li>
               <li>
-                <a href="#">Privacy e condizioni</a>
+                <a href="#" target="_blank">
+                  Privacy e condizioni
+                </a>
               </li>
               <li>
-                <a href="#">Salese Solutions</a>
+                <a href="#" target="_blank">
+                  Salese Solutions
+                </a>
               </li>
               <li>
-                <a href="#">Centro sicurezza</a>
-              </li>
-            </ul>
-          </Col>
-          <Col>
-            <ul>
-              <li>
-                <a href="#">Accessibilità</a>
-              </li>
-              <li>
-                <a href="#">Carriera</a>
-              </li>
-              <li>
-                <a href="#">Opzioni per gli annunci pubblicitari</a>
-              </li>
-              <li>
-                <a href="#">Mobile</a>
+                <a href="#" target="_blank">
+                  Centro sicurezza
+                </a>
               </li>
             </ul>
           </Col>
           <Col>
             <ul>
               <li>
-                <a href="#">Talent Solutions</a>
+                <a href="#" target="_blank">
+                  Accessibilità
+                </a>
               </li>
               <li>
-                <a href="#">Soluzioni di marketing</a>
+                <a href="#" target="_blank">
+                  Carriera
+                </a>
               </li>
               <li>
-                <a href="#">Pubblicità</a>
+                <a href="#" target="_blank">
+                  Opzioni per gli annunci pubblicitari
+                </a>
               </li>
               <li>
-                <a href="#">Piccole imprese</a>
+                <a href="#" target="_blank">
+                  Mobile
+                </a>
+              </li>
+            </ul>
+          </Col>
+          <Col>
+            <ul>
+              <li>
+                <a href="#" target="_blank">
+                  Talent Solutions
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank">
+                  Soluzioni di marketing
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank">
+                  Pubblicità
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank">
+                  Piccole imprese
+                </a>
               </li>
             </ul>
           </Col>
@@ -63,18 +89,24 @@ export default function MyFooter() {
             <ul className="list-unstyled">
               <li>
                 <QuestionCircle className="me-1 fs-6" />
-                <a href="#">Domande?</a>
+                <a href="#" target="_blank">
+                  Domande?
+                </a>
                 <p>Visita il nostro Centro assistenza.</p>
               </li>
               <li>
                 <Gear className="me-1 fs-6" />
-                <a href="#">Gestisci il tuo account e la tua privacy</a>
+                <a href="#" target="_blank">
+                  Gestisci il tuo account e la tua privacy
+                </a>
                 <p> Vai alle impostazioni</p>
               </li>
 
               <li>
                 <Shield className="me-1 fs-6" />
-                <a href="#">Trasparenza sui contenuti consigliati </a>
+                <a href="#" target="_blank">
+                  Trasparenza sui contenuti consigliati{" "}
+                </a>
                 <p>Scopri di più sui contenuti consigliati.</p>
               </li>
             </ul>
@@ -99,7 +131,7 @@ export default function MyFooter() {
             </Dropdown>
           </Col>
           <p className="fs-6">
-            Linkedin Corporation - © {new Date().getFullYear()}
+            Linkedin Corporation © {new Date().getFullYear()}
           </p>
         </Row>
       </Container>

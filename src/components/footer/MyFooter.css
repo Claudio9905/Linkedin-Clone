@@ -11,9 +11,9 @@ li a:hover {
   text-decoration: underline;
   color: #0a66c2;
 }
-/* li a:visited {
+li a:visited {
   color: #8443ce;
-} */
+}
 
 li {
   margin-top: 1em;
