@@ -1,7 +1,14 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { useSelector } from "react-redux";
 
 const MainProfile = () => {
+  const Profile = useSelector((state) => {
+    return state.mainProfile.me_Profile;
+  });
+
+  console.log(Profile);
+
   return (
     <>
       <Card className="card-main-profile animation-start">
@@ -20,7 +27,7 @@ const MainProfile = () => {
         </div>
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex gap-2 mb-0 fs-3">
-            Stefano Casasola{" "}
+            {Profile.name} {Profile.surname}{" "}
             <span className="fs-6 text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
