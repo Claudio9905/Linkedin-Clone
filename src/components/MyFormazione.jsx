@@ -4,7 +4,7 @@ const MyFormazione = () => {
   return (
     <>
       <Container className=" p-0">
-        <Card className=" my-4">
+        <Card className=" animation-start all-card my-4">
           <Card.Body>
             <Row>
               <Card.Title className=" fs-4 mb-4">Formazione</Card.Title>

@@ -5,7 +5,7 @@ const MyInteressi = () => {
   return (
     <>
       <Container className=" p-0">
-        <Card className=" my-4">
+        <Card className="animation-start all-card my-4">
           <Card.Body>
             <Card.Title className=" fs-4"> Interessi</Card.Title>
             <Tabs
