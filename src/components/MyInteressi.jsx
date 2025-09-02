@@ -4,7 +4,7 @@ import { ArrowRight, Plus } from "react-bootstrap-icons";
 const MyInteressi = () => {
   return (
     <>
-      <Card className=" my-4">
+      <Card className=" my-4 animation-start all-card">
         <Card.Body>
           <Card.Title className=" fs-4"> Interessi</Card.Title>
           <Tabs

@@ -11,7 +11,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 export default function MyFooter() {
   return (
-    <footer style={{ backgroundColor: "#f4f2ee" }}>
+    <footer style={{ backgroundColor: "#f4f2ee" }} className="mt-3">
       <Container>
         <Row>
           <Col>

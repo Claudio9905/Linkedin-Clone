@@ -1,11 +1,10 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import CardText from "react-bootstrap/esm/CardText";
 
 const MainProfile = () => {
   return (
     <>
-      <Card className="card-main-profile">
+      <Card className="card-main-profile animation-start">
         <div className="box-profile-img">
           <Card.Img
             variant="top"
