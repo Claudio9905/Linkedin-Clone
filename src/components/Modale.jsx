@@ -12,7 +12,7 @@ function Modale({ show, onHide }) {
 
   return (
     <>
-      <Modal show={show} onHide={onHide} size="xl">
+      <Modal show={show} onHide={onHide} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Modifica presentazione</Modal.Title>
         </Modal.Header>

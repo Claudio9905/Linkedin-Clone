@@ -15,7 +15,9 @@
   border-radius: 4em;
 }
 #banner-img {
+  /* position: relative; */
   height: 8em;
+  /* z-index: 0 !important; */
 }
 .box-profile-img {
   height: 12em;
@@ -151,4 +153,22 @@
 }
 .premium-color {
   color: #ffb731;
+}
+.posizioneRicerca {
+  top: 35px;
+  left: 7%;
+  width: 220px;
+  background-color: #ffffff;
+}
+.posizioneRicerca2 {
+  position: absolute;
+  top: 100%;
+  z-index: 9999;
+  background-color: #ffffff;
+}
+.pointer {
+  cursor: pointer;
+}
+.navbar {
+  z-index: 1000;
 }

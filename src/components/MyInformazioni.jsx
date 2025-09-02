@@ -2,12 +2,18 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "../App.css";
 import { useState } from "react";
+
 import EditProfile from "./EditProfile";
-import Modale from "./Modale";
+
 import ModaleInformazioni from "./ModaleInformazioni";
+import { Form } from "react-bootstrap";
+import { PencilSquare } from "react-bootstrap-icons";
 const MyInformazione = () => {
   const [mostraAltro, setMostraAltro] = useState("overflow-hidden ellipsis");
   const [nascondiBtn, setNascondiBtn] = useState("");
+  const [nascondiInput, setNascondiInput] = useState("");
+  const [valoreInputInfo, setValoreInputInfo] = useState("");
+  const [testo, setTesto] = useState("");
 
   return (
     <>
@@ -20,9 +26,39 @@ const MyInformazione = () => {
             ModaleComponent={ModaleInformazioni}
           />
           <Card.Text>
-            Technology enthusiast and computer science expert with effective
-            communication abilities. Frontend and mobile apps developer,
-            passionate computer consultant.
+            <Form
+              onSubmit={(e) => {
+                setValoreInputInfo("");
+                setNascondiInput("d-none");
+                e.preventDefault();
+              }}
+              className={` d-flex ${nascondiInput}`}
+            >
+              <Form.Control
+                value={valoreInputInfo}
+                size="md"
+                type="text"
+                placeholder="Scrivi le tue informazioni"
+                onChange={(e) => {
+                  setValoreInputInfo(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    setTesto(valoreInputInfo);
+                  }
+                }}
+              />
+              <Button type="submit">Invia</Button>
+            </Form>
+
+            <p>
+              {testo}{" "}
+              <PencilSquare
+                onClick={() => {
+                  setNascondiInput("");
+                }}
+              />
+            </p>
           </Card.Text>
           <div className=" d-flex">
             <Card.Text className={` m-0 ${mostraAltro}`}>
