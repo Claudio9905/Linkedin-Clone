@@ -4,7 +4,7 @@ const initialState = {
   profile: [],
 };
 
-const profileReducer = (state = initialState, action) => {
+const profileMeReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PROFILE:
       return {
@@ -17,4 +17,4 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export default profileReducer;
+export default profileMeReducer;
