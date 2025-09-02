@@ -19,7 +19,8 @@ import {
   SuitcaseLgFill,
 } from "react-bootstrap-icons";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileAction } from "../redux/actions";
 
 const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
@@ -28,7 +29,11 @@ const MyNavbar = () => {
   const [ricerca, setRicerca] = useState("");
   // console.log(store);
   // console.log(ricerca);
-  const profiles = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfileAction());
+  }, []);
+  const profiles = useSelector((state) => state.profile.profile);
   const profiliFiltrati = Array.isArray(profiles)
     ? profiles.filter((profiloSingolo) => {
         const nomeCompleto = `${profiloSingolo.name || ""} ${
