@@ -2,12 +2,14 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import EditProfile from "./EditProfile";
 import Modale from "./Modale";
+import { Camera } from "react-bootstrap-icons";
+import "./alfoCss/Camera.css";
 
 const MainProfile = () => {
   return (
     <>
       <Card className="card-main-profile animation-start">
-        <div className="box-profile-img">
+        <div className="box-profile-img ">
           <Card.Img
             variant="top"
             src="http://placecats.com/100/100"
@@ -19,6 +21,12 @@ const MainProfile = () => {
             alt="immagine di profilo"
             id="icon-profile"
           />
+          <div className="position-relative w-50">
+            <Camera
+              className="position-absolute fs-5 hover"
+              style={{ bottom: 220, left: 670 }}
+            />
+          </div>
         </div>
         <EditProfile
           style={{ bottom: 20, right: 40 }}
