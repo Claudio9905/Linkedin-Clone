@@ -20,7 +20,7 @@ const Profile = () => {
   return (
     <>
       <Container>
-        <Row>
+        <Row className="row-border">
           <Col md={7} lg={8}>
             {" "}
             <MainProfile />

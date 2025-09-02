@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 const MyLingue = () => {
   return (
     <>
-      <Card className=" my-4">
+      <Card className=" my-4 animation-start all-card">
         <Card.Body>
           <Card.Title className=" fs-4 mb-4">Lingue</Card.Title>
 

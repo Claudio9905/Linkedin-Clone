@@ -80,7 +80,7 @@ const NewsSection = () => {
   return (
     <>
       <Card
-        className="mb-3"
+        className="mb-3 animation-start"
         style={{
           borderRadius: "10px",
           margin: "20px",
@@ -183,7 +183,7 @@ const NewsSection = () => {
       </Card>
 
       <Card
-        className="mb-3"
+        className="mb-3 animation-start"
         style={{
           borderRadius: "10px",
           margin: "20px",
@@ -288,7 +288,7 @@ const NewsSection = () => {
       </Card>
 
       <Card
-        className="mb-3 sticky-top"
+        className="mb-3 animation-start"
         style={{
           borderRadius: "10px",
           margin: "20px",
