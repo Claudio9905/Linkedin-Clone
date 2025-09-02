@@ -1,12 +1,12 @@
-import { GET_PROFILE } from "../actions";
+import { GET_MEPROFILE } from "../actions";
 
 const initialState = {
   profile: [],
 };
 
-const profileReducer = (state = initialState, action) => {
+const profileMeReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_PROFILE:
+    case GET_MEPROFILE:
       return {
         ...state,
         profile: action.payload,
@@ -17,4 +17,4 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export default profileReducer;
+export default profileMeReducer;
