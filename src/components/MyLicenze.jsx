@@ -4,7 +4,7 @@ const MyLicenze = () => {
   return (
     <>
       {" "}
-      <Card className=" my-4">
+      <Card className=" my-4 animation-start all-card">
         <Card.Body>
           <Card.Title className=" fs-4 mb-0">
             Licenze e certificazioni
