@@ -1,4 +1,4 @@
-export const GET_PROFILE = "GET_PROFILE";
+export const GET_MEPROFILE = "GET_MEPROFILE";
 
 const endpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
 
@@ -20,7 +20,7 @@ export const getMeProfileAction = () => {
       .then((resData) => {
         console.log(resData);
         dispatch({
-          type: GET_PROFILE,
+          type: GET_MEPROFILE,
           payload: resData,
         });
       })
