@@ -11,7 +11,7 @@ const MyInformazione = () => {
       <Card className=" my-4 animation-start all-card">
         <Card.Body>
           <Card.Title className=" fs-4">Informazioni</Card.Title>
-          <EditProfile style={{ bottom: 16, right: 40 }} />
+          <EditProfile style={{ bottom: 16, right: 25 }} />
           <Card.Text>
             Technology enthusiast and computer science expert with effective
             communication abilities. Frontend and mobile apps developer,

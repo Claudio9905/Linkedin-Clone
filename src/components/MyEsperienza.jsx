@@ -9,7 +9,7 @@ const MyEsperienza = () => {
           <Card className="animation-start all-card my-4">
             <Card.Body>
               <Card.Title className=" fs-4 mb-4">Esperienza</Card.Title>
-              <EditProfile style={{ bottom: 28, right: 40 }} />
+              <EditProfile style={{ bottom: 28, right: 17 }} />
               <Row>
                 <Col xs={2}>
                   {/* <div className=" d-flex"> */}
