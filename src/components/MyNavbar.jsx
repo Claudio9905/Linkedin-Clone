@@ -23,6 +23,9 @@ const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const searchRef = useRef(null);
+  const [ricerca, setRicerca] = useState("");
+
+  console.log(ricerca);
 
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
@@ -67,8 +70,12 @@ const MyNavbar = () => {
                   width: focused ? "220px" : "180px",
                   transition: "all 1s ease",
                 }}
+                value={ricerca}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
+                onChange={(e) => {
+                  setRicerca(e.target.value);
+                }}
               />
             </div>
             <div className="ms-auto d-flex flex-1 align-items-center me-5">
@@ -365,6 +372,9 @@ const MyNavbar = () => {
                   placeholder="Cerca"
                   autoFocus
                   className="border-0 rounded-pill flex-grow-1 outline-none"
+                  onChange={(e) => {
+                    setRicerca(e.target.value);
+                  }}
                 />
               </div>
             )}
@@ -393,6 +403,9 @@ const MyNavbar = () => {
               placeholder="Cerca"
               autoFocus
               className="border-0 rounded-pill flex-grow-1 outline-none"
+              onChange={(e) => {
+                setRicerca(e.target.value);
+              }}
             />
           </div>
           <div className="ms-3">
