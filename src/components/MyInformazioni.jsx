@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "../App.css";
 import { useState } from "react";
+import EditProfile from "./EditProfile";
 const MyInformazione = () => {
   const [mostraAltro, setMostraAltro] = useState("overflow-hidden ellipsis");
   const [nascondiBtn, setNascondiBtn] = useState("");
@@ -10,6 +11,7 @@ const MyInformazione = () => {
       <Card className=" my-4 animation-start all-card">
         <Card.Body>
           <Card.Title className=" fs-4">Informazioni</Card.Title>
+          <EditProfile style={{ bottom: 16, right: 40 }} />
           <Card.Text>
             Technology enthusiast and computer science expert with effective
             communication abilities. Frontend and mobile apps developer,

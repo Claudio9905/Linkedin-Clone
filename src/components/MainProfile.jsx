@@ -1,5 +1,6 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import EditProfile from "./EditProfile";
 
 const MainProfile = () => {
   return (
@@ -18,6 +19,8 @@ const MainProfile = () => {
             id="icon-profile"
           />
         </div>
+        <EditProfile style={{ bottom: 20, right: 40 }} />
+
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex gap-2 mb-0 fs-3">
             Stefano Casasola{" "}
@@ -37,6 +40,7 @@ const MainProfile = () => {
               He/Him
             </span>
           </Card.Title>
+
           <Card.Text className="fs-6">
             Founder & Software Developer @ Nucleode SRL - Educator @ EPICODE -
             IT Consultant
