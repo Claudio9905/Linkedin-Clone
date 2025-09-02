@@ -15,7 +15,7 @@ export const getMeProfileAction = () => {
     fetch(endpoint, {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4MjYwODgsImV4cCI6MTc1ODAzNTY4OH0.xS1i09dl8zRChNG0ROTKj91nLQn7PhuFink82KQeroQ",
       },
     })
       .then((response) => {
@@ -66,9 +66,9 @@ export const getProfileAction = () => {
   };
 };
 
-export const getUserIdAction = () => {
+export const getUserIdAction = (id) => {
   return (dispatch) => {
-    fetch(endpoint2, {
+    fetch(endpoint2 + id, {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",

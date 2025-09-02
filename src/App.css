@@ -8,10 +8,12 @@
 }
 
 #banner-img {
-  height: 8em;
+  height: 15em;
+  object-fit: cover;
+  object-position: top;
 }
 .box-profile-img {
-  height: 12em;
+  height: 18em;
 }
 
 .card-main-profile {
