@@ -11,9 +11,6 @@ import { PencilSquare } from "react-bootstrap-icons";
 const MyInformazione = () => {
   const [mostraAltro, setMostraAltro] = useState("overflow-hidden ellipsis");
   const [nascondiBtn, setNascondiBtn] = useState("");
-  const [nascondiInput, setNascondiInput] = useState("");
-  const [valoreInputInfo, setValoreInputInfo] = useState("");
-  const [testo, setTesto] = useState("");
 
   return (
     <>
@@ -25,41 +22,7 @@ const MyInformazione = () => {
             style={{ bottom: 16, right: 25 }}
             ModaleComponent={ModaleInformazioni}
           />
-          <Card.Text>
-            <Form
-              onSubmit={(e) => {
-                setValoreInputInfo("");
-                setNascondiInput("d-none");
-                e.preventDefault();
-              }}
-              className={` d-flex ${nascondiInput}`}
-            >
-              <Form.Control
-                value={valoreInputInfo}
-                size="md"
-                type="text"
-                placeholder="Scrivi le tue informazioni"
-                onChange={(e) => {
-                  setValoreInputInfo(e.target.value);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    setTesto(valoreInputInfo);
-                  }
-                }}
-              />
-              <Button type="submit">Invia</Button>
-            </Form>
-
-            <p>
-              {testo}{" "}
-              <PencilSquare
-                onClick={() => {
-                  setNascondiInput("");
-                }}
-              />
-            </p>
-          </Card.Text>
+          <Card.Text></Card.Text>
           <div className=" d-flex">
             <Card.Text className={` m-0 ${mostraAltro}`}>
               Sono un appassionato di tecnologia molto competente nel ramo
