@@ -18,32 +18,14 @@ import {
   Search,
   SuitcaseLgFill,
 } from "react-bootstrap-icons";
-
-import { useDispatch, useSelector } from "react-redux";
-import { getProfileAction } from "../redux/actions";
+import { useSelector } from "react-redux";
 
 const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const searchRef = useRef(null);
-  const [ricerca, setRicerca] = useState("");
-  // console.log(store);
-  // console.log(ricerca);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProfileAction());
-  }, []);
-  const profiles = useSelector((state) => state.profile.profile);
-  const profiliFiltrati = Array.isArray(profiles)
-    ? profiles.filter((profiloSingolo) => {
-        const nomeCompleto = `${profiloSingolo.name || ""} ${
-          profiloSingolo.surname || ""
-        }`.toLowerCase();
-        return nomeCompleto.includes(ricerca.toLowerCase());
-      })
-    : [];
-  console.log(profiles);
-  console.log(profiliFiltrati);
+  const profile = useSelector((state) => state.mainProfile.me_Profile);
+
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -72,7 +54,7 @@ const MyNavbar = () => {
           <div className="d-flex align-items-center w-100">
             <img src="/public/linkedin.png" alt="Logo" width={40} />
             <div
-              className={`ms-3 d-flex align-items-center rounded-pill py-1 position-relative ${
+              className={`ms-3 d-flex align-items-center rounded-pill py-1 ${
                 focused
                   ? "border border-2 border-primary"
                   : "border border-1 border-secondary"
@@ -87,37 +69,9 @@ const MyNavbar = () => {
                   width: focused ? "220px" : "180px",
                   transition: "all 1s ease",
                 }}
-                value={ricerca}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
-                onChange={(e) => {
-                  setRicerca(e.target.value);
-                }}
               />
-              <div
-                className={`position-absolute z-1 posizioneRicerca ${
-                  focused && ricerca
-                    ? "border border-2 border-primary border-top-0"
-                    : ""
-                }`}
-                style={{
-                  width: focused ? "220px " : "180px",
-                  transition: "all 1s ease",
-                }}
-              >
-                {ricerca && (
-                  <ul>
-                    {profiliFiltrati.slice(0, 5).map((profilo) => (
-                      <li
-                        key={profilo._id}
-                        className="p-2 border-bottom pointer"
-                      >
-                        {profilo.name} {profilo.surname}{" "}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
             </div>
             <div className="ms-auto d-flex flex-1 align-items-center me-5">
               <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
@@ -143,7 +97,7 @@ const MyNavbar = () => {
 
               <div className="d-flex flex-column align-items-center">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                  src={profile.image}
                   alt="User"
                   width={23}
                   className=" rounded-circle"
@@ -153,12 +107,14 @@ const MyNavbar = () => {
                     <Container fluid className="d-flex flex-column">
                       <div className="d-flex justify-content-start align-items-center">
                         <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                          src={profile.image}
                           alt="User"
                           width={50}
                           className=" rounded-circle"
                         />
-                        <h4 className="ms-3">User Name</h4>
+                        <h4 className="ms-3">
+                          {profile.name} {profile.surname}
+                        </h4>
                       </div>
                       <div className="mt-2">
                         <Button
@@ -287,7 +243,7 @@ const MyNavbar = () => {
                         align="end"
                         title={
                           <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                            src={profile.image}
                             alt="User"
                             width={30}
                             className="rounded-circle"
@@ -299,12 +255,14 @@ const MyNavbar = () => {
                           <Container fluid className="d-flex flex-column">
                             <div className="d-flex justify-content-start align-items-center">
                               <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                                src={profile.image}
                                 alt="User"
                                 width={50}
                                 className="rounded-circle"
                               />
-                              <h4 className="ms-3">User Name</h4>
+                              <h4 className="ms-3">
+                                {profile.name} {profile.surname}
+                              </h4>
                             </div>
                             <div className="mt-2">
                               <Button
@@ -405,7 +363,7 @@ const MyNavbar = () => {
             {showSearch && (
               <div
                 ref={searchRef}
-                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3 position-relative"
+                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3"
               >
                 <Search className="mx-2" />
                 <input
@@ -413,30 +371,7 @@ const MyNavbar = () => {
                   placeholder="Cerca"
                   autoFocus
                   className="border-0 rounded-pill flex-grow-1 outline-none"
-                  onChange={(e) => {
-                    setRicerca(e.target.value);
-                  }}
                 />
-                <div
-                  className={`position-absolute z-1 posizioneRicerca2 `}
-                  style={{
-                    width: showSearch ? "100%" : "180px",
-                    transition: "all 1s ease",
-                  }}
-                >
-                  {ricerca && (
-                    <ul>
-                      {profiliFiltrati.slice(0, 5).map((profilo) => (
-                        <li
-                          key={profilo._id}
-                          className="p-2 border-bottom pointer"
-                        >
-                          {profilo.name} {profilo.surname}{" "}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
               </div>
             )}
           </div>
@@ -449,7 +384,7 @@ const MyNavbar = () => {
           <div>
             <a href="">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                src={profile.image}
                 alt="User"
                 width={25}
                 className="rounded-circle"
@@ -457,34 +392,14 @@ const MyNavbar = () => {
             </a>
           </div>
 
-          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 position-relative">
+          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3">
             <Search className="mx-2" />
             <input
               type="text"
               placeholder="Cerca"
               autoFocus
               className="border-0 rounded-pill flex-grow-1 outline-none"
-              onChange={(e) => {
-                setRicerca(e.target.value);
-              }}
             />
-            <div
-              className={`position-absolute  posizioneRicerca2 `}
-              style={{
-                width: "100%",
-                transition: "all 1s ease",
-              }}
-            >
-              {ricerca && (
-                <ul className=" list-unstyled m-0">
-                  {profiliFiltrati.slice(0, 5).map((profilo) => (
-                    <li key={profilo._id} className="p-2 border-bottom pointer">
-                      {profilo.name} {profilo.surname}{" "}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
           </div>
           <div className="ms-3">
             <ChatDotsFill className="display-6 text-secondary" />

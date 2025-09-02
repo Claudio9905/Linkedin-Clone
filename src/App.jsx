@@ -7,6 +7,7 @@ import MyNavbar from "./components/MyNavbar";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getMeProfileAction } from "./redux/actions";
+import Home from "./components/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,8 +19,9 @@ function App() {
   return (
     <>
       <MyNavbar />
+      <Home />
       <Container fluid className="sfondoContainer mt-4">
-        <Profile />
+        {/* <Profile /> */}
         <MyFooter />
       </Container>
     </>
