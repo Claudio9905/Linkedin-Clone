@@ -15,6 +15,7 @@ import {
 } from "react-bootstrap-icons";
 import { News } from "../constants";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [showExtra, setShowExtra] = useState(false);
@@ -37,9 +38,11 @@ const Home = () => {
               alt="immagine di profilo"
               id="icon-profile2"
             />
-            <Card.Title className="px-3 m-0">
-              {profile.name} {profile.surname}
-            </Card.Title>
+            <Link to={"/profile"} className=" text-decoration-none">
+              <Card.Title className="px-3 m-0">
+                {profile.name} {profile.surname}
+              </Card.Title>
+            </Link>
             <span className="px-3 text-secondary">{profile.area}</span>
             <button className="mx-3 mt-3 mb-4 text-secondary text-start btn-dashed">
               <Plus className="fs-4" /> Esperienza

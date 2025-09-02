@@ -19,6 +19,7 @@ import {
   SuitcaseLgFill,
 } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
@@ -49,10 +50,12 @@ const MyNavbar = () => {
     <>
       {/* Navbar Desktop */}
 
-      <Navbar className="d-none d-lg-flex bg-white">
+      <Navbar className="d-none d-lg-flex bg-white sticky-top">
         <Container>
           <div className="d-flex align-items-center w-100">
-            <img src="/public/linkedin.png" alt="Logo" width={40} />
+            <Link to={"/"}>
+              <img src="/public/linkedin.png" alt="Logo" width={40} />
+            </Link>
             <div
               className={`ms-3 d-flex align-items-center rounded-pill py-1 ${
                 focused
@@ -112,17 +115,21 @@ const MyNavbar = () => {
                           width={50}
                           className=" rounded-circle"
                         />
-                        <h4 className="ms-3">
-                          {profile.name} {profile.surname}
-                        </h4>
+                        <Link to={"/profile"} className="text-decoration-none">
+                          <h4 className="ms-3 ">
+                            {profile.name} {profile.surname}
+                          </h4>
+                        </Link>
                       </div>
                       <div className="mt-2">
-                        <Button
-                          variant="outline-primary"
-                          className=" rounded-pill me-2"
-                        >
-                          Visualizza Profilo
-                        </Button>
+                        <Link to={"/profile"}>
+                          <Button
+                            variant="outline-primary"
+                            className=" rounded-pill me-2"
+                          >
+                            Visualizza Profilo
+                          </Button>
+                        </Link>
                         <Button variant="primary" className=" rounded-pill">
                           Verifica
                         </Button>
