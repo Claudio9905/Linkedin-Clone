@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import EditProfile from "./EditProfile";
+import Modale from "./Modale";
 
 const MainProfile = () => {
   return (
@@ -19,7 +20,10 @@ const MainProfile = () => {
             id="icon-profile"
           />
         </div>
-        <EditProfile style={{ bottom: 20, right: 40 }} />
+        <EditProfile
+          style={{ bottom: 20, right: 40 }}
+          ModaleComponent={Modale}
+        />
 
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex gap-2 mb-0 fs-3">

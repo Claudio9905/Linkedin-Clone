@@ -1,5 +1,7 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import EditProfile from "./EditProfile";
+import Modale from "./Modale";
+import ModaleEsperienza from "./ModaleEsperienza";
 
 const MyEsperienza = () => {
   return (
@@ -9,7 +11,10 @@ const MyEsperienza = () => {
           <Card className="animation-start all-card my-4">
             <Card.Body>
               <Card.Title className=" fs-4 mb-4">Esperienza</Card.Title>
-              <EditProfile style={{ bottom: 28, right: 17 }} />
+              <EditProfile
+                style={{ bottom: 28, right: 17 }}
+                ModaleComponent={ModaleEsperienza}
+              />
               <Row>
                 <Col xs={2}>
                   {/* <div className=" d-flex"> */}

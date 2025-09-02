@@ -3,15 +3,22 @@ import Card from "react-bootstrap/Card";
 import "../App.css";
 import { useState } from "react";
 import EditProfile from "./EditProfile";
+import Modale from "./Modale";
+import ModaleInformazioni from "./ModaleInformazioni";
 const MyInformazione = () => {
   const [mostraAltro, setMostraAltro] = useState("overflow-hidden ellipsis");
   const [nascondiBtn, setNascondiBtn] = useState("");
+
   return (
     <>
       <Card className=" my-4 animation-start all-card">
         <Card.Body>
           <Card.Title className=" fs-4">Informazioni</Card.Title>
-          <EditProfile style={{ bottom: 16, right: 25 }} />
+
+          <EditProfile
+            style={{ bottom: 16, right: 25 }}
+            ModaleComponent={ModaleInformazioni}
+          />
           <Card.Text>
             Technology enthusiast and computer science expert with effective
             communication abilities. Frontend and mobile apps developer,

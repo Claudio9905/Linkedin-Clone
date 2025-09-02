@@ -1,10 +1,24 @@
 import { Pencil } from "react-bootstrap-icons";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+// import Button from "react-bootstrap/Button";
+// import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 
-export default function EditProfile({ style = {} }) {
+import Modale from "./Modale";
+import ModaleEsperienza from "./ModaleEsperienza";
+
+export default function EditProfile({ style = {}, ModaleComponent }) {
   const [show, setShow] = useState(false);
+
+  const renderModale = () => {
+    if (ModaleComponent) {
+      return <ModaleComponent show={show} onHide={() => setShow(false)} />;
+    } else if (Modale) {
+      return <Modale show={show} onHide={() => setShow(false)} />;
+    } else if (ModaleEsperienza) {
+      <ModaleEsperienza show={show} onHide={() => setShow(false)} />;
+    }
+  };
+
   return (
     <div className="position-relative">
       <Pencil
@@ -15,29 +29,28 @@ export default function EditProfile({ style = {} }) {
           setShow(true);
         }}
       />
-      <Modal show={show} onHide={() => setShow(false)}>
+      {renderModale()}
+      {/* <Modal show={show} onHide={() => setShow(false)} size="xl">
         <Modal.Dialog>
           <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Title>Modifica presentazione</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            <p>Modal body text goes here.</p>
+            <p>Nome*</p>
+            <ModalInput />
+            <p>Cognome*</p>
+            <ModalInput />
+            <p>Sommario*</p>
+            <ModalInput />
           </Modal.Body>
 
           <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => {
-                setShow(false);
-              }}
-            >
-              Close
-            </Button>
-            <Button variant="primary">Save changes</Button>
+           
+            <Button variant="primary">Salva</Button>
           </Modal.Footer>
         </Modal.Dialog>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }
