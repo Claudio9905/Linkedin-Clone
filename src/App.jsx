@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <MyNavbar />
-      <Container fluid className="sfondoContainer">
+      <Container fluid className="sfondoContainer mt-4">
         <Profile />
         <MyFooter />
       </Container>
