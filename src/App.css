@@ -87,3 +87,44 @@
   width: 100px;
   height: 100px;
 }
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  25% {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.animation-start {
+  animation: enter 0.5s linear 0s 1 forwards;
+}
+
+.all-card {
+  border: 1px solid rgba(195, 193, 193, 0.932);
+  box-shadow: 0px 0px 5px 1px #00000021;
+}
+
+.row-border {
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.299);
+  background-image: linear-gradient(45deg, #4b474754, transparent);
+}
