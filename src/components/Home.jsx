@@ -14,10 +14,12 @@ import {
   PlusSquareFill,
 } from "react-bootstrap-icons";
 import { News } from "../constants";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [showExtra, setShowExtra] = useState(false);
   const [showArticle, setShowArticle] = useState(false);
+  const profile = useSelector((state) => state.mainProfile.me_Profile);
 
   return (
     <Container className="mt-4">
@@ -31,12 +33,14 @@ const Home = () => {
               id="img-card"
             />
             <img
-              src="http://placecats.com/50/50"
+              src={profile.image}
               alt="immagine di profilo"
               id="icon-profile2"
             />
-            <Card.Title className="px-3 m-0"> User Name</Card.Title>
-            <span className="px-3 text-secondary">Città</span>
+            <Card.Title className="px-3 m-0">
+              {profile.name} {profile.surname}
+            </Card.Title>
+            <span className="px-3 text-secondary">{profile.area}</span>
             <button className="mx-3 mt-3 mb-4 text-secondary text-start btn-dashed">
               <Plus className="fs-4" /> Esperienza
             </button>
@@ -108,7 +112,7 @@ const Home = () => {
           <Card>
             <div className="py-3 px-2 d-flex ">
               <img
-                src="http://placecats.com/50/50"
+                src={profile.image}
                 alt="immagine di profilo"
                 className="rounded-circle me-2"
                 width={50}

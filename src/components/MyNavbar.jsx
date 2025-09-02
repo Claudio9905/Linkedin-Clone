@@ -18,11 +18,13 @@ import {
   Search,
   SuitcaseLgFill,
 } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 
 const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const searchRef = useRef(null);
+  const profile = useSelector((state) => state.mainProfile.me_Profile);
 
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
@@ -95,7 +97,7 @@ const MyNavbar = () => {
 
               <div className="d-flex flex-column align-items-center">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                  src={profile.image}
                   alt="User"
                   width={23}
                   className=" rounded-circle"
@@ -105,12 +107,14 @@ const MyNavbar = () => {
                     <Container fluid className="d-flex flex-column">
                       <div className="d-flex justify-content-start align-items-center">
                         <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                          src={profile.image}
                           alt="User"
                           width={50}
                           className=" rounded-circle"
                         />
-                        <h4 className="ms-3">User Name</h4>
+                        <h4 className="ms-3">
+                          {profile.name} {profile.surname}
+                        </h4>
                       </div>
                       <div className="mt-2">
                         <Button
@@ -239,7 +243,7 @@ const MyNavbar = () => {
                         align="end"
                         title={
                           <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                            src={profile.image}
                             alt="User"
                             width={30}
                             className="rounded-circle"
@@ -251,12 +255,14 @@ const MyNavbar = () => {
                           <Container fluid className="d-flex flex-column">
                             <div className="d-flex justify-content-start align-items-center">
                               <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                                src={profile.image}
                                 alt="User"
                                 width={50}
                                 className="rounded-circle"
                               />
-                              <h4 className="ms-3">User Name</h4>
+                              <h4 className="ms-3">
+                                {profile.name} {profile.surname}
+                              </h4>
                             </div>
                             <div className="mt-2">
                               <Button
@@ -378,7 +384,7 @@ const MyNavbar = () => {
           <div>
             <a href="">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                src={profile.image}
                 alt="User"
                 width={25}
                 className="rounded-circle"
