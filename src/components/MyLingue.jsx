@@ -5,7 +5,7 @@ const MyLingue = () => {
     <>
       <Card className=" my-4 animation-start all-card">
         <Card.Body>
-          <Card.Title className=" fs-4">Licenze e certificazioni</Card.Title>
+          <Card.Title className=" fs-4 mb-4">Lingue</Card.Title>
 
           <div className=" d-flex flex-column">
             <h6>Inglese</h6>
