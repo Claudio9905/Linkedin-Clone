@@ -19,14 +19,26 @@ import {
   SuitcaseLgFill,
 } from "react-bootstrap-icons";
 
+import { useSelector } from "react-redux";
+
 const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const searchRef = useRef(null);
   const [ricerca, setRicerca] = useState("");
-
-  console.log(ricerca);
-
+  // console.log(store);
+  // console.log(ricerca);
+  const profiles = useSelector((state) => state.profile);
+  const profiliFiltrati = Array.isArray(profiles)
+    ? profiles.filter((profiloSingolo) => {
+        const nomeCompleto = `${profiloSingolo.name || ""} ${
+          profiloSingolo.surname || ""
+        }`.toLowerCase();
+        return nomeCompleto.includes(ricerca.toLowerCase());
+      })
+    : [];
+  console.log(profiles);
+  console.log(profiliFiltrati);
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -55,7 +67,7 @@ const MyNavbar = () => {
           <div className="d-flex align-items-center w-100">
             <img src="/public/linkedin.png" alt="Logo" width={40} />
             <div
-              className={`ms-3 d-flex align-items-center rounded-pill py-1 ${
+              className={`ms-3 d-flex align-items-center rounded-pill py-1 position-relative ${
                 focused
                   ? "border border-2 border-primary"
                   : "border border-1 border-secondary"
@@ -77,6 +89,27 @@ const MyNavbar = () => {
                   setRicerca(e.target.value);
                 }}
               />
+              <div
+                className={`position-absolute z-1 posizioneRicerca ${
+                  focused && ricerca
+                    ? "border border-2 border-primary border-top-0"
+                    : ""
+                }`}
+                style={{
+                  width: focused ? "220px " : "180px",
+                  transition: "all 1s ease",
+                }}
+              >
+                {ricerca && (
+                  <ul>
+                    {profiliFiltrati.slice(0, 5).map((profilo) => (
+                      <li key={profilo._id} className="p-2 border-bottom">
+                        {profilo.name} {profilo.surname}{" "}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
             <div className="ms-auto d-flex flex-1 align-items-center me-5">
               <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">

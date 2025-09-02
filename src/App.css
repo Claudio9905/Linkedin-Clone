@@ -127,3 +127,9 @@
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.299);
   background-image: linear-gradient(45deg, #4b474754, transparent);
 }
+.posizioneRicerca {
+  top: 35px;
+  left: 7%;
+  width: 220px;
+  background-color: #ffffff;
+}
