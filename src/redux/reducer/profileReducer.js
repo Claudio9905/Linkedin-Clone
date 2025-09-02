@@ -1,4 +1,4 @@
-import { GET_PROFILE } from "../actions";
+import { GET_MEPROFILE } from "../actions";
 
 const initialState = {
   profile: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 const profileMeReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_PROFILE:
+    case GET_MEPROFILE:
       return {
         ...state,
         profile: action.payload,
