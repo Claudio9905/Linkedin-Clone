@@ -126,7 +126,7 @@ const MyNavbar = () => {
                     </Container>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item>
+                  <div className="px-2">
                     <div className="d-flex flex-column">
                       <h4>Account</h4>
                       <a
@@ -148,9 +148,9 @@ const MyNavbar = () => {
                         Lingua
                       </a>
                     </div>
-                  </NavDropdown.Item>
+                  </div>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item>
+                  <div className="px-2">
                     <div className="d-flex flex-column">
                       <h4>Gestisci</h4>
                       <a
@@ -166,9 +166,9 @@ const MyNavbar = () => {
                         Account per la pubblicazione di lavori
                       </a>
                     </div>
-                  </NavDropdown.Item>
+                  </div>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item>
+                  <div className="px-2">
                     <div className="d-flex flex-column">
                       <a
                         href="#"
@@ -177,7 +177,7 @@ const MyNavbar = () => {
                         Esci
                       </a>
                     </div>
-                  </NavDropdown.Item>
+                  </div>
                 </NavDropdown>
               </div>
             </div>
@@ -275,7 +275,7 @@ const MyNavbar = () => {
                           </Container>
                         </NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item>
+                        <div className="px-2">
                           <div className="d-flex flex-column">
                             <h4>Account</h4>
                             <a
@@ -297,9 +297,9 @@ const MyNavbar = () => {
                               Lingua
                             </a>
                           </div>
-                        </NavDropdown.Item>
+                        </div>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item>
+                        <div className="px-2">
                           <div className="d-flex flex-column">
                             <h4>Gestisci</h4>
                             <a
@@ -315,9 +315,9 @@ const MyNavbar = () => {
                               Account per la pubblicazione di lavori
                             </a>
                           </div>
-                        </NavDropdown.Item>
+                        </div>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item>
+                        <div className="px-2">
                           <div className="d-flex flex-column">
                             <a
                               href="#"
@@ -326,7 +326,7 @@ const MyNavbar = () => {
                               Esci
                             </a>
                           </div>
-                        </NavDropdown.Item>
+                        </div>
                       </NavDropdown>
                     </div>
                   </Col>
@@ -339,10 +339,13 @@ const MyNavbar = () => {
                             <Grid3x3GapFill className="icons text-secondary recolor" />
                           }
                         ></NavDropdown>
-                        <a href="#" className="text-center prova">
+                        <NavDropdown.Item
+                          href="#"
+                          className="text-center prova"
+                        >
                           Prova Premium per 0 <br />
                           EUR
-                        </a>
+                        </NavDropdown.Item>
                       </div>
                     </div>
                   </Col>
