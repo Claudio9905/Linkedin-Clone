@@ -103,7 +103,10 @@ const MyNavbar = () => {
                 {ricerca && (
                   <ul>
                     {profiliFiltrati.slice(0, 5).map((profilo) => (
-                      <li key={profilo._id} className="p-2 border-bottom">
+                      <li
+                        key={profilo._id}
+                        className="p-2 border-bottom pointer"
+                      >
                         {profilo.name} {profilo.surname}{" "}
                       </li>
                     ))}
@@ -397,7 +400,7 @@ const MyNavbar = () => {
             {showSearch && (
               <div
                 ref={searchRef}
-                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3"
+                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3 position-relative"
               >
                 <Search className="mx-2" />
                 <input
@@ -409,6 +412,26 @@ const MyNavbar = () => {
                     setRicerca(e.target.value);
                   }}
                 />
+                <div
+                  className={`position-absolute z-1 posizioneRicerca2 `}
+                  style={{
+                    width: showSearch ? "100%" : "180px",
+                    transition: "all 1s ease",
+                  }}
+                >
+                  {ricerca && (
+                    <ul>
+                      {profiliFiltrati.slice(0, 5).map((profilo) => (
+                        <li
+                          key={profilo._id}
+                          className="p-2 border-bottom pointer"
+                        >
+                          {profilo.name} {profilo.surname}{" "}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -429,7 +452,7 @@ const MyNavbar = () => {
             </a>
           </div>
 
-          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3">
+          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 position-relative">
             <Search className="mx-2" />
             <input
               type="text"
@@ -440,6 +463,23 @@ const MyNavbar = () => {
                 setRicerca(e.target.value);
               }}
             />
+            <div
+              className={`position-absolute  posizioneRicerca2 `}
+              style={{
+                width: "100%",
+                transition: "all 1s ease",
+              }}
+            >
+              {ricerca && (
+                <ul className=" list-unstyled m-0">
+                  {profiliFiltrati.slice(0, 5).map((profilo) => (
+                    <li key={profilo._id} className="p-2 border-bottom pointer">
+                      {profilo.name} {profilo.surname}{" "}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
           <div className="ms-3">
             <ChatDotsFill className="display-6 text-secondary" />
