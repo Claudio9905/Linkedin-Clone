@@ -43,7 +43,7 @@ const MainProfile = () => {
           />
 
           <CameraFill
-            className="fs-5 hover position-absolute"
+            className="hover position-absolute"
             style={{ top: 20, right: 40 }}
           />
         </div>
