@@ -6,7 +6,7 @@ export default function ModaleImgProfilo({ show, onHide, src }) {
   return (
     <Modal show={show} onHide={onHide} size="lg">
       <div className="bg-dark">
-        <Modal.Dialog className="w-75" size="md">
+        <Modal.Dialog className="w-75">
           <Modal.Header closeButton closeVariant="white" className="bg-dark">
             <Modal.Title className="text-light">Foto profilo</Modal.Title>
           </Modal.Header>
