@@ -22,15 +22,17 @@ export default function EditProfile({ style = {}, ModaleComponent }) {
   };
 
   return (
-    <div className="position-relative">
-      <Pencil
-        size={18}
-        className="position-absolute pencil"
-        style={{ cursor: "pointer", ...style }}
-        onClick={() => {
-          setShow(true);
-        }}
-      />
+    <div>
+      <div className="position-relative ">
+        <Pencil
+          size={18}
+          className="position-absolute pencil"
+          style={{ cursor: "pointer", ...style }}
+          onClick={() => {
+            setShow(true);
+          }}
+        />
+      </div>
       {renderModale()}
       {/* <Modal show={show} onHide={() => setShow(false)} size="xl">
         <Modal.Dialog>

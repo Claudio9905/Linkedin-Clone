@@ -16,10 +16,13 @@ import {
 import { News } from "../constants";
 import { useSelector } from "react-redux";
 import PostList from "./PostList";
+import { Link } from "react-router-dom";
+import ModaleEsperienza from "./ModaleEsperienza";
 
 const Home = () => {
   const [showExtra, setShowExtra] = useState(false);
   const [showArticle, setShowArticle] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const profile = useSelector((state) => state.mainProfile.me_Profile);
 
   return (
@@ -38,11 +41,18 @@ const Home = () => {
               alt="immagine di profilo"
               id="icon-profile2"
             />
-            <Card.Title className="px-3 m-0">
-              {profile.name} {profile.surname}
-            </Card.Title>
+            <Link to={"/profile"} className=" text-decoration-none">
+              <Card.Title className="px-3 m-0">
+                {profile.name} {profile.surname}
+              </Card.Title>
+            </Link>
             <span className="px-3 text-secondary">{profile.area}</span>
-            <button className="mx-3 mt-3 mb-4 text-secondary text-start btn-dashed">
+            <button
+              className="mx-3 mt-3 mb-4 text-secondary text-start btn-dashed"
+              onClick={() => {
+                setShowModal(!showModal);
+              }}
+            >
               <Plus className="fs-4" /> Esperienza
             </button>
           </Card>
@@ -204,6 +214,7 @@ const Home = () => {
           </Card>
         </Col>
       </Row>
+      <ModaleEsperienza show={showModal} onHide={() => setShowModal(false)} />
     </Container>
   );
 };

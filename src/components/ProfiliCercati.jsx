@@ -1,53 +1,50 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EditProfile from "./EditProfile";
 import Modale from "./Modale";
-import { CameraFill } from "react-bootstrap-icons";
+import { Camera } from "react-bootstrap-icons";
 import "./alfoCss/Camera.css";
-import ModaleImgProfilo from "./ModaleImgProfilo";
-import { useState } from "react";
+import { useEffect } from "react";
 
-const MainProfile = () => {
-  const Profile = useSelector((state) => {
-    return state.mainProfile.me_Profile;
+import { getUserIdAction } from "../redux/actions";
+import { useParams } from "react-router-dom";
+
+const ProfiliCercati = () => {
+  const { userId } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (userId) {
+      dispatch(getUserIdAction(userId));
+    }
+  }, [userId, dispatch]);
+  const profiloCercato = useSelector((state) => {
+    return state.idProfile.payload;
   });
-  console.log(Profile);
-
-  if (!Profile || !Profile._id) {
-    return <p>Caricamento profilo...</p>;
-  }
-  const [showModale, setShowModale] = useState(false);
+  console.log(userId);
+  console.log(profiloCercato);
 
   return (
     <>
       <Card className="card-main-profile animation-start">
-        <div className="box-profile-img position-relative">
+        <div className="box-profile-img ">
           <Card.Img
             variant="top"
-            src="https://i.ytimg.com/vi/_IevnsYI-EE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVShJMA8=&rs=AOn4CLCnEFnOSoxYr-Gm29bvRtT9g78erA"
-            className="img-fluid "
+            src="/download.png"
+            className="img-fluid object-fit-contain"
             id="banner-img"
           />
           <img
-            src={Profile.image}
+            src={profiloCercato?.image}
             alt="immagine di profilo"
             id="icon-profile"
-            style={{ cursor: "pointer " }}
-            onClick={() => {
-              setShowModale(true);
-            }}
           />
-          <ModaleImgProfilo
-            show={showModale}
-            onHide={() => setShowModale(false)}
-            src={Profile.image}
-          />
-
-          <CameraFill
-            className="hover position-absolute"
-            style={{ top: 20, right: 40 }}
-          />
+          <div className="position-relative w-50">
+            <Camera
+              className="position-absolute fs-5 hover"
+              style={{ bottom: 220, left: 670 }}
+            />
+          </div>
         </div>
         <EditProfile
           style={{ bottom: 20, right: 40 }}
@@ -55,9 +52,8 @@ const MainProfile = () => {
         />
 
         <Card.Body className="d-flex flex-column">
-          <Card.Text className="fs-6 mb-0">{Profile.username}</Card.Text>
-          <Card.Title className="d-flex gap-2 mb-4 fs-3">
-            {Profile.name} {Profile.surname}{" "}
+          <Card.Title className="d-flex gap-2 mb-0 fs-3">
+            {profiloCercato?.name} {profiloCercato?.surname}{" "}
             <span className="fs-6 text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -74,14 +70,17 @@ const MainProfile = () => {
               He/Him
             </span>
           </Card.Title>
-          <Card.Text className="fs-6 mb-0">{Profile.title}</Card.Text>
-          <Card.Text className="fs-6">{Profile.email}</Card.Text>
 
+          <Card.Text className="fs-6">{profiloCercato?.username}</Card.Text>
+          <Card.Text className="fs-6">{profiloCercato?.title}</Card.Text>
           <Card.Text className="indirizzo">
-            {Profile.area} -{" "}
-            <span className="link-info">
-              <a href="#" className=" text-decoration-none">
-                Informazioni di contatto
+            {profiloCercato?.area}
+            <span className="link-info ms-3">
+              <a
+                href={`mailto:${profiloCercato?.email}`}
+                className=" text-decoration-none"
+              >
+                Informazioni di contatto: {profiloCercato?.email}
               </a>
             </span>
           </Card.Text>
@@ -129,4 +128,4 @@ const MainProfile = () => {
   );
 };
 
-export default MainProfile;
+export default ProfiliCercati;
