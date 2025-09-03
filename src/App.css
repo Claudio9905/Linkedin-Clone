@@ -138,6 +138,9 @@
 }
 #img-card {
   height: 4rem;
+  object-fit: cover;
+  object-position: 0px -28px;
+  image-rendering: pixelated;
 }
 .btn-dashed {
   border: 1px dashed #918e8e;

@@ -10,6 +10,7 @@ import { getMeProfileAction } from "./redux/actions";
 import Home from "./components/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProfiliCercati from "./components/ProfiliCercati";
+import Jobs from "./components/Jobs";
 
 function App() {
   const dispatch1 = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           <Routes>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/profile/:userId" element={<ProfiliCercati />}></Route>
+          </Routes>
+          <Routes>
+            <Route path="/jobs" element={<Jobs />} />
           </Routes>
 
           <MyFooter />

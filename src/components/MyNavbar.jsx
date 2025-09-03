@@ -146,10 +146,13 @@ const MyNavbar = () => {
                 <PeopleFill className="icons" />
                 Rete
               </NavLink>
-              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+              <Link
+                to="/jobs"
+                className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3 text-decoration-none"
+              >
                 <SuitcaseLgFill className="icons" />
                 Lavoro
-              </NavLink>
+              </Link>
               <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-2">
                 <ChatDotsFill className="icons" />
                 Messagistica

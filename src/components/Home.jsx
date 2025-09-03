@@ -32,7 +32,7 @@ const Home = () => {
           <Card className="mb-2">
             <Card.Img
               variant="Top"
-              src="http://placecats.com/100/100"
+              src="http://placecats.com/300/300"
               className="img-fluid overflow-hidden"
               id="img-card"
             />

@@ -547,3 +547,37 @@ export const deletePostAction = (postId, postData) => {
       });
   };
 };
+
+// Action e API per il componente Jobs
+
+export const GET_JOBS = "GET_JOBS";
+
+const endpointJobs = "https://strive-benchmark.herokuapp.com/api/jobs";
+
+export const getJobsAction = () => {
+  return (dispatch) => {
+    fetch(endpointJobs, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei dati");
+        }
+      })
+      .then((resData) => {
+        console.log(resData);
+        dispatch({
+          type: GET_JOBS,
+          payload: resData,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRROR: ", err);
+      });
+  };
+};
