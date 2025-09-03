@@ -2,9 +2,12 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "../App.css";
 import { useState } from "react";
+
 import EditProfile from "./EditProfile";
-import Modale from "./Modale";
+
 import ModaleInformazioni from "./ModaleInformazioni";
+import { Form } from "react-bootstrap";
+import { PencilSquare } from "react-bootstrap-icons";
 const MyInformazione = () => {
   const [mostraAltro, setMostraAltro] = useState("overflow-hidden ellipsis");
   const [nascondiBtn, setNascondiBtn] = useState("");
@@ -19,11 +22,7 @@ const MyInformazione = () => {
             style={{ bottom: 16, right: 25 }}
             ModaleComponent={ModaleInformazioni}
           />
-          <Card.Text>
-            Technology enthusiast and computer science expert with effective
-            communication abilities. Frontend and mobile apps developer,
-            passionate computer consultant.
-          </Card.Text>
+          <Card.Text></Card.Text>
           <div className=" d-flex">
             <Card.Text className={` m-0 ${mostraAltro}`}>
               Sono un appassionato di tecnologia molto competente nel ramo
