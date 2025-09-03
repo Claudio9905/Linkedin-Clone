@@ -1,8 +1,14 @@
 .hover {
   cursor: pointer;
+
+  width: 23px;
+  height: 23px;
+  border-radius: 40%;
+  color: #136bc4;
 }
 
 .hover:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.4);
+
   /* border-radius: 80%; */
 }
