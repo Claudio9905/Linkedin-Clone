@@ -21,13 +21,14 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../redux/actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const searchRef = useRef(null);
   const [ricerca, setRicerca] = useState("");
-
+  const navigate = useNavigate();
+  const [nascondiRicerca, setNascondiRicerca] = useState("");
   console.log(ricerca);
 
   // console.log(store);
@@ -95,7 +96,9 @@ const MyNavbar = () => {
                   transition: "all 1s ease",
                 }}
                 value={ricerca}
-                onFocus={() => setFocused(true)}
+                onFocus={() => {
+                  setFocused(true), setNascondiRicerca("");
+                }}
                 onBlur={() => setFocused(false)}
                 onChange={(e) => {
                   setRicerca(e.target.value);
@@ -113,9 +116,16 @@ const MyNavbar = () => {
                 }}
               >
                 {ricerca && (
-                  <ul>
+                  <ul className={`${nascondiRicerca} p-0`}>
                     {profiliFiltrati.slice(0, 5).map((profilo) => (
-                      <li key={profilo._id} className="p-2 border-bottom">
+                      <li
+                        key={profilo._id}
+                        className="p-2 border-bottom pointer"
+                        onClick={() => {
+                          navigate(`/profile/${profilo._id}`);
+                          setNascondiRicerca("d-none");
+                        }}
+                      >
                         {profilo.name} {profilo.surname}{" "}
                       </li>
                     ))}

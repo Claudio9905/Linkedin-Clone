@@ -1,17 +1,28 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EditProfile from "./EditProfile";
 import Modale from "./Modale";
 import { Camera } from "react-bootstrap-icons";
 import "./alfoCss/Camera.css";
+import { useEffect } from "react";
 
-const MainProfile = () => {
-  const Profile = useSelector((state) => {
-    return state.mainProfile.me_Profile;
+import { getUserIdAction } from "../redux/actions";
+import { useParams } from "react-router-dom";
+
+const ProfiliCercati = () => {
+  const { userId } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (userId) {
+      dispatch(getUserIdAction(userId));
+    }
+  }, [userId, dispatch]);
+  const profiloCercato = useSelector((state) => {
+    return state.idProfile.payload;
   });
-
-  console.log(Profile);
+  console.log(userId);
+  console.log(profiloCercato);
 
   return (
     <>
@@ -24,7 +35,7 @@ const MainProfile = () => {
             id="banner-img"
           />
           <img
-            src="http://placecats.com/50/50"
+            src={profiloCercato?.image}
             alt="immagine di profilo"
             id="icon-profile"
           />
@@ -42,7 +53,7 @@ const MainProfile = () => {
 
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex gap-2 mb-0 fs-3">
-            {Profile.name} {Profile.surname}{" "}
+            {profiloCercato?.name} {profiloCercato?.surname}{" "}
             <span className="fs-6 text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,15 +71,16 @@ const MainProfile = () => {
             </span>
           </Card.Title>
 
-          <Card.Text className="fs-6">
-            Founder & Software Developer @ Nucleode SRL - Educator @ EPICODE -
-            IT Consultant
-          </Card.Text>
+          <Card.Text className="fs-6">{profiloCercato?.username}</Card.Text>
+          <Card.Text className="fs-6">{profiloCercato?.title}</Card.Text>
           <Card.Text className="indirizzo">
-            Gorizia, Friuli-Venezia Giulia, Italia -{" "}
-            <span className="link-info">
-              <a href="#" className=" text-decoration-none">
-                Informazioni di contatto
+            {profiloCercato?.area}
+            <span className="link-info ms-3">
+              <a
+                href={`mailto:${profiloCercato?.email}`}
+                className=" text-decoration-none"
+              >
+                Informazioni di contatto: {profiloCercato?.email}
               </a>
             </span>
           </Card.Text>
@@ -116,4 +128,4 @@ const MainProfile = () => {
   );
 };
 
-export default MainProfile;
+export default ProfiliCercati;

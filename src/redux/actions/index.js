@@ -7,7 +7,7 @@ export const EDIT_PROFILE = "EDIT_PROFILE";
 
 const endpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
 const endpoint1 = "https://striveschool-api.herokuapp.com/api/profile/";
-const endpoint2 = "https://striveschool-api.herokuapp.com/api/profile/:";
+// const endpoint2 = "https://striveschool-api.herokuapp.com/api/profile/:";
 const endpoint3 = "https://striveschool-api.herokuapp.com/api/profile/";
 
 export const getMeProfileAction = () => {
@@ -66,9 +66,9 @@ export const getProfileAction = () => {
   };
 };
 
-export const getUserIdAction = () => {
+export const getUserIdAction = (userId) => {
   return (dispatch) => {
-    fetch(endpoint2, {
+    fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}`, {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
