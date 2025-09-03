@@ -290,3 +290,243 @@ export const deleteExperiencesAction = (idData) => {
       });
   };
 };
+
+// ----------------------- SEZIONE PER I POST ---------------------------
+
+export const GET_POSTS = "GET_POSTS";
+export const GET_POST = "GET_POST";
+export const CREATE_POST = "CREATE_POST";
+export const UPDATE_POST = "UPDATE_POST";
+export const DELETE_POST = "DELETE_POST";
+export const SET_LOADING = "SET_LOADING";
+export const SET_ERROR = "SET_ERROR";
+
+// ------------------------- TOKEN -----------------------------------
+
+const TOKEN =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA";
+
+// ------------------------- ENDPOINT -----------------------------------
+
+export const BASE_URL = "https://striveschool-api.herokuapp.com/api";
+export const POSTS_ENDPOINT = `${BASE_URL}/posts/`;
+
+// ------------------------- ACTIONS -----------------------------------
+
+export const getPostsAction = () => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(POSTS_ENDPOINT, {
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei post");
+        }
+      })
+      .then((posts) => {
+        console.log("Ecco i post", posts);
+        dispatch({
+          type: GET_POSTS,
+          payload: posts,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRORE", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const getPostAction = (postId) => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(`${POSTS_ENDPOINT}${postId}`, {
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei post");
+        }
+      })
+      .then((posts) => {
+        console.log("Ecco post", posts);
+        dispatch({
+          type: GET_POSTS,
+          payload: posts,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRORE", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const createPostAction = (postData) => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(POSTS_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nella creazione del post");
+        }
+      })
+      .then((post) => {
+        console.log("Post Creato", post);
+        dispatch({
+          type: CREATE_POST,
+          payload: post,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        // ritorno tutti i post aggiornati
+        dispatch(getPostsAction());
+      })
+      .catch((err) => {
+        console.log("Errore nella creazione del post", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const updatePostAction = (postId, postData) => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(`${POSTS_ENDPOINT}${postId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nella modifica del post");
+        }
+      })
+      .then((post) => {
+        console.log("Post modificato", post);
+        dispatch({
+          type: UPDATE_POST,
+          payload: post,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("Errore nella modifica del post", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const deletePostAction = (postId, postData) => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(`${POSTS_ENDPOINT}${postId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nell'eliminazione del post");
+        }
+      })
+      .then((post) => {
+        console.log("Post eliminato", post);
+        dispatch({
+          type: DELETE_POST,
+          payload: post,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("Errore nell'eliminazione del post", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};

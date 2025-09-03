@@ -15,6 +15,7 @@ import {
 } from "react-bootstrap-icons";
 import { News } from "../constants";
 import { useSelector } from "react-redux";
+import PostList from "./PostList";
 
 const Home = () => {
   const [showExtra, setShowExtra] = useState(false);
@@ -122,6 +123,7 @@ const Home = () => {
               </button>
             </div>
           </Card>
+          <PostList />
         </Col>
         <Col xs={12} lg={3} className="d-flex d-md-none d-lg-flex">
           <Card className="w-100 px-3 pt-2">
