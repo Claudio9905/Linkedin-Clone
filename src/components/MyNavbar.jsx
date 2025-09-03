@@ -530,10 +530,10 @@ const MyNavbar = () => {
         </div>
         <div className="d-flex position-fixed w-100 bottom-0 justify-content-between px-3 b-top bg-white z-3 pt-2">
           <div>
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
+            <Link className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
               <HouseDoorFill className="icons" />
               Home
-            </NavLink>
+            </Link>
           </div>
           <div>
             <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
