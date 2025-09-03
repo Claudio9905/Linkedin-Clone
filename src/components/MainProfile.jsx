@@ -5,6 +5,8 @@ import EditProfile from "./EditProfile";
 import Modale from "./Modale";
 import { CameraFill } from "react-bootstrap-icons";
 import "./alfoCss/Camera.css";
+import ModaleImgProfilo from "./ModaleImgProfilo";
+import { useState } from "react";
 
 const MainProfile = () => {
   const Profile = useSelector((state) => {
@@ -12,6 +14,8 @@ const MainProfile = () => {
   });
 
   console.log(Profile);
+
+  const [showModale, setShowModale] = useState(false);
 
   return (
     <>
@@ -27,11 +31,20 @@ const MainProfile = () => {
             src="http://placecats.com/50/50"
             alt="immagine di profilo"
             id="icon-profile"
+            style={{ cursor: "pointer " }}
+            onClick={() => {
+              setShowModale(true);
+            }}
+          />
+          <ModaleImgProfilo
+            show={showModale}
+            onHide={() => setShowModale(false)}
+            src={Profile.image}
           />
 
           <CameraFill
             className="fs-5 hover position-absolute"
-            style={{ bottom: 140, right: 40 }}
+            style={{ top: 20, right: 40 }}
           />
         </div>
         <EditProfile
