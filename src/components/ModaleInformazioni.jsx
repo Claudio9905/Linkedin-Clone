@@ -9,7 +9,7 @@ export default function ModaleInformazioni({ show, onHide }) {
   //   const handleClose = () => setShow(false);
   //   const handleShow = () => setShow(true);
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} size="md">
       <Modal.Header closeButton>
         <Modal.Title>Modifica informazioni</Modal.Title>
       </Modal.Header>
@@ -17,7 +17,7 @@ export default function ModaleInformazioni({ show, onHide }) {
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label></Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control as="textarea" rows={5} />
           </Form.Group>
         </Form>
       </Modal.Body>

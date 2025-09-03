@@ -26,3 +26,31 @@
   border: top;
   border-top: gray;
 }
+.a-link {
+  text-decoration: none;
+}
+.a-link:hover {
+  text-decoration: underline;
+}
+.a-link2 {
+  text-decoration: none;
+}
+.a-link2:hover {
+  color: blue !important;
+}
+.btn-post {
+  background-color: white;
+}
+.btn-post:hover {
+  background-color: rgb(231, 228, 228);
+}
+.btn-user {
+  background-color: transparent;
+  border: none;
+}
+.btn-user:hover {
+  background-color: rgb(231, 228, 228);
+}
+.btn-news {
+  background-color: rgb(209, 207, 207);
+}

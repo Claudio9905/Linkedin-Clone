@@ -2,9 +2,11 @@ import { Pencil } from "react-bootstrap-icons";
 // import Button from "react-bootstrap/Button";
 // import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
+import "./alfoCss/Camera.css";
 
 import Modale from "./Modale";
 import ModaleEsperienza from "./ModaleEsperienza";
+import "./alfoCss/Pencil.css";
 
 export default function EditProfile({ style = {}, ModaleComponent }) {
   const [show, setShow] = useState(false);
@@ -20,15 +22,17 @@ export default function EditProfile({ style = {}, ModaleComponent }) {
   };
 
   return (
-    <div className="position-relative">
-      <Pencil
-        size={18}
-        className="position-absolute cursor-pointer"
-        style={{ cursor: "pointer", ...style }}
-        onClick={() => {
-          setShow(true);
-        }}
-      />
+    <div>
+      <div className="position-relative ">
+        <Pencil
+          size={18}
+          className="position-absolute pencil"
+          style={{ cursor: "pointer", ...style }}
+          onClick={() => {
+            setShow(true);
+          }}
+        />
+      </div>
       {renderModale()}
       {/* <Modal show={show} onHide={() => setShow(false)} size="xl">
         <Modal.Dialog>

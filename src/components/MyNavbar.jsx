@@ -19,11 +19,35 @@ import {
   SuitcaseLgFill,
 } from "react-bootstrap-icons";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileAction } from "../redux/actions";
+import { Link, useNavigate } from "react-router-dom";
 const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const searchRef = useRef(null);
+  const [ricerca, setRicerca] = useState("");
+  const navigate = useNavigate();
+  const [nascondiRicerca, setNascondiRicerca] = useState("");
+  console.log(ricerca);
 
+  // console.log(store);
+  // console.log(ricerca);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfileAction());
+  }, []);
+  const profiles = useSelector((state) => state.profile.profile);
+  const profiliFiltrati = Array.isArray(profiles)
+    ? profiles.filter((profiloSingolo) => {
+        const nomeCompleto = `${profiloSingolo.name || ""} ${
+          profiloSingolo.surname || ""
+        }`.toLowerCase();
+        return nomeCompleto.includes(ricerca.toLowerCase());
+      })
+    : [];
+  console.log(profiles);
+  console.log(profiliFiltrati);
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -47,12 +71,16 @@ const MyNavbar = () => {
     <>
       {/* Navbar Desktop */}
 
-      <Navbar className="d-none d-lg-flex bg-white">
+      <Navbar className="d-none d-lg-flex bg-white sticky-top">
         <Container>
           <div className="d-flex align-items-center w-100">
-            <img src="/public/linkedin.png" alt="Logo" width={40} />
+            <Link to={"/"}>
+              {" "}
+              <img src="/public/linkedin.png" alt="Logo" width={40} />
+            </Link>
+
             <div
-              className={`ms-3 d-flex align-items-center rounded-pill py-1 ${
+              className={`ms-3 d-flex align-items-center rounded-pill py-1 position-relative ${
                 focused
                   ? "border border-2 border-primary"
                   : "border border-1 border-secondary"
@@ -67,15 +95,53 @@ const MyNavbar = () => {
                   width: focused ? "220px" : "180px",
                   transition: "all 1s ease",
                 }}
-                onFocus={() => setFocused(true)}
+                value={ricerca}
+                onFocus={() => {
+                  setFocused(true), setNascondiRicerca("");
+                }}
                 onBlur={() => setFocused(false)}
+                onChange={(e) => {
+                  setRicerca(e.target.value);
+                }}
               />
+              <div
+                className={`position-absolute z-1 posizioneRicerca ${
+                  focused && ricerca
+                    ? "border border-2 border-primary border-top-0"
+                    : ""
+                }`}
+                style={{
+                  width: focused ? "220px " : "180px",
+                  transition: "all 1s ease",
+                }}
+              >
+                {ricerca && (
+                  <ul className={`${nascondiRicerca} p-0`}>
+                    {profiliFiltrati.slice(0, 5).map((profilo) => (
+                      <li
+                        key={profilo._id}
+                        className="p-2 border-bottom pointer"
+                        onClick={() => {
+                          navigate(`/profile/${profilo._id}`);
+                          setNascondiRicerca("d-none");
+                        }}
+                      >
+                        {profilo.name} {profilo.surname}{" "}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
             <div className="ms-auto d-flex flex-1 align-items-center me-5">
-              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+              {" "}
+              <Link
+                to={"/"}
+                className=" text-decoration-none d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3"
+              >
                 <HouseDoorFill className="icons" />
                 Home
-              </NavLink>
+              </Link>
               <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
                 <PeopleFill className="icons" />
                 Rete
@@ -92,7 +158,6 @@ const MyNavbar = () => {
                 <BellFill className="icons" />
                 Notifiche
               </NavLink>
-
               <div className="d-flex flex-column align-items-center">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
@@ -113,12 +178,14 @@ const MyNavbar = () => {
                         <h4 className="ms-3">User Name</h4>
                       </div>
                       <div className="mt-2">
-                        <Button
-                          variant="outline-primary"
-                          className=" rounded-pill me-2"
-                        >
-                          Visualizza Profilo
-                        </Button>
+                        <Link to={"/profile"}>
+                          <Button
+                            variant="outline-primary"
+                            className=" rounded-pill me-2"
+                          >
+                            Visualizza Profilo
+                          </Button>
+                        </Link>
                         <Button variant="primary" className=" rounded-pill">
                           Verifica
                         </Button>
@@ -206,7 +273,7 @@ const MyNavbar = () => {
             <img src="/public/linkedin.png" alt="Logo" width={40} />
             {/* se la barra di ricerca non è true allora viene mostrato tutta la nav */}
             {!showSearch && (
-              <div className="align-items-center me-3 d-none d-md-flex flex-1 d-lg-none w-100">
+              <div className="align-items-center me-3 d-none d-md-flex flex-1 d-lg-none w-100 ">
                 <Row className="d-flex align-items-center w-100">
                   <Col
                     md={7}
@@ -357,7 +424,7 @@ const MyNavbar = () => {
             {showSearch && (
               <div
                 ref={searchRef}
-                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3"
+                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3  position-relative"
               >
                 <Search className="mx-2" />
                 <input
@@ -365,7 +432,38 @@ const MyNavbar = () => {
                   placeholder="Cerca"
                   autoFocus
                   className="border-0 rounded-pill flex-grow-1 outline-none"
+                  onChange={(e) => {
+                    setRicerca(e.target.value);
+                  }}
                 />
+                <div
+                  className={`position-absolute z-1 posizioneRicerca2 w-100 ${
+                    focused && ricerca
+                      ? "border border-2 border-primary border-top-0"
+                      : ""
+                  }`}
+                  style={{
+                    width: focused ? "220px " : "180px",
+                    transition: "all 1s ease",
+                  }}
+                >
+                  {ricerca && (
+                    <ul className={`${nascondiRicerca} p-0`}>
+                      {profiliFiltrati.slice(0, 5).map((profilo) => (
+                        <li
+                          key={profilo._id}
+                          className="p-2 border-bottom pointer"
+                          onClick={() => {
+                            navigate(`/profile/${profilo._id}`);
+                            setNascondiRicerca("d-none");
+                          }}
+                        >
+                          {profilo.name} {profilo.surname}{" "}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -386,14 +484,45 @@ const MyNavbar = () => {
             </a>
           </div>
 
-          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3">
+          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3 position-relative">
             <Search className="mx-2" />
             <input
               type="text"
               placeholder="Cerca"
               autoFocus
               className="border-0 rounded-pill flex-grow-1 outline-none"
+              onChange={(e) => {
+                setRicerca(e.target.value);
+              }}
             />
+            <div
+              className={`position-absolute z-1 posizioneRicerca2 w-100 ${
+                focused && ricerca
+                  ? "border border-2 border-primary border-top-0"
+                  : ""
+              }`}
+              style={{
+                width: focused ? "220px " : "180px",
+                transition: "all 1s ease",
+              }}
+            >
+              {ricerca && (
+                <ul className={`${nascondiRicerca} p-0`}>
+                  {profiliFiltrati.slice(0, 5).map((profilo) => (
+                    <li
+                      key={profilo._id}
+                      className="p-2 border-bottom pointer"
+                      onClick={() => {
+                        navigate(`/profile/${profilo._id}`);
+                        setNascondiRicerca("d-none");
+                      }}
+                    >
+                      {profilo.name} {profilo.surname}{" "}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
           <div className="ms-3">
             <ChatDotsFill className="display-6 text-secondary" />

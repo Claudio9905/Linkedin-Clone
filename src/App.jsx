@@ -7,6 +7,9 @@ import MyNavbar from "./components/MyNavbar";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getMeProfileAction } from "./redux/actions";
+import Home from "./components/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProfiliCercati from "./components/ProfiliCercati";
 
 function App() {
   const dispatch1 = useDispatch();
@@ -17,11 +20,20 @@ function App() {
 
   return (
     <>
-      <MyNavbar />
-      <Container fluid className="sfondoContainer mt-4">
-        <Profile />
-        <MyFooter />
-      </Container>
+      <BrowserRouter>
+        <MyNavbar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+        <Container fluid className="sfondoContainer mt-4">
+          <Routes>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/profile/:userId" element={<ProfiliCercati />}></Route>
+          </Routes>
+
+          <MyFooter />
+        </Container>
+      </BrowserRouter>
     </>
   );
 }
