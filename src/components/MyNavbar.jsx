@@ -46,8 +46,8 @@ const MyNavbar = () => {
         return nomeCompleto.includes(ricerca.toLowerCase());
       })
     : [];
-  console.log(profiles);
-  console.log(profiliFiltrati);
+  // console.log(profiles);
+  // console.log(profiliFiltrati);
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -286,9 +286,9 @@ const MyNavbar = () => {
                       onClick={() => setShowSearch(true)}
                     />
 
-                    <a href="">
+                    <Link to={"/"}>
                       <HouseDoorFill className="fs-4 text-secondary mx-3 recolor" />
-                    </a>
+                    </Link>
                     <a href="">
                       <PeopleFill className="fs-4 text-secondary mx-3 recolor" />
                     </a>
@@ -530,7 +530,10 @@ const MyNavbar = () => {
         </div>
         <div className="d-flex position-fixed w-100 bottom-0 justify-content-between px-3 b-top bg-white z-3 pt-2">
           <div>
-            <Link className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
+            <Link
+              to={"/"}
+              className="d-flex flex-column justify-content-center align-items-center text-secondary recolor text-decoration-none"
+            >
               <HouseDoorFill className="icons" />
               Home
             </Link>
