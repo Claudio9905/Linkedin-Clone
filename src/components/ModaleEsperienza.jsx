@@ -8,6 +8,12 @@ import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 export default function ModaleEsperienza({ show, onHide }) {
+  // const dispatch2 = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch2(addNewExperiencesAction(Profile._id,"oggetto_da_passare"));
+  // }, []);
+
   return (
     <Modal show={show} onHide={onHide} size="xl">
       <Modal.Header closeButton>

@@ -2,8 +2,27 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import EditProfile from "./EditProfile";
 import Modale from "./Modale";
 import ModaleEsperienza from "./ModaleEsperienza";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getExperiencesAction } from "../redux/actions";
 
 const MyEsperienza = () => {
+  const Profile = useSelector((state) => {
+    return state.mainProfile.me_Profile;
+  });
+
+  const dispatch1 = useDispatch();
+
+  useEffect(() => {
+    if (Profile && Profile._id) {
+      dispatch1(getExperiencesAction(Profile._id));
+    }
+  }, [Profile]);
+
+  if (!Profile || !Profile._id) {
+    return <p>Caricamento profilo...</p>;
+  }
+
   return (
     <>
       <Container>

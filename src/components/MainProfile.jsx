@@ -8,8 +8,11 @@ const MainProfile = () => {
   const Profile = useSelector((state) => {
     return state.mainProfile.me_Profile;
   });
-
   console.log(Profile);
+
+  if (!Profile || !Profile._id) {
+    return <p>Caricamento profilo...</p>;
+  }
 
   return (
     <>

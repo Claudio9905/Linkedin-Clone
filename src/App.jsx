@@ -9,10 +9,10 @@ import { useEffect } from "react";
 import { getMeProfileAction } from "./redux/actions";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch1 = useDispatch();
 
   useEffect(() => {
-    dispatch(getMeProfileAction());
+    dispatch1(getMeProfileAction());
   }, []);
 
   return (
