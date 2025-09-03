@@ -134,13 +134,13 @@ export default function ModaleEsperienza({ show, onHide }) {
             </Col>
           </Row>
           {/* <YearMonthForm /> */}
+          <Modal.Footer>
+            <Button variant="primary" onClick={onHide}>
+              Salva
+            </Button>
+          </Modal.Footer>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={onHide}>
-          Salva
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }
