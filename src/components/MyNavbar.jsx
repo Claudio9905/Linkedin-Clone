@@ -134,10 +134,14 @@ const MyNavbar = () => {
               </div>
             </div>
             <div className="ms-auto d-flex flex-1 align-items-center me-5">
-              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+              {" "}
+              <Link
+                to={"/"}
+                className=" text-decoration-none d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3"
+              >
                 <HouseDoorFill className="icons" />
                 Home
-              </NavLink>
+              </Link>
               <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
                 <PeopleFill className="icons" />
                 Rete
@@ -154,7 +158,6 @@ const MyNavbar = () => {
                 <BellFill className="icons" />
                 Notifiche
               </NavLink>
-
               <div className="d-flex flex-column align-items-center">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
