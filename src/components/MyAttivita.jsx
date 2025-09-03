@@ -10,9 +10,9 @@ const MyAttivita = () => {
           <small>663 follower</small>
           <Card.Text className=" mt-4">
             <span className=" fw-semibold">
-              Stefano non ha ancora pubblicato nulla
+              Claudio non ha ancora pubblicato nulla
             </span>
-            I post recenti che Stefano condivide appariranno qui.
+            I post recenti che Claudio condivide appariranno qui.
           </Card.Text>
         </Card.Body>
         <Button className=" bg-white text-secondary border-dark-subtle border-bottom-0 border-start-0 fs-4 fw-semibold border-end-0 btnHover">
