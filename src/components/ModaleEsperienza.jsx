@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import YearMonthForm from "./YearMonthForm";
 import { Row, Col } from "react-bootstrap";
+import "./alfoCss/placeholder.css";
 
 import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -22,6 +23,7 @@ export default function ModaleEsperienza({ show, onHide }) {
               autoFocus
               required
               placeholder="Esempio: Developer"
+              className="custom-placeholder"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -31,6 +33,7 @@ export default function ModaleEsperienza({ show, onHide }) {
               autoFocus
               required
               placeholder="Esempio: Microsoft"
+              className="custom-placeholder"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -40,6 +43,7 @@ export default function ModaleEsperienza({ show, onHide }) {
               autoFocus
               required
               placeholder="Esempio: Informatica"
+              className="custom-placeholder"
             />
           </Form.Group>
 

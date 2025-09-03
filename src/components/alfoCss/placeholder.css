@@ -1,0 +1,5 @@
+.custom-placeholder::placeholder {
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 200;
+}
