@@ -270,7 +270,7 @@ const MyNavbar = () => {
             <img src="/public/linkedin.png" alt="Logo" width={40} />
             {/* se la barra di ricerca non è true allora viene mostrato tutta la nav */}
             {!showSearch && (
-              <div className="align-items-center me-3 d-none d-md-flex flex-1 d-lg-none w-100">
+              <div className="align-items-center me-3 d-none d-md-flex flex-1 d-lg-none w-100 ">
                 <Row className="d-flex align-items-center w-100">
                   <Col
                     md={7}
@@ -421,7 +421,7 @@ const MyNavbar = () => {
             {showSearch && (
               <div
                 ref={searchRef}
-                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3"
+                className="ms-3 d-none d-md-flex d-lg-none flex-grow-1 align-items-center rounded-pill border border-2 border-primary py-1 z-3  position-relative"
               >
                 <Search className="mx-2" />
                 <input
@@ -433,6 +433,34 @@ const MyNavbar = () => {
                     setRicerca(e.target.value);
                   }}
                 />
+                <div
+                  className={`position-absolute z-1 posizioneRicerca2 w-100 ${
+                    focused && ricerca
+                      ? "border border-2 border-primary border-top-0"
+                      : ""
+                  }`}
+                  style={{
+                    width: focused ? "220px " : "180px",
+                    transition: "all 1s ease",
+                  }}
+                >
+                  {ricerca && (
+                    <ul className={`${nascondiRicerca} p-0`}>
+                      {profiliFiltrati.slice(0, 5).map((profilo) => (
+                        <li
+                          key={profilo._id}
+                          className="p-2 border-bottom pointer"
+                          onClick={() => {
+                            navigate(`/profile/${profilo._id}`);
+                            setNascondiRicerca("d-none");
+                          }}
+                        >
+                          {profilo.name} {profilo.surname}{" "}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -453,7 +481,7 @@ const MyNavbar = () => {
             </a>
           </div>
 
-          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3">
+          <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3 position-relative">
             <Search className="mx-2" />
             <input
               type="text"
@@ -464,6 +492,34 @@ const MyNavbar = () => {
                 setRicerca(e.target.value);
               }}
             />
+            <div
+              className={`position-absolute z-1 posizioneRicerca2 w-100 ${
+                focused && ricerca
+                  ? "border border-2 border-primary border-top-0"
+                  : ""
+              }`}
+              style={{
+                width: focused ? "220px " : "180px",
+                transition: "all 1s ease",
+              }}
+            >
+              {ricerca && (
+                <ul className={`${nascondiRicerca} p-0`}>
+                  {profiliFiltrati.slice(0, 5).map((profilo) => (
+                    <li
+                      key={profilo._id}
+                      className="p-2 border-bottom pointer"
+                      onClick={() => {
+                        navigate(`/profile/${profilo._id}`);
+                        setNascondiRicerca("d-none");
+                      }}
+                    >
+                      {profilo.name} {profilo.surname}{" "}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
           <div className="ms-3">
             <ChatDotsFill className="display-6 text-secondary" />
