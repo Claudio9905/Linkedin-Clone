@@ -28,6 +28,22 @@ export default function ModaleEsperienza({ show, onHide }) {
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <p>Area*</p>
+            <Form.Control
+              type="text"
+              autoFocus
+              required
+              placeholder="Esempio: Developer"
+              className="custom-placeholder"
+              onChange={(e) => {
+                setOggettoEsperienza({
+                  ...oggettoEsperienza,
+                  area: e.target.value,
+                });
+              }}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <p>Ruolo*</p>
             <Form.Control
               type="text"
