@@ -71,7 +71,7 @@ const MyNavbar = () => {
     <>
       {/* Navbar Desktop */}
 
-      <Navbar className="d-none d-lg-flex bg-white">
+      <Navbar className="d-none d-lg-flex bg-white sticky-top">
         <Container>
           <div className="d-flex align-items-center w-100">
             <Link to={"/"}>
