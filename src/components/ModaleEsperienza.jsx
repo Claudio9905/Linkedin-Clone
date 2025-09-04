@@ -14,7 +14,7 @@ import {
   addNewExperiencesAction,
   getExperiencesAction,
 } from "../redux/actions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ModaleEsperienza({ show, onHide }) {
   const dispatch2 = useDispatch();
@@ -22,9 +22,6 @@ export default function ModaleEsperienza({ show, onHide }) {
     return state.mainProfile.me_Profile;
   });
   const [fileSelezionato, setFileSelezionato] = useState(null);
-  useEffect(() => {
-    dispatch2(addNewExperiencesAction());
-  }, []);
 
   const today = new Date();
   const currentMonth = today.toISOString().slice(0, 7);
