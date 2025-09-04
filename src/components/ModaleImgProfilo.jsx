@@ -24,17 +24,14 @@ export default function ModaleImgProfilo({ show, onHide, src }) {
             variant="btn btn-outline-info"
             className="text-light  d-flex flex-column daje"
           >
-            <CameraFill
-              className=" text-light justify-content-center"
-              style={{ marginLeft: "2.5em" }}
-            />
+            <CameraFill className=" text-light  mx-auto" />
             Aggiorna foto
           </Button>
           <Button
             variant="btn btn-outline-info"
             className="text-light  d-flex flex-column daje"
           >
-            <TrashFill className="ms-3 text-light" />
+            <TrashFill className="mx-auto text-light" />
             Elimina
           </Button>
         </Modal.Footer>
