@@ -14,19 +14,23 @@ const Home = () => {
     <Container className="mt-4">
       <Row>
         {/* Sidebar sinistra */}
-        <Col xs={12} md={4} lg={3}>
+        <Col xs={12} md={4} lg={3} className="animation-start-left">
           <SidebarProfile />
         </Col>
 
         {/* Colonna centrale */}
-        <Col xs={12} md={8} lg={6}>
+        <Col xs={12} md={8} lg={6} className="animation-center">
           <CreatePost profile={profile} />
           <Suggested />
           <PostList />
         </Col>
 
         {/* Sidebar destra */}
-        <Col xs={12} lg={3} className="d-block d-md-none d-lg-block">
+        <Col
+          xs={12}
+          lg={3}
+          className="d-block d-md-none d-lg-block animation-start-right"
+        >
           <NewsWidget />
         </Col>
       </Row>

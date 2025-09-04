@@ -117,8 +117,83 @@
   }
 }
 
+@keyframes enter-right-sidebar {
+  0% {
+    opacity: 0;
+    transform: translateX(260px);
+  }
+
+  25% {
+    opacity: 0;
+    transform: translateX(160px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes enter-left-sidebar {
+  0% {
+    opacity: 0;
+    transform: translateX(-260px);
+  }
+
+  25% {
+    opacity: 0;
+    transform: translateX(-160px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes enter-center {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+
+  25% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 .animation-start {
   animation: enter 0.5s linear 0s 1 forwards;
+}
+
+.animation-start-right {
+  animation: enter-right-sidebar 0.5s linear 0.5s 1 forwards;
+}
+
+.animation-start-left {
+  animation: enter-left-sidebar 0.5s linear 0.5s 1 forwards;
+}
+
+.animation-center {
+  animation: enter-center 0.5s linear 0.5s 1 forwards;
 }
 
 .all-card {
