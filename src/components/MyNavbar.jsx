@@ -156,7 +156,7 @@ const MyNavbar = () => {
               </NavLink>
               <div className="d-flex flex-column align-items-center">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                  src={profile.image}
                   alt="User"
                   width={23}
                   className=" rounded-circle"

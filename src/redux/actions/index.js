@@ -200,6 +200,9 @@ export const addNewExperiencesAction = (idUser, newExp) => {
       .then((resData) => {
         dispatch({ type: ADD_NEW_EXPERIENCES, payload: resData });
         return resData;
+      })
+      .catch((err) => {
+        console("ERRORE CARICAMENTO DATI", err);
       });
   };
 };
@@ -257,6 +260,9 @@ export const addImageExperiencesAction = (idUser, idEXP, file) => {
       .then((resData) => {
         dispatch({ type: ADD_NEW_IMAGE, payload: resData });
         return resData;
+      })
+      .catch((err) => {
+        console.log("ERRORE", err);
       });
   };
 };
