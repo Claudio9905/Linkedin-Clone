@@ -182,9 +182,28 @@
 
 .col-job {
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.505);
+  background-image: linear-gradient(45deg, #5a9af9, #fff7f7);
 }
 
 .col-job:hover {
   box-shadow: 3px 3px 10px 1px black;
   transition: all 0.2s linear 0s;
+}
+
+.date-job {
+  background-image: linear-gradient(88deg, #00000059, transparent);
+  padding: 0.5em;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  box-shadow: -5px 0px 10px 1px #0000007a;
+  position: relative;
+  left: 1em;
+}
+
+#row-job-search {
+  background-image: linear-gradient(2deg, #00000029, #0000001c);
+  padding: 2em;
+  border-radius: 20px;
+  margin-top: 1em;
+  border-top: 3px solid #5f89f38c;
 }

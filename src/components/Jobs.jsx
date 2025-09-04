@@ -41,15 +41,13 @@ const Jobs = () => {
   return (
     <>
       <Container>
-        <Row className="flex-column g-4">
+        <Row className="flex-column g-4" id="row-job-search">
           {isloading ? (
-            <Spinner
-              className=" text-center"
-              animation="grow"
-              variant="primary"
-            />
+            <Col xs={12} className="d-flex justify-content-center">
+              <Spinner animation="grow" variant="primary"></Spinner>
+            </Col>
           ) : (
-            getJobs.slice(0, 50).map((job, i) => {
+            getJobs.slice(0, 30).map((job, i) => {
               return (
                 <Col
                   key={i}
@@ -63,7 +61,7 @@ const Jobs = () => {
                       className="d-flex flex-row justify-content-between
                   "
                     >
-                      <div>
+                      <div className=" w-50">
                         <Card.Title className="fs-3">{job.title}</Card.Title>
                         <Card.Text>
                           <span className=" text-decoration-underline">
@@ -95,7 +93,7 @@ const Jobs = () => {
                         </Card.Text>
                       </div>
                       <div>
-                        <Card.Text>
+                        <Card.Text className="date-job">
                           {job.publication_date.slice(2, 10)}
                         </Card.Text>
                       </div>
