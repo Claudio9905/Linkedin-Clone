@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPostsAction, getProfileAction } from "../redux/actions";
+import {
+  getMeProfileAction,
+  getPostsAction,
+  getProfileAction,
+} from "../redux/actions";
 import { Alert, Spinner } from "react-bootstrap";
 
 import PostCard from "./PostCard";
 
 const PostList = () => {
   const dispatch = useDispatch();
-  const { posts, loading, error } = useSelector((state) => state.posts);
+  const { posts, loading } = useSelector((state) => state.posts);
   const profile = useSelector((state) => state.profile.profile);
 
   useEffect(() => {
@@ -29,23 +33,21 @@ const PostList = () => {
       </div>
     );
   }
-  if (error) {
-    return (
-      <div>
-        <Alert variant="danger">Errore: {error}</Alert>
-      </div>
-    );
-  }
+
   return (
-    <div>
-      {[...posts]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 20)
-        .map((post) => {
-          const user = getUserProfile(post.username);
-          return <PostCard key={post._id} post={post} user={user} />;
-        })}
-    </div>
+    <>
+      {" "}
+      <div>
+        {[...posts]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 20)
+          .map((post) => {
+            const user = getUserProfile(post.username);
+
+            return <PostCard key={post._id} post={post} user={user} />;
+          })}
+      </div>
+    </>
   );
 };
 

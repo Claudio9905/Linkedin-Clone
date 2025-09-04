@@ -81,22 +81,25 @@ const PostCard = ({ post, user }) => {
             ) : (
               <HandThumbsUp className="me-2" />
             )}
-            Consiglia
+            <span className="d-none d-md-inline">Consiglia</span>
           </button>
         </div>
         <div className="flex-grow-1 pointer btn-post">
           <button className="w-100 border-0 bg-transparent py-2 d-flex align-items-center justify-content-center">
-            <ChatDots className="me-2" /> Commenta
+            <ChatDots className="me-2" />{" "}
+            <span className="d-none d-md-inline">Commenta</span>
           </button>
         </div>
         <div className="flex-grow-1 pointer btn-post">
           <button className="w-100 border-0 bg-transparent py-2 d-flex align-items-center justify-content-center">
-            <ArrowRepeat className="me-2" /> Diffondi il post
+            <ArrowRepeat className="me-2" />{" "}
+            <span className="d-none d-md-inline">Diffondi il post</span>
           </button>
         </div>
         <div className="flex-grow-1 pointer btn-post">
           <button className="w-100 border-0 bg-transparent py-2 d-flex align-items-center justify-content-center">
-            <Send className="me-2" /> Invia
+            <Send className="me-2" />{" "}
+            <span className="d-none d-md-inline">Invia</span>
           </button>
         </div>
       </div>
