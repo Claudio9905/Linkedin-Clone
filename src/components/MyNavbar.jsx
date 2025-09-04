@@ -29,10 +29,7 @@ const MyNavbar = () => {
   const [ricerca, setRicerca] = useState("");
   const navigate = useNavigate();
   const [nascondiRicerca, setNascondiRicerca] = useState("");
-  console.log(ricerca);
 
-  // console.log(store);
-  // console.log(ricerca);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProfileAction());
@@ -46,8 +43,7 @@ const MyNavbar = () => {
         return nomeCompleto.includes(ricerca.toLowerCase());
       })
     : [];
-  console.log(profiles);
-  console.log(profiliFiltrati);
+  const profile = useSelector((state) => state.mainProfile.me_Profile);
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -163,7 +159,7 @@ const MyNavbar = () => {
               </NavLink>
               <div className="d-flex flex-column align-items-center">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                  src={profile.image}
                   alt="User"
                   width={23}
                   className=" rounded-circle"
@@ -173,12 +169,14 @@ const MyNavbar = () => {
                     <Container fluid className="d-flex flex-column">
                       <div className="d-flex justify-content-start align-items-center">
                         <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                          src={profile.image}
                           alt="User"
                           width={50}
                           className=" rounded-circle"
                         />
-                        <h4 className="ms-3">User Name</h4>
+                        <h4 className="ms-3">
+                          {profile.name} {profile.surname}
+                        </h4>
                       </div>
                       <div className="mt-2">
                         <Link to={"/profile"}>
@@ -270,10 +268,12 @@ const MyNavbar = () => {
 
       {/* Navbar Tablet */}
 
-      <Navbar className="d-none d-md-flex d-lg-none bg-white">
+      <Navbar className="d-none d-md-flex d-lg-none bg-white sticky-top">
         <Container fluid>
           <div className="d-flex align-items-center w-100">
-            <img src="/public/linkedin.png" alt="Logo" width={40} />
+            <Link to={"/"}>
+              <img src="/public/linkedin.png" alt="Logo" width={40} />
+            </Link>
             {/* se la barra di ricerca non è true allora viene mostrato tutta la nav */}
             {!showSearch && (
               <div className="align-items-center me-3 d-none d-md-flex flex-1 d-lg-none w-100 ">
@@ -289,9 +289,9 @@ const MyNavbar = () => {
                       onClick={() => setShowSearch(true)}
                     />
 
-                    <a href="">
+                    <Link to={"/"}>
                       <HouseDoorFill className="fs-4 text-secondary mx-3 recolor" />
-                    </a>
+                    </Link>
                     <a href="">
                       <PeopleFill className="fs-4 text-secondary mx-3 recolor" />
                     </a>
@@ -533,10 +533,13 @@ const MyNavbar = () => {
         </div>
         <div className="d-flex position-fixed w-100 bottom-0 justify-content-between px-3 b-top bg-white z-3 pt-2">
           <div>
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
+            <Link
+              to={"/"}
+              className="d-flex flex-column justify-content-center align-items-center text-secondary recolor text-decoration-none"
+            >
               <HouseDoorFill className="icons" />
               Home
-            </NavLink>
+            </Link>
           </div>
           <div>
             <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">

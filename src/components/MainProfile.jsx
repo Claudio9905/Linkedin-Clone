@@ -12,7 +12,7 @@ const MainProfile = () => {
   const Profile = useSelector((state) => {
     return state.mainProfile.me_Profile;
   });
-  console.log(Profile);
+  // console.log(Profile);
 
   const [showModale, setShowModale] = useState(false);
 

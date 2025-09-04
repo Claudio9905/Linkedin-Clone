@@ -207,3 +207,11 @@
   margin-top: 1em;
   border-top: 3px solid #5f89f38c;
 }
+
+.btnCancellaExp:hover {
+  color: red;
+  cursor: pointer;
+}
+.btnMostraTutto:hover {
+  color: black !important;
+}

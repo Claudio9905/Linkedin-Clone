@@ -7,14 +7,27 @@ import "./alfoCss/placeholder.css";
 
 import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addImageExperiencesAction,
+  addNewExperiencesAction,
+  getExperiencesAction,
+} from "../redux/actions";
+import { useEffect, useState } from "react";
 
 export default function ModaleEsperienza({ show, onHide }) {
-  // const dispatch2 = useDispatch();
+  const dispatch2 = useDispatch();
+  const Profile = useSelector((state) => {
+    return state.mainProfile.me_Profile;
+  });
+  const [fileSelezionato, setFileSelezionato] = useState(null);
+  useEffect(() => {
+    dispatch2(addNewExperiencesAction());
+  }, []);
 
-  // useEffect(() => {
-  //   dispatch2(addNewExperiencesAction(Profile._id,"oggetto_da_passare"));
-  // }, []);
+  const today = new Date();
+  const currentMonth = today.toISOString().slice(0, 7);
 
   const [oggettoEsperienza, setOggettoEsperienza] = useState({
     role: "",
@@ -23,6 +36,7 @@ export default function ModaleEsperienza({ show, onHide }) {
     endDate: "",
     description: "",
     area: "",
+    current: false,
   });
   console.log(oggettoEsperienza);
   // const[ruolo,setRuolo]= useState('')
@@ -32,14 +46,39 @@ export default function ModaleEsperienza({ show, onHide }) {
         <Modal.Title>Aggiungi esperienza</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            try {
+              const newExp = await dispatch2(
+                addNewExperiencesAction(Profile._id, oggettoEsperienza)
+              );
+
+              if (fileSelezionato && newExp?._id) {
+                console.log(newExp);
+                await dispatch2(
+                  addImageExperiencesAction(
+                    Profile._id,
+                    newExp._id,
+                    fileSelezionato
+                  )
+                );
+              }
+              await dispatch2(getExperiencesAction(Profile._id));
+
+              onHide();
+            } catch (err) {
+              console.error("Errore durante il salvataggio:", err);
+            }
+          }}
+        >
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <p>Area*</p>
             <Form.Control
               type="text"
               autoFocus
               required
-              placeholder="Esempio: Developer"
+              placeholder="Esempio: Roma"
               className="custom-placeholder"
               onChange={(e) => {
                 setOggettoEsperienza({
@@ -99,6 +138,21 @@ export default function ModaleEsperienza({ show, onHide }) {
           </Form.Group>
 
           {/* periodo lavorativo */}
+
+          <Form.Check
+            type="checkbox"
+            label="Attualmente ricopro questo ruolo"
+            className="my-4 text-secondary fst-italic fw-light"
+            checked={oggettoEsperienza.current}
+            onChange={(e) => {
+              setOggettoEsperienza((dati) => ({
+                ...dati,
+                current: e.target.checked,
+                endDate: e.target.checked ? "" : dati.endDate,
+              }));
+            }}
+          />
+
           <Row>
             <Col xs={12} md={6}>
               <Form.Group
@@ -115,6 +169,7 @@ export default function ModaleEsperienza({ show, onHide }) {
                     });
                   }}
                   required
+                  max={currentMonth}
                 />
               </Form.Group>
             </Col>
@@ -134,14 +189,28 @@ export default function ModaleEsperienza({ show, onHide }) {
                     });
                   }}
                   required
-                  max={2025}
+                  max={currentMonth}
+                  disabled={oggettoEsperienza.current}
+                  value={oggettoEsperienza.endDate}
                 />
               </Form.Group>
             </Col>
           </Row>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label>Inserisci Immagine</Form.Label>
+            <Form.Control
+              type="file"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  setFileSelezionato(file);
+                }
+              }}
+            />
+          </Form.Group>
           {/* <YearMonthForm /> */}
           <Modal.Footer>
-            <Button variant="primary" onClick={onHide}>
+            <Button type=" submit" variant="primary">
               Salva
             </Button>
           </Modal.Footer>
