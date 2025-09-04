@@ -36,7 +36,7 @@ const ProfiliCercati = () => {
         <Row>
           <Col>
             <Card className="card-main-profile animation-start">
-              <div className="box-profile-img ">
+              <div className="box-profile-img position-relative">
                 <Card.Img
                   variant="top"
                   src="/download.png"
