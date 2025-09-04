@@ -17,7 +17,11 @@ export default function ModaleInformazioni({ show, onHide }) {
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label></Form.Label>
-            <Form.Control as="textarea" rows={5} />
+            <Form.Control
+              as="textarea"
+              rows={5}
+              placeholder="Scrivi qualcosa su di te..."
+            />
           </Form.Group>
         </Form>
       </Modal.Body>

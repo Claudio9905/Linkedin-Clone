@@ -20,6 +20,9 @@ export default function ModaleEsperienza({ show, onHide }) {
     dispatch2(addNewExperiencesAction());
   }, []);
 
+  const today = new Date();
+  const currentMonth = today.toISOString().slice(0, 7);
+
   const [oggettoEsperienza, setOggettoEsperienza] = useState({
     role: "",
     company: "",
@@ -27,6 +30,7 @@ export default function ModaleEsperienza({ show, onHide }) {
     endDate: "",
     description: "",
     area: "",
+    current: false,
   });
   console.log(oggettoEsperienza);
   // const[ruolo,setRuolo]= useState('')
@@ -48,7 +52,7 @@ export default function ModaleEsperienza({ show, onHide }) {
               type="text"
               autoFocus
               required
-              placeholder="Esempio: Developer"
+              placeholder="Esempio: Informatica"
               className="custom-placeholder"
               onChange={(e) => {
                 setOggettoEsperienza({
@@ -108,6 +112,21 @@ export default function ModaleEsperienza({ show, onHide }) {
           </Form.Group>
 
           {/* periodo lavorativo */}
+
+          <Form.Check
+            type="checkbox"
+            label="Attualmente ricopro questo ruolo"
+            className="my-4 text-secondary fst-italic fw-light"
+            checked={oggettoEsperienza.current}
+            onChange={(e) => {
+              setOggettoEsperienza((dati) => ({
+                ...dati,
+                current: e.target.checked,
+                endDate: e.target.checked ? "" : dati.endDate,
+              }));
+            }}
+          />
+
           <Row>
             <Col xs={12} md={6}>
               <Form.Group
@@ -124,6 +143,7 @@ export default function ModaleEsperienza({ show, onHide }) {
                     });
                   }}
                   required
+                  max={currentMonth}
                 />
               </Form.Group>
             </Col>
@@ -143,7 +163,9 @@ export default function ModaleEsperienza({ show, onHide }) {
                     });
                   }}
                   required
-                  max={2025}
+                  max={currentMonth}
+                  disabled={oggettoEsperienza.current}
+                  value={oggettoEsperienza.endDate}
                 />
               </Form.Group>
             </Col>
