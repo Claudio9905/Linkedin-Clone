@@ -9,7 +9,9 @@ import addExperienceReducer from "../reducer/addExperienceReducer";
 import idExperienceReducer from "../reducer/idExperienceReducer";
 import editExperienceReducer from "../reducer/editExperienceReducer";
 import deleteExperienceReducer from "../reducer/deleteExperienceReducer";
-import getJobsReducer from "../reducer/getJobsReducer";
+import getJobReducer from "../reducer/getJobReducer";
+import getSingleJobReducer from "../reducer/getSingleJobReducer";
+import getJobCompanyReducer from "../reducer/getJobCompanyReducer";
 
 const combinedReducer = combineReducers({
   mainProfile: profileMainReducer,
@@ -22,7 +24,9 @@ const combinedReducer = combineReducers({
   singleExperience: idExperienceReducer,
   editExperience: editExperienceReducer,
   deleteExperience: deleteExperienceReducer,
-  jobs: getJobsReducer,
+  jobs: getJobReducer,
+  singleJob: getSingleJobReducer,
+  companyJob: getJobCompanyReducer,
 });
 
 const store = configureStore({
