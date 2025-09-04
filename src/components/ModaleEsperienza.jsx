@@ -18,6 +18,7 @@ export default function ModaleEsperienza({ show, onHide }) {
   });
   useEffect(() => {
     dispatch2(addNewExperiencesAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const today = new Date();
