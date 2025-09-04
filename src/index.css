@@ -23,8 +23,10 @@
   cursor: pointer;
 }
 .b-top {
-  border: top;
-  border-top: gray;
+  border-top: 1px solid gray;
+}
+.b-bottom {
+  border-bottom: 1px solid rgb(180, 179, 179);
 }
 .a-link {
   text-decoration: none;
@@ -53,4 +55,12 @@
 }
 .btn-news {
   background-color: rgb(209, 207, 207);
+}
+.pfont {
+  font-size: 0.8rem;
+}
+.p-like-comment:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgb(31, 105, 242);
 }

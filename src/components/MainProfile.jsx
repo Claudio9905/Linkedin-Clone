@@ -12,10 +12,12 @@ const MainProfile = () => {
   const Profile = useSelector((state) => {
     return state.mainProfile.me_Profile;
   });
-
   console.log(Profile);
 
   const [showModale, setShowModale] = useState(false);
+  if (!Profile || !Profile._id) {
+    return <p>Caricamento profilo...</p>;
+  }
 
   return (
     <>
@@ -23,12 +25,12 @@ const MainProfile = () => {
         <div className="box-profile-img position-relative">
           <Card.Img
             variant="top"
-            src="/download.png"
-            className="img-fluid object-fit-contain"
+            src="https://i.ytimg.com/vi/_IevnsYI-EE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVShJMA8=&rs=AOn4CLCnEFnOSoxYr-Gm29bvRtT9g78erA"
+            className="img-fluid "
             id="banner-img"
           />
           <img
-            src="http://placecats.com/50/50"
+            src={Profile.image}
             alt="immagine di profilo"
             id="icon-profile"
             style={{ cursor: "pointer " }}
@@ -53,7 +55,8 @@ const MainProfile = () => {
         />
 
         <Card.Body className="d-flex flex-column">
-          <Card.Title className="d-flex gap-2 mb-0 fs-3">
+          <Card.Text className="fs-6 mb-0">{Profile.username}</Card.Text>
+          <Card.Title className="d-flex gap-2 mb-4 fs-3">
             {Profile.name} {Profile.surname}{" "}
             <span className="fs-6 text-secondary">
               <svg
@@ -71,13 +74,11 @@ const MainProfile = () => {
               He/Him
             </span>
           </Card.Title>
+          <Card.Text className="fs-6 mb-0">{Profile.title}</Card.Text>
+          <Card.Text className="fs-6">{Profile.email}</Card.Text>
 
-          <Card.Text className="fs-6">
-            Founder & Software Developer @ Nucleode SRL - Educator @ EPICODE -
-            IT Consultant
-          </Card.Text>
           <Card.Text className="indirizzo">
-            Gorizia, Friuli-Venezia Giulia, Italia -{" "}
+            {Profile.area} -{" "}
             <span className="link-info">
               <a href="#" className=" text-decoration-none">
                 Informazioni di contatto

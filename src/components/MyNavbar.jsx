@@ -46,8 +46,8 @@ const MyNavbar = () => {
         return nomeCompleto.includes(ricerca.toLowerCase());
       })
     : [];
-  console.log(profiles);
-  console.log(profiliFiltrati);
+  // console.log(profiles);
+  // console.log(profiliFiltrati);
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -71,7 +71,7 @@ const MyNavbar = () => {
     <>
       {/* Navbar Desktop */}
 
-      <Navbar className="d-none d-lg-flex bg-white">
+      <Navbar className="d-none d-lg-flex bg-white sticky-top">
         <Container>
           <div className="d-flex align-items-center w-100">
             <Link to={"/"}>
@@ -134,10 +134,14 @@ const MyNavbar = () => {
               </div>
             </div>
             <div className="ms-auto d-flex flex-1 align-items-center me-5">
-              <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
+              {" "}
+              <Link
+                to={"/"}
+                className=" text-decoration-none d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3"
+              >
                 <HouseDoorFill className="icons" />
                 Home
-              </NavLink>
+              </Link>
               <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3">
                 <PeopleFill className="icons" />
                 Rete
@@ -154,7 +158,6 @@ const MyNavbar = () => {
                 <BellFill className="icons" />
                 Notifiche
               </NavLink>
-
               <div className="d-flex flex-column align-items-center">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
@@ -283,9 +286,9 @@ const MyNavbar = () => {
                       onClick={() => setShowSearch(true)}
                     />
 
-                    <a href="">
+                    <Link to={"/"}>
                       <HouseDoorFill className="fs-4 text-secondary mx-3 recolor" />
-                    </a>
+                    </Link>
                     <a href="">
                       <PeopleFill className="fs-4 text-secondary mx-3 recolor" />
                     </a>
@@ -527,10 +530,13 @@ const MyNavbar = () => {
         </div>
         <div className="d-flex position-fixed w-100 bottom-0 justify-content-between px-3 b-top bg-white z-3 pt-2">
           <div>
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
+            <Link
+              to={"/"}
+              className="d-flex flex-column justify-content-center align-items-center text-secondary recolor text-decoration-none"
+            >
               <HouseDoorFill className="icons" />
               Home
-            </NavLink>
+            </Link>
           </div>
           <div>
             <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">

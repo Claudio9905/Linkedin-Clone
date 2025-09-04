@@ -15,7 +15,7 @@ export const getMeProfileAction = () => {
     fetch(endpoint, {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
       },
     })
       .then((response) => {
@@ -43,7 +43,7 @@ export const getProfileAction = () => {
     fetch(endpoint1, {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
       },
     })
       .then((response) => {
@@ -71,7 +71,7 @@ export const getUserIdAction = (userId) => {
     fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}`, {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
       },
     })
       .then((response) => {
@@ -100,7 +100,7 @@ export const editProfileAction = (id, editProfile) => {
       method: "PUT",
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
       },
       body: JSON.stringify(editProfile),
     })
@@ -134,25 +134,30 @@ export const GET_ID_EXPERIENCES = "GET_ID_EXPERIENCES";
 export const EDIT_EXPERIENCES = "EDIT_EXPERIENCES";
 export const DELETE_EXPERIENCES = "DELETE_EXPERIENCES";
 
-const endpointEXP1 =
-  "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences";
-const endpointEXP2 =
-  "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences";
-const endpointEXP3 =
-  "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId";
-const endpointEXP4 =
-  "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId";
-const endpointEXP5 =
-  "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId";
+// const endpointEXP1 =
+//   "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences";
+// const endpointEXP2 =
+//   "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences";
+// const endpointEXP3 =
+//   "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId";
+// const endpointEXP4 =
+//   "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId";
+// const endpointEXP5 =
+//   "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId";
 
-export const getExperiencesAction = () => {
+export const getExperiencesAction = (idUser) => {
+  console.log(idUser);
+
   return (dispatch) => {
-    fetch(endpointEXP1, {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
-      },
-    })
+    fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+      }
+    )
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -173,17 +178,20 @@ export const getExperiencesAction = () => {
   };
 };
 
-export const addNewExperiencesAction = (newExp) => {
+export const addNewExperiencesAction = (idUser, newExp) => {
   return (dispatch) => {
-    fetch(endpointEXP2, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
-      },
-      body: JSON.stringify(newExp),
-    })
+    fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+        body: JSON.stringify(newExp),
+      }
+    )
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -204,14 +212,17 @@ export const addNewExperiencesAction = (newExp) => {
   };
 };
 
-export const getIdExperiencesAction = () => {
+export const getIdExperiencesAction = (idUser, idEXP) => {
   return (dispatch) => {
-    fetch(endpointEXP3, {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
-      },
-    })
+    fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/:${idEXP}`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+      }
+    )
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -232,16 +243,19 @@ export const getIdExperiencesAction = () => {
   };
 };
 
-export const editExperiencesAction = (editData) => {
+export const editExperiencesAction = (idUser, idEXP, editData) => {
   return (dispatch) => {
-    fetch(endpointEXP4, {
-      method: "PUT",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
-      },
-      body: JSON.stringify(editData),
-    })
+    fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/:${idEXP}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+        body: JSON.stringify(editData),
+      }
+    )
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -262,15 +276,18 @@ export const editExperiencesAction = (editData) => {
   };
 };
 
-export const deleteExperiencesAction = (idData) => {
+export const deleteExperiencesAction = (idUser, idEXP) => {
   return (dispatch) => {
-    fetch(endpointEXP5, {
-      method: "DELETE",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA",
-      },
-    })
+    fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/${idEXP}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+      }
+    )
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -282,11 +299,251 @@ export const deleteExperiencesAction = (idData) => {
         console.log(resData);
         dispatch({
           type: DELETE_EXPERIENCES,
-          payload: idData,
+          payload: idEXP,
         });
       })
       .catch((err) => {
         console.log("ERRROR: ", err);
+      });
+  };
+};
+
+// ----------------------- SEZIONE PER I POST ---------------------------
+
+export const GET_POSTS = "GET_POSTS";
+export const GET_POST = "GET_POST";
+export const CREATE_POST = "CREATE_POST";
+export const UPDATE_POST = "UPDATE_POST";
+export const DELETE_POST = "DELETE_POST";
+export const SET_LOADING = "SET_LOADING";
+export const SET_ERROR = "SET_ERROR";
+
+// ------------------------- TOKEN -----------------------------------
+
+const TOKEN =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI1NTM5ZWQyOWE0OTAwMTUxZjIwODciLCJpYXQiOjE3NTY3MTM4ODYsImV4cCI6MTc1NzkyMzQ4Nn0.g_ltzuAOM5iLWXZ42EnQunI2ClCn8d1JaOjtHmS1rNA";
+
+// ------------------------- ENDPOINT -----------------------------------
+
+export const BASE_URL = "https://striveschool-api.herokuapp.com/api";
+export const POSTS_ENDPOINT = `${BASE_URL}/posts/`;
+
+// ------------------------- ACTIONS -----------------------------------
+
+export const getPostsAction = () => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(POSTS_ENDPOINT, {
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei post");
+        }
+      })
+      .then((posts) => {
+        console.log("Ecco i post", posts);
+        dispatch({
+          type: GET_POSTS,
+          payload: posts,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRORE", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const getPostAction = (postId) => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(`${POSTS_ENDPOINT}${postId}`, {
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei post");
+        }
+      })
+      .then((posts) => {
+        console.log("Ecco post", posts);
+        dispatch({
+          type: GET_POSTS,
+          payload: posts,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRORE", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const createPostAction = (postData) => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(POSTS_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nella creazione del post");
+        }
+      })
+      .then((post) => {
+        console.log("Post Creato", post);
+        dispatch({
+          type: CREATE_POST,
+          payload: post,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        // ritorno tutti i post aggiornati
+        dispatch(getPostsAction());
+      })
+      .catch((err) => {
+        console.log("Errore nella creazione del post", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const updatePostAction = (postId, postData) => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(`${POSTS_ENDPOINT}${postId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nella modifica del post");
+        }
+      })
+      .then((post) => {
+        console.log("Post modificato", post);
+        dispatch({
+          type: UPDATE_POST,
+          payload: post,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("Errore nella modifica del post", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const deletePostAction = (postId, postData) => {
+  return (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    fetch(`${POSTS_ENDPOINT}${postId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: TOKEN,
+        "Content-Type": "aplication/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nell'eliminazione del post");
+        }
+      })
+      .then((post) => {
+        console.log("Post eliminato", post);
+        dispatch({
+          type: DELETE_POST,
+          payload: post,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("Errore nell'eliminazione del post", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
       });
   };
 };

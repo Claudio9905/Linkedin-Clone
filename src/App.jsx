@@ -12,10 +12,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProfiliCercati from "./components/ProfiliCercati";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch1 = useDispatch();
 
   useEffect(() => {
-    dispatch(getMeProfileAction());
+    dispatch1(getMeProfileAction());
   }, []);
 
   return (
