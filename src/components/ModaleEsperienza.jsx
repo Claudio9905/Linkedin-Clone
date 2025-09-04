@@ -7,14 +7,18 @@ import "./alfoCss/placeholder.css";
 
 import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewExperiencesAction } from "../redux/actions";
 
 export default function ModaleEsperienza({ show, onHide }) {
-  // const dispatch2 = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch2(addNewExperiencesAction(Profile._id,"oggetto_da_passare"));
-  // }, []);
+  const dispatch2 = useDispatch();
+  const Profile = useSelector((state) => {
+    return state.mainProfile.me_Profile;
+  });
+  useEffect(() => {
+    dispatch2(addNewExperiencesAction());
+  }, []);
 
   const [oggettoEsperienza, setOggettoEsperienza] = useState({
     role: "",
@@ -32,7 +36,12 @@ export default function ModaleEsperienza({ show, onHide }) {
         <Modal.Title>Aggiungi esperienza</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form
+          onSubmit={(e) => {
+            e.preventDefault();
+            dispatch2(addNewExperiencesAction(Profile._id, oggettoEsperienza));
+          }}
+        >
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <p>Area*</p>
             <Form.Control
@@ -141,7 +150,7 @@ export default function ModaleEsperienza({ show, onHide }) {
           </Row>
           {/* <YearMonthForm /> */}
           <Modal.Footer>
-            <Button variant="primary" onClick={onHide}>
+            <Button type=" submit" variant="primary" onClick={onHide}>
               Salva
             </Button>
           </Modal.Footer>

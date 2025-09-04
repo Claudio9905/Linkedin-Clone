@@ -39,17 +39,8 @@ const ProfiliCercati = () => {
             alt="immagine di profilo"
             id="icon-profile"
           />
-          <div className="position-relative w-50">
-            <Camera
-              className="position-absolute fs-5 hover"
-              style={{ bottom: 220, left: 670 }}
-            />
-          </div>
+          <div className="position-relative w-50"></div>
         </div>
-        <EditProfile
-          style={{ bottom: 20, right: 40 }}
-          ModaleComponent={Modale}
-        />
 
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex gap-2 mb-0 fs-3">

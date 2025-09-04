@@ -17,12 +17,18 @@ const MyEsperienza = () => {
     if (Profile && Profile._id) {
       dispatch1(getExperiencesAction(Profile._id));
     }
-  }, [Profile]);
+  }, []);
 
+  // useEffect(() => {
+  //   dispatch3(getExperiencesAction());
+  // }, []);
+  // const dispatch3 = useDispatch();
+  const esperienze = useSelector((state) => {
+    return state.listExperience.experience;
+  });
   if (!Profile || !Profile._id) {
     return <p>Caricamento profilo...</p>;
   }
-
   return (
     <>
       <Container>
@@ -34,29 +40,35 @@ const MyEsperienza = () => {
                 style={{ bottom: 28, right: 17 }}
                 ModaleComponent={ModaleEsperienza}
               />
-              <Row>
-                <Col xs={2}>
-                  {/* <div className=" d-flex"> */}
-                  <img
-                    src="src/assets/epicodeschool_logo.jpeg"
-                    alt=""
-                    className=" img-fluid"
-                  />
-                  {/* <div className=" d-flex flex-column ms-2"> */}
-                </Col>
-                <Col xs={10}>
-                  <h6>Teacher</h6>
-                  <p>EPICODE • Autonomo</p>
-                  <small>
-                    giu 2019 - Presente • 6 anni 4 mesi <br /> Roma, Italia
-                  </small>
-                </Col>
-              </Row>
-              {/* </div> */}
-              {/* </div> */}
+              {esperienze &&
+                esperienze?.slice(79, 84).map((exp, i) => {
+                  return (
+                    <>
+                      <Row key={i}>
+                        <Col xs={2}>
+                          {/* <div className=" d-flex"> */}
+                          <img
+                            src="src/assets/epicodeschool_logo.jpeg"
+                            alt=""
+                            className=" img-fluid"
+                          />
+                          {/* <div className=" d-flex flex-column ms-2"> */}
+                        </Col>
+                        <Col xs={10}>
+                          <h6>{exp?.role}</h6>
+                          <p>{exp?.company}</p>
+                          <small>
+                            {exp?.startDate}•{exp?.endDate} <br /> {exp?.area}
+                          </small>
+                        </Col>
+                      </Row>
+                    </>
+                  );
+                })}
             </Card.Body>
+          </Card>
 
-            <hr />
+          {/* <hr />
             <Card.Body>
               <Row>
                 <Col xs={2}>
@@ -168,7 +180,7 @@ const MyEsperienza = () => {
                 </Col>
               </Row>
             </Card.Body>
-          </Card>
+          </Card> */}
         </Row>
       </Container>
     </>
