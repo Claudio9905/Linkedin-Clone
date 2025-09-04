@@ -43,7 +43,7 @@ const MyNavbar = () => {
         return nomeCompleto.includes(ricerca.toLowerCase());
       })
     : [];
-
+  const profile = useSelector((state) => state.mainProfile.me_Profile);
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -166,12 +166,14 @@ const MyNavbar = () => {
                     <Container fluid className="d-flex flex-column">
                       <div className="d-flex justify-content-start align-items-center">
                         <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                          src={profile.image}
                           alt="User"
                           width={50}
                           className=" rounded-circle"
                         />
-                        <h4 className="ms-3">User Name</h4>
+                        <h4 className="ms-3">
+                          {profile.name} {profile.surname}
+                        </h4>
                       </div>
                       <div className="mt-2">
                         <Link to={"/profile"}>

@@ -11,6 +11,7 @@ import { PencilSquare } from "react-bootstrap-icons";
 const MyInformazione = () => {
   const [mostraAltro, setMostraAltro] = useState("overflow-hidden ellipsis");
   const [nascondiBtn, setNascondiBtn] = useState("");
+  const stringa = localStorage.getItem("informazioni");
 
   return (
     <>
@@ -23,22 +24,19 @@ const MyInformazione = () => {
             ModaleComponent={ModaleInformazioni}
           />
           <Card.Text></Card.Text>
-          <div className=" d-flex">
-            <Card.Text className={` m-0 ${mostraAltro}`}>
-              Sono un appassionato di tecnologia molto competente nel ramo
-              informatico, mobile e multimediale, dotato di grandi capacità
-              comunicative. Frontend & mobile apps developer, consulente
-              informatico per passione.
-            </Card.Text>
-            <button
-              className={`${nascondiBtn} border-0 bg-white text-nowrap text-primary `}
-              onClick={() => {
-                setMostraAltro("");
-                setNascondiBtn("d-none");
-              }}
-            >
-              vedi altro
-            </button>
+          <div>
+            <Card.Text className={` m-0 ${mostraAltro}`}>{stringa}</Card.Text>
+            {stringa.length > 70 && (
+              <button
+                className={`${nascondiBtn} border-0 bg-white text-nowrap text-primary `}
+                onClick={() => {
+                  setMostraAltro("");
+                  setNascondiBtn("d-none");
+                }}
+              >
+                vedi altro
+              </button>
+            )}
           </div>
         </Card.Body>
       </Card>

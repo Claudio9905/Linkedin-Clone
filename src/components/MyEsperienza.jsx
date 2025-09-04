@@ -48,18 +48,15 @@ const MyEsperienza = () => {
                     <Row key={i} className=" mt-5">
                       <Col xs={2}>
                         {/* <div className=" d-flex"> */}
-                        <img
-                          src="src/assets/epicodeschool_logo.jpeg"
-                          alt=""
-                          className=" img-fluid"
-                        />
+                        <img src={exp?.image} alt="" className=" img-fluid" />
                         {/* <div className=" d-flex flex-column ms-2"> */}
                       </Col>
                       <Col xs={9}>
                         <h6>{exp?.role}</h6>
                         <p>{exp?.company}</p>
+                        <p>{exp?.description}</p>
                         <small>
-                          dal: {exp?.startDate.slice(0, 10)}. al:{" "}
+                          dal: {exp?.startDate.slice(0, 10)} al:{" "}
                           {exp?.endDate.slice(0, 10)} <br /> {exp?.area}
                         </small>
                       </Col>
@@ -67,6 +64,7 @@ const MyEsperienza = () => {
                         <XLg
                           className=" btnCancellaExp"
                           onClick={() => {
+                            alert("Esperienza Eliminata");
                             dispatch4(
                               deleteExperiencesAction(Profile._id, exp._id)
                             );

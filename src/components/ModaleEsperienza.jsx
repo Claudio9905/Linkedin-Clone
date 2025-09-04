@@ -9,7 +9,11 @@ import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addNewExperiencesAction } from "../redux/actions";
+import {
+  addImageExperiencesAction,
+  addNewExperiencesAction,
+  getExperiencesAction,
+} from "../redux/actions";
 import { useState } from "react";
 
 export default function ModaleEsperienza({ show, onHide }) {
@@ -17,7 +21,7 @@ export default function ModaleEsperienza({ show, onHide }) {
   const Profile = useSelector((state) => {
     return state.mainProfile.me_Profile;
   });
-
+  const [fileSelezionato, setFileSelezionato] = useState(null);
   const [oggettoEsperienza, setOggettoEsperienza] = useState({
     role: "",
     company: "",
@@ -26,7 +30,7 @@ export default function ModaleEsperienza({ show, onHide }) {
     description: "",
     area: "",
   });
-  // console.log(oggettoEsperienza);
+  console.log(oggettoEsperienza);
   // const[ruolo,setRuolo]= useState('')
   return (
     <Modal show={show} onHide={onHide} size="lg">
@@ -35,9 +39,29 @@ export default function ModaleEsperienza({ show, onHide }) {
       </Modal.Header>
       <Modal.Body>
         <Form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            dispatch2(addNewExperiencesAction(Profile._id, oggettoEsperienza));
+            try {
+              const newExp = await dispatch2(
+                addNewExperiencesAction(Profile._id, oggettoEsperienza)
+              );
+
+              if (fileSelezionato && newExp?._id) {
+                console.log(newExp);
+                await dispatch2(
+                  addImageExperiencesAction(
+                    Profile._id,
+                    newExp._id,
+                    fileSelezionato
+                  )
+                );
+              }
+              await dispatch2(getExperiencesAction(Profile._id));
+
+              onHide();
+            } catch (err) {
+              console.error("Errore durante il salvataggio:", err);
+            }
           }}
         >
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -146,9 +170,21 @@ export default function ModaleEsperienza({ show, onHide }) {
               </Form.Group>
             </Col>
           </Row>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label>Inserisci Immagine</Form.Label>
+            <Form.Control
+              type="file"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  setFileSelezionato(file);
+                }
+              }}
+            />
+          </Form.Group>
           {/* <YearMonthForm /> */}
           <Modal.Footer>
-            <Button type=" submit" variant="primary" onClick={onHide}>
+            <Button type=" submit" variant="primary">
               Salva
             </Button>
           </Modal.Footer>

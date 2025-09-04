@@ -130,6 +130,7 @@ export const editProfileAction = (id, editProfile) => {
 
 export const GET_LIST_EXPERIENCES = "GET_LIST_EXPERIENCES";
 export const ADD_NEW_EXPERIENCES = "ADD_NEW_EXPERIENCES";
+export const ADD_NEW_IMAGE = "ADD_NEW_IMAGE";
 export const GET_ID_EXPERIENCES = "GET_ID_EXPERIENCES";
 export const EDIT_EXPERIENCES = "EDIT_EXPERIENCES";
 export const DELETE_EXPERIENCES = "DELETE_EXPERIENCES";
@@ -180,7 +181,7 @@ export const getExperiencesAction = (idUser) => {
 
 export const addNewExperiencesAction = (idUser, newExp) => {
   return (dispatch) => {
-    fetch(
+    return fetch(
       `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences`,
       {
         method: "POST",
@@ -193,21 +194,12 @@ export const addNewExperiencesAction = (idUser, newExp) => {
       }
     )
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Errore nel recupero dei dati");
-        }
+        if (response.ok) return response.json();
+        throw new Error("Errore nel recupero dei dati");
       })
       .then((resData) => {
-        console.log(resData);
-        dispatch({
-          type: ADD_NEW_EXPERIENCES,
-          payload: resData,
-        });
-      })
-      .catch((err) => {
-        console.log("ERRROR: ", err);
+        dispatch({ type: ADD_NEW_EXPERIENCES, payload: resData });
+        return resData;
       });
   };
 };
@@ -215,7 +207,7 @@ export const addNewExperiencesAction = (idUser, newExp) => {
 export const getIdExperiencesAction = (idUser, idEXP) => {
   return (dispatch) => {
     fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/:${idEXP}`,
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/${idEXP}`,
       {
         headers: {
           Authorization:
@@ -239,6 +231,32 @@ export const getIdExperiencesAction = (idUser, idEXP) => {
       })
       .catch((err) => {
         console.log("ERRROR: ", err);
+      });
+  };
+};
+export const addImageExperiencesAction = (idUser, idEXP, file) => {
+  return (dispatch) => {
+    const formData = new FormData();
+    formData.append("experience", file);
+
+    return fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/${idEXP}/picture`,
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+        body: formData,
+      }
+    )
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error("Errore nel caricamento dell'immagine");
+      })
+      .then((resData) => {
+        dispatch({ type: ADD_NEW_IMAGE, payload: resData });
+        return resData;
       });
   };
 };
