@@ -573,6 +573,147 @@ export const deletePostAction = (postId, postData) => {
   };
 };
 
+// Action e API per il componente Jobs
+
+export const GET_JOBS = "GET_JOBS";
+export const GET_SINGLE_JOB = "GET_SINGLE_JOB";
+export const GET_JOB_COMPANY = "GET_JOB_COMPANY";
+export const GET_JOB_CATEGORY = "GET_JOB_CATEGORY";
+export const GET_JOB_LOADING = "GET_JOB_LOADING";
+
+const endpointJobs = "https://strive-benchmark.herokuapp.com/api/jobs";
+// const endpointSingleJob =
+//   "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+
+export const getJobLoadingAction = () => {
+  return {
+    type: GET_JOB_LOADING,
+    payload: true,
+  };
+};
+
+export const getJobsAction = () => {
+  return (dispatch) => {
+    dispatch(getJobLoadingAction());
+    fetch(endpointJobs, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Chiamata all'API partita...");
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei dati");
+        }
+      })
+      .then((resData) => {
+        console.log(resData);
+        dispatch({
+          type: GET_JOBS,
+          payload: resData,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRROR: ", err);
+      });
+  };
+};
+
+export const getSingleJobAction = (job) => {
+  return (dispatch) => {
+    fetch(`https://strive-benchmark.herokuapp.com/api/jobs?search=${job}&`, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Chiamata all'API partita...");
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei dati");
+        }
+      })
+      .then((resData) => {
+        console.log(resData);
+        dispatch({
+          type: GET_SINGLE_JOB,
+          payload: resData,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRROR: ", err);
+      });
+  };
+};
+
+export const getJobCompanyAction = (companyName) => {
+  return (dispatch) => {
+    fetch(
+      `https://strive-benchmark.herokuapp.com/api/jobs?company=${companyName}`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          console.log("Chiamata all'API partita...");
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei dati");
+        }
+      })
+      .then((resData) => {
+        console.log(resData);
+        dispatch({
+          type: GET_JOB_COMPANY,
+          payload: resData,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRROR: ", err);
+      });
+  };
+};
+
+export const getJobCategoryAction = (category) => {
+  return (dispatch) => {
+    fetch(
+      `https://strive-benchmark.herokuapp.com/api/jobs?category=${category}&limit=10`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          console.log("Chiamata all'API partita...");
+          return response.json();
+        } else {
+          throw new Error("Errore nel recupero dei dati");
+        }
+      })
+      .then((resData) => {
+        console.log(resData);
+        dispatch({
+          type: GET_JOB_CATEGORY,
+          payload: resData,
+        });
+      })
+      .catch((err) => {
+        console.log("ERRROR: ", err);
+      });
+  };
+};
 export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
 
 // -------------------------------- Action Immagini ----------------------
