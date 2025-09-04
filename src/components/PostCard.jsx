@@ -68,7 +68,7 @@ const PostCard = ({ post, user }) => {
           <p className="mb-0 p-like-comment">{comments} commenti</p>
         </div>
       </div>
-      <div className="d-flex mx-3 mt-3 b-top">
+      <div className="d-flex align-items-center mx-3 mt-3 b-top">
         <div className="flex-grow-1 pointer btn-post">
           <button
             className={`w-100 border-0 bg-transparent py-2 d-flex align-items-center justify-content-center ${
