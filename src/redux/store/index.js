@@ -13,6 +13,7 @@ import getJobReducer from "../reducer/getJobReducer";
 import getSingleJobReducer from "../reducer/getSingleJobReducer";
 import getJobCompanyReducer from "../reducer/getJobCompanyReducer";
 import addImageReducer from "../reducer/addImageReducer";
+import addImageProfileReducer from "../reducer/addImgProfile";
 
 const combinedReducer = combineReducers({
   mainProfile: profileMainReducer,
@@ -29,6 +30,7 @@ const combinedReducer = combineReducers({
   singleJob: getSingleJobReducer,
   companyJob: getJobCompanyReducer,
   newImageExperience: addImageReducer,
+  newImgProfile: addImageProfileReducer,
 });
 
 const store = configureStore({

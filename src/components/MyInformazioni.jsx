@@ -26,7 +26,7 @@ const MyInformazione = () => {
           <Card.Text></Card.Text>
           <div>
             <Card.Text className={` m-0 ${mostraAltro}`}>{stringa}</Card.Text>
-            {stringa.length > 70 && (
+            {stringa?.length > 70 && (
               <button
                 className={`${nascondiBtn} border-0 bg-white text-nowrap text-primary `}
                 onClick={() => {

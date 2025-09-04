@@ -479,16 +479,14 @@ const MyNavbar = () => {
       <Navbar className="d-flex d-md-none bg-white">
         <div className="d-flex px-2 align-items-center flex-grow-1 position-sticky">
           <div>
-            <a href="">
-              <Link to={"/profile"}>
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-                  alt="User"
-                  width={25}
-                  className="rounded-circle"
-                />
-              </Link>
-            </a>
+            <Link to={"/profile"}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                alt="User"
+                width={25}
+                className="rounded-circle"
+              />
+            </Link>
           </div>
 
           <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3 position-relative">
