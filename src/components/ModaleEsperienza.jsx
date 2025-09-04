@@ -7,7 +7,7 @@ import "./alfoCss/placeholder.css";
 
 import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewExperiencesAction } from "../redux/actions";
 
@@ -16,10 +16,6 @@ export default function ModaleEsperienza({ show, onHide }) {
   const Profile = useSelector((state) => {
     return state.mainProfile.me_Profile;
   });
-  useEffect(() => {
-    dispatch2(addNewExperiencesAction());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const today = new Date();
   const currentMonth = today.toISOString().slice(0, 7);
