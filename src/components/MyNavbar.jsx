@@ -29,10 +29,7 @@ const MyNavbar = () => {
   const [ricerca, setRicerca] = useState("");
   const navigate = useNavigate();
   const [nascondiRicerca, setNascondiRicerca] = useState("");
-  console.log(ricerca);
 
-  // console.log(store);
-  // console.log(ricerca);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProfileAction());
@@ -46,8 +43,7 @@ const MyNavbar = () => {
         return nomeCompleto.includes(ricerca.toLowerCase());
       })
     : [];
-  // console.log(profiles);
-  // console.log(profiliFiltrati);
+
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -267,10 +263,12 @@ const MyNavbar = () => {
 
       {/* Navbar Tablet */}
 
-      <Navbar className="d-none d-md-flex d-lg-none bg-white">
+      <Navbar className="d-none d-md-flex d-lg-none bg-white sticky-top">
         <Container fluid>
           <div className="d-flex align-items-center w-100">
-            <img src="/public/linkedin.png" alt="Logo" width={40} />
+            <Link to={"/"}>
+              <img src="/public/linkedin.png" alt="Logo" width={40} />
+            </Link>
             {/* se la barra di ricerca non è true allora viene mostrato tutta la nav */}
             {!showSearch && (
               <div className="align-items-center me-3 d-none d-md-flex flex-1 d-lg-none w-100 ">

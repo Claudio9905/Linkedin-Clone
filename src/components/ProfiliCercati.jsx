@@ -21,8 +21,8 @@ const ProfiliCercati = () => {
   const profiloCercato = useSelector((state) => {
     return state.idProfile.payload;
   });
-  console.log(userId);
-  console.log(profiloCercato);
+  // console.log(userId);
+  // console.log(profiloCercato);
 
   return (
     <>

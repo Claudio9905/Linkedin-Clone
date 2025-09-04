@@ -4,7 +4,11 @@ import Modale from "./Modale";
 import ModaleEsperienza from "./ModaleEsperienza";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getExperiencesAction } from "../redux/actions";
+import {
+  deleteExperiencesAction,
+  getExperiencesAction,
+} from "../redux/actions";
+import { XLg } from "react-bootstrap-icons";
 
 const MyEsperienza = () => {
   const Profile = useSelector((state) => {
@@ -12,20 +16,18 @@ const MyEsperienza = () => {
   });
 
   const dispatch1 = useDispatch();
+  const esperienze = useSelector((state) => {
+    return state.listExperience.experience;
+  });
 
   useEffect(() => {
     if (Profile && Profile._id) {
       dispatch1(getExperiencesAction(Profile._id));
     }
-  }, []);
+  }, [Profile]);
 
-  // useEffect(() => {
-  //   dispatch3(getExperiencesAction());
-  // }, []);
-  // const dispatch3 = useDispatch();
-  const esperienze = useSelector((state) => {
-    return state.listExperience.experience;
-  });
+  const dispatch4 = useDispatch();
+
   if (!Profile || !Profile._id) {
     return <p>Caricamento profilo...</p>;
   }
@@ -41,146 +43,42 @@ const MyEsperienza = () => {
                 ModaleComponent={ModaleEsperienza}
               />
               {esperienze &&
-                esperienze?.slice(79, 84).map((exp, i) => {
+                esperienze?.map((exp, i) => {
                   return (
-                    <>
-                      <Row key={i}>
-                        <Col xs={2}>
-                          {/* <div className=" d-flex"> */}
-                          <img
-                            src="src/assets/epicodeschool_logo.jpeg"
-                            alt=""
-                            className=" img-fluid"
-                          />
-                          {/* <div className=" d-flex flex-column ms-2"> */}
-                        </Col>
-                        <Col xs={10}>
-                          <h6>{exp?.role}</h6>
-                          <p>{exp?.company}</p>
-                          <small>
-                            {exp?.startDate}•{exp?.endDate} <br /> {exp?.area}
-                          </small>
-                        </Col>
-                      </Row>
-                    </>
+                    <Row key={i} className=" mt-5">
+                      <Col xs={2}>
+                        {/* <div className=" d-flex"> */}
+                        <img
+                          src="src/assets/epicodeschool_logo.jpeg"
+                          alt=""
+                          className=" img-fluid"
+                        />
+                        {/* <div className=" d-flex flex-column ms-2"> */}
+                      </Col>
+                      <Col xs={9}>
+                        <h6>{exp?.role}</h6>
+                        <p>{exp?.company}</p>
+                        <small>
+                          dal: {exp?.startDate.slice(0, 10)}. al:{" "}
+                          {exp?.endDate.slice(0, 10)} <br /> {exp?.area}
+                        </small>
+                      </Col>
+                      <Col xs={1}>
+                        <XLg
+                          className=" btnCancellaExp"
+                          onClick={() => {
+                            dispatch4(
+                              deleteExperiencesAction(Profile._id, exp._id)
+                            );
+                          }}
+                        />
+                      </Col>
+                      <hr className=" mt-4" />
+                    </Row>
                   );
                 })}
             </Card.Body>
           </Card>
-
-          {/* <hr />
-            <Card.Body>
-              <Row>
-                <Col xs={2}>
-                  <img
-                    src="src/assets/images.png"
-                    alt=""
-                    className=" img-fluid"
-                  />
-                </Col>
-                <Col xs={10}>
-                  <h6>Founder & Software Developer</h6>
-                  <p>Nucleode SRL</p>
-                  <small>
-                    mar 2017 - Presente • 8 anni 7 mesi <br />{" "}
-                    Gorizia,Friuli-Venezia-Giulia, Italia
-                  </small>
-                  <p>
-                    Innovative start-up specialized in the development of highly
-                    innovative computer-medical solutions, using cloud potential
-                    and mobile computing, machine learning and Mixed Reality.
-                  </p>
-
-                  <figure>
-                    <img
-                      src="src/assets/images.jpeg"
-                      alt=""
-                      className=" img-fluid"
-                    />
-                  </figure>
-
-                  <h6>Nucleode | Biohealt Innovation</h6>
-                  <p>
-                    Nucleode Srl is a newborn healthcare startup based in Italy.
-                    We develop HIPAA and GDPR compliant solutions dedicated to
-                    healthcare companies and organizations.
-                  </p>
-                </Col>
-              </Row>
-            </Card.Body>
-            <hr />
-            <Card.Body>
-              <Row>
-                <Col xs={2}>
-                  <img
-                    src="src/assets/1631334944581.jpeg"
-                    alt=""
-                    className=" img-fluid"
-                  />
-                </Col>
-                <Col xs={10}>
-                  <h6>Founder & IT Consultant</h6>
-                  <p>TecnoStart</p>
-                  <small>
-                    gen 2015 - Presente • 10 anni 9 mesi <br />{" "}
-                    Gorizia,Friuli-Venezia-Giulia, Italia
-                  </small>
-                  <p>
-                    TecnoStart nasce per offrire consulenze e servizi
-                    informatici a privati, aziende, enti professionali e scuole,
-                    oltre che formazione a tutti i livelli per il corretto
-                    utilizzo degli stessi.
-                  </p>
-
-                  <figure>
-                    {" "}
-                    <img
-                      src="src/assets/1597918288566.jpeg"
-                      alt=""
-                      className=" img-fluid"
-                    />
-                  </figure>
-                  <h6>TecnoStart Logo</h6>
-                </Col>
-              </Row>
-            </Card.Body>
-            <hr />
-            <Card.Body>
-              <Row>
-                <Col xs={2}>
-                  <img
-                    src="src/assets/tecnest_srl_logo.jpeg"
-                    alt=""
-                    className=" img-fluid"
-                  />
-                </Col>
-                <Col xs={10}>
-                  <h6>Fronteend developer</h6>
-                  <p>
-                    Tecnes Srl - Supply Chain: Cultura e Soluzioni • Autonomo
-                  </p>
-                  <small>feb 2020- 2020 • 9 mesi</small>
-                </Col>
-              </Row>
-            </Card.Body>
-            <hr />
-            <Card.Body>
-              <Row>
-                <Col xs={2}>
-                  <img
-                    src="src/assets/1631325045374.jpeg"
-                    alt=""
-                    className=" img-fluid"
-                  />
-                </Col>
-                <Col xs={10}>
-                  <h6>Frontend developer</h6>
-                  <p>MV Labs • Freelance</p>
-                  <small>feb 2019 - mag 2020 • 1 anno</small>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card> */}
         </Row>
       </Container>
     </>

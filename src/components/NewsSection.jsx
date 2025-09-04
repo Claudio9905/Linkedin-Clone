@@ -2,56 +2,20 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button, Image, Modal } from "react-bootstrap";
-import image1 from "../assets/img/utenti-fake/grandmaster.jpeg";
-import image2 from "../assets/img/utenti-fake/giuseppe.jpeg";
-import image3 from "../assets/img/utenti-fake/orsetto.jpeg";
-import image4 from "../assets/img/utenti-fake/zioaldo.jpeg";
-import image5 from "../assets/img/utenti-fake/francoricciardi.jpeg";
-import image6 from "../assets/img/utenti-fake/amoon.jpeg";
-
+// import image1 from "../assets/img/utenti-fake/grandmaster.jpeg";
+// import image2 from "../assets/img/utenti-fake/giuseppe.jpeg";
+// import image3 from "../assets/img/utenti-fake/orsetto.jpeg";
+// import image4 from "../assets/img/utenti-fake/zioaldo.jpeg";
+// import image5 from "../assets/img/utenti-fake/francoricciardi.jpeg";
+// import image6 from "../assets/img/utenti-fake/amoon.jpeg";
+import { useSelector } from "react-redux";
+import "../App.css";
 const NewsSection = () => {
   const [showModal1, setShowModal1] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
 
-  const profiles = [
-    {
-      id: 1,
-      name: "Tutter",
-      surname: "Master",
-      job: "Developer",
-      image: image1,
-    },
-    {
-      id: 2,
-      name: "Ignazziello",
-      surname: "Esposito",
-      job: "Designer",
-      image: image2,
-    },
-    { id: 3, name: "Meg", surname: "Atron", job: "Developer", image: image3 },
-    {
-      id: 4,
-      name: "Pippo",
-      surname: "Unsacco",
-      job: "Developer",
-      image: image4,
-    },
-    {
-      id: 5,
-      name: "Franco",
-      surname: "Ricciardi",
-      job: "Developer",
-      image: image5,
-    },
-    {
-      id: 6,
-      name: "Anna",
-      surname: "Tatangelo",
-      job: "Developer",
-      image: image6,
-    },
-  ];
+  const profiles = useSelector((state) => state.profile.profile);
 
   const handleShowModal1 = () => {
     setShowModal1(true);
@@ -91,45 +55,48 @@ const NewsSection = () => {
       >
         <Card.Header className="fw-semibold">Altri profili per te</Card.Header>
         <Card.Body>
-          {profiles.slice(0, 5).map((profile) => (
-            <div
-              key={profile.id}
-              className="d-flex align-items-center mb-3 border-bottom pb-3"
-            >
-              <Image
-                src={profile.image}
-                roundedCircle
-                width={50}
-                height={50}
-                className="me-3"
-              />
-              <div>
-                <h5 className="mb-1">
-                  {profile.name} {profile.surname}
-                </h5>
-                <p className="mb-2">{profile.job}</p>
-                <Button
-                  variant="outline-secondary"
-                  size="sm"
-                  className="rounded-pill fw-semibold"
-                >
-                  + Segui
-                </Button>
-                <Button
-                  variant="outline-primary"
-                  size="sm"
-                  className="ms-2 rounded-pill fw-semibold"
-                >
-                  Messaggio
-                </Button>
+          {[...profiles]
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 5)
+            .map((profile, i) => (
+              <div
+                key={i}
+                className="d-flex align-items-center mb-3 border-bottom pb-3"
+              >
+                <Image
+                  src={profile.image}
+                  roundedCircle
+                  width={50}
+                  height={50}
+                  className="me-3"
+                />
+                <div>
+                  <h5 className="mb-1">
+                    {profile.name} {profile.surname}
+                  </h5>
+                  <p className="mb-2">{profile.job}</p>
+                  <Button
+                    variant="outline-secondary"
+                    size="sm"
+                    className="rounded-pill fw-semibold"
+                  >
+                    + Segui
+                  </Button>
+                  <Button
+                    variant="outline-primary"
+                    size="sm"
+                    className="ms-2 rounded-pill fw-semibold"
+                  >
+                    Messaggio
+                  </Button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
           {profiles.length > 5 && (
             <div className="text-center">
               <Button
                 variant="link"
-                className="fw-semibold p-0"
+                className="fw-semibold p-0 btnMostraTutto"
                 size="lg"
                 style={{ textDecoration: "none", color: "GrayText" }}
                 onClick={handleShowModal1}
@@ -144,9 +111,9 @@ const NewsSection = () => {
             <Modal.Title>Tutti i profili</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {profiles.map((profile) => (
+            {profiles.map((profile, i) => (
               <div
-                key={profile.id}
+                key={i}
                 className="d-flex align-items-center mb-3 border-bottom pb-3"
               >
                 <Image
@@ -196,9 +163,9 @@ const NewsSection = () => {
           Persone che potresti conoscere
         </Card.Header>
         <Card.Body>
-          {profiles.slice(0, 5).map((profile) => (
+          {profiles.slice(0, 5).map((profile, i) => (
             <div
-              key={profile.id}
+              key={i}
               className="d-flex align-items-center mb-3 border-bottom pb-3"
             >
               <Image
@@ -234,7 +201,7 @@ const NewsSection = () => {
             <div className="text-center">
               <Button
                 variant="link"
-                className="fw-semibold p-0"
+                className="fw-semibold p-0 btnMostraTutto"
                 size="lg"
                 style={{ textDecoration: "none", color: "GrayText" }}
                 onClick={handleShowModal2}
@@ -249,9 +216,9 @@ const NewsSection = () => {
             <Modal.Title>Tutti i profili</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {profiles.map((profile) => (
+            {profiles.map((profile, i) => (
               <div
-                key={profile.id}
+                key={i}
                 className="d-flex align-items-center mb-3 border-bottom pb-3"
               >
                 <Image
@@ -299,9 +266,9 @@ const NewsSection = () => {
       >
         <Card.Header className="fw-semibold">Potrebbe interessarti</Card.Header>
         <Card.Body>
-          {profiles.slice(0, 5).map((profile) => (
+          {profiles.slice(0, 5).map((profile, i) => (
             <div
-              key={profile.id}
+              key={i}
               className="d-flex align-items-center mb-3 border-bottom pb-3"
             >
               <Image
@@ -337,7 +304,7 @@ const NewsSection = () => {
             <div className="text-center">
               <Button
                 variant="link"
-                className="fw-semibold p-0"
+                className="fw-semibold p-0 btnMostraTutto"
                 size="lg"
                 style={{ textDecoration: "none", color: "GrayText" }}
                 onClick={handleShowModal3}
@@ -352,9 +319,9 @@ const NewsSection = () => {
             <Modal.Title>Tutti i profili</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {profiles.map((profile) => (
+            {profiles.map((profile, i) => (
               <div
-                key={profile.id}
+                key={i}
                 className="d-flex align-items-center mb-3 border-bottom pb-3"
               >
                 <Image

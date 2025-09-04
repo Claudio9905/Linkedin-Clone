@@ -7,18 +7,16 @@ import "./alfoCss/placeholder.css";
 
 import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { addNewExperiencesAction } from "../redux/actions";
+import { useState } from "react";
 
 export default function ModaleEsperienza({ show, onHide }) {
   const dispatch2 = useDispatch();
   const Profile = useSelector((state) => {
     return state.mainProfile.me_Profile;
   });
-  useEffect(() => {
-    dispatch2(addNewExperiencesAction());
-  }, []);
 
   const [oggettoEsperienza, setOggettoEsperienza] = useState({
     role: "",
@@ -28,7 +26,7 @@ export default function ModaleEsperienza({ show, onHide }) {
     description: "",
     area: "",
   });
-  console.log(oggettoEsperienza);
+  // console.log(oggettoEsperienza);
   // const[ruolo,setRuolo]= useState('')
   return (
     <Modal show={show} onHide={onHide} size="lg">
@@ -48,7 +46,7 @@ export default function ModaleEsperienza({ show, onHide }) {
               type="text"
               autoFocus
               required
-              placeholder="Esempio: Developer"
+              placeholder="Esempio: Roma"
               className="custom-placeholder"
               onChange={(e) => {
                 setOggettoEsperienza({
