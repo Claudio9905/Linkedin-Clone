@@ -326,12 +326,14 @@ const MyNavbar = () => {
                               <h4 className="ms-3">User Name</h4>
                             </div>
                             <div className="mt-2">
-                              <Button
-                                variant="outline-primary"
-                                className="rounded-pill me-2"
-                              >
-                                Visualizza Profilo
-                              </Button>
+                              <Link to={"/profile"}>
+                                <Button
+                                  variant="outline-primary"
+                                  className="rounded-pill me-2"
+                                >
+                                  Visualizza Profilo
+                                </Button>
+                              </Link>
                               <Button
                                 variant="primary"
                                 className="rounded-pill"
@@ -475,12 +477,14 @@ const MyNavbar = () => {
         <div className="d-flex px-2 align-items-center flex-grow-1 position-sticky">
           <div>
             <a href="">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-                alt="User"
-                width={25}
-                className="rounded-circle"
-              />
+              <Link to={"/profile"}>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                  alt="User"
+                  width={25}
+                  className="rounded-circle"
+                />
+              </Link>
             </a>
           </div>
 
