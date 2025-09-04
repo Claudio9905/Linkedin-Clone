@@ -54,7 +54,7 @@ const Jobs = () => {
                   xs={12}
                   md={12}
                   lg={12}
-                  className=" bg-secondary border border-1 border-light rounded-4 p-3 col-job animation-start"
+                  className=" border border-1 border-light rounded-4 p-3 col-job animation-start"
                 >
                   <Card className="edit-job">
                     <Card.Body
