@@ -29,6 +29,7 @@ export default function ModaleInformazioni({ show, onHide }) {
               onChange={(e) => {
                 setValoreInput(e.target.value);
               }}
+              placeholder="Scrivi qualcosa su di te..."
             />
           </Form.Group>
           <Modal.Footer>

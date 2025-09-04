@@ -6,6 +6,7 @@ import {
   UPDATE_POST,
   SET_ERROR,
   SET_LOADING,
+  UPLOAD_IMAGE,
 } from "../actions";
 
 const initialState = {
@@ -42,6 +43,13 @@ const postsReducer = (state = initialState, action) => {
           post.id === action.payload.id ? action.payload.text : post
         ),
         currentPost: action.payload.text,
+      };
+    case UPLOAD_IMAGE:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === action.payload._id ? action.payload : post
+        ),
       };
     case DELETE_POST:
       return {

@@ -64,3 +64,14 @@
   text-decoration: underline;
   color: rgb(31, 105, 242);
 }
+.modalheaderdiv:hover {
+  background-color: rgb(232, 229, 229);
+  border-radius: 10px;
+}
+.input-post {
+  font-size: 1.5rem !important;
+  padding-bottom: 10rem !important;
+}
+.input-post:focus {
+  border: none !important;
+}

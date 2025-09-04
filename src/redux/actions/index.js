@@ -442,11 +442,11 @@ export const createPostAction = (postData) => {
   return (dispatch) => {
     dispatch({ type: SET_LOADING, payload: true });
 
-    fetch(POSTS_ENDPOINT, {
+    return fetch(POSTS_ENDPOINT, {
       method: "POST",
       headers: {
         Authorization: TOKEN,
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
     })
@@ -469,6 +469,7 @@ export const createPostAction = (postData) => {
         });
         // ritorno tutti i post aggiornati
         dispatch(getPostsAction());
+        return post;
       })
       .catch((err) => {
         console.log("Errore nella creazione del post", err);
@@ -492,7 +493,7 @@ export const updatePostAction = (postId, postData) => {
       method: "PUT",
       headers: {
         Authorization: TOKEN,
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
     })
@@ -536,7 +537,7 @@ export const deletePostAction = (postId, postData) => {
       method: "DELETE",
       headers: {
         Authorization: TOKEN,
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
     })
@@ -560,6 +561,53 @@ export const deletePostAction = (postId, postData) => {
       })
       .catch((err) => {
         console.log("Errore nell'eliminazione del post", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
+
+// -------------------------------- Action Immagini ----------------------
+
+export const uploadPostImageAction = (postId, formData) => {
+  return (dispatch) => {
+    dispatch({ type: SET_ERROR, payload: true });
+
+    fetch(`${POSTS_ENDPOINT}/${postId}`, {
+      method: "POST",
+      headers: {
+        Authorization: TOKEN,
+      },
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nell'upload dell'immagine");
+        }
+      })
+      .then((data) => {
+        console.log("Immagine Caricata", data);
+        dispatch({
+          type: UPLOAD_IMAGE,
+          payload: data,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("errore nel caricamento immagine", err);
         dispatch({
           type: SET_LOADING,
           payload: false,

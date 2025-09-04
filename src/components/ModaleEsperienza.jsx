@@ -14,7 +14,7 @@ import {
   addNewExperiencesAction,
   getExperiencesAction,
 } from "../redux/actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ModaleEsperienza({ show, onHide }) {
   const dispatch2 = useDispatch();
@@ -22,6 +22,13 @@ export default function ModaleEsperienza({ show, onHide }) {
     return state.mainProfile.me_Profile;
   });
   const [fileSelezionato, setFileSelezionato] = useState(null);
+  useEffect(() => {
+    dispatch2(addNewExperiencesAction());
+  }, []);
+
+  const today = new Date();
+  const currentMonth = today.toISOString().slice(0, 7);
+
   const [oggettoEsperienza, setOggettoEsperienza] = useState({
     role: "",
     company: "",
@@ -29,6 +36,7 @@ export default function ModaleEsperienza({ show, onHide }) {
     endDate: "",
     description: "",
     area: "",
+    current: false,
   });
   console.log(oggettoEsperienza);
   // const[ruolo,setRuolo]= useState('')
@@ -130,6 +138,21 @@ export default function ModaleEsperienza({ show, onHide }) {
           </Form.Group>
 
           {/* periodo lavorativo */}
+
+          <Form.Check
+            type="checkbox"
+            label="Attualmente ricopro questo ruolo"
+            className="my-4 text-secondary fst-italic fw-light"
+            checked={oggettoEsperienza.current}
+            onChange={(e) => {
+              setOggettoEsperienza((dati) => ({
+                ...dati,
+                current: e.target.checked,
+                endDate: e.target.checked ? "" : dati.endDate,
+              }));
+            }}
+          />
+
           <Row>
             <Col xs={12} md={6}>
               <Form.Group
@@ -146,6 +169,7 @@ export default function ModaleEsperienza({ show, onHide }) {
                     });
                   }}
                   required
+                  max={currentMonth}
                 />
               </Form.Group>
             </Col>
@@ -165,7 +189,9 @@ export default function ModaleEsperienza({ show, onHide }) {
                     });
                   }}
                   required
-                  max={2025}
+                  max={currentMonth}
+                  disabled={oggettoEsperienza.current}
+                  value={oggettoEsperienza.endDate}
                 />
               </Form.Group>
             </Col>
