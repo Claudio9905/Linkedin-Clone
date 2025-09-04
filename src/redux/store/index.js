@@ -9,6 +9,9 @@ import addExperienceReducer from "../reducer/addExperienceReducer";
 import idExperienceReducer from "../reducer/idExperienceReducer";
 import editExperienceReducer from "../reducer/editExperienceReducer";
 import deleteExperienceReducer from "../reducer/deleteExperienceReducer";
+import getJobReducer from "../reducer/getJobReducer";
+import getSingleJobReducer from "../reducer/getSingleJobReducer";
+import getJobCompanyReducer from "../reducer/getJobCompanyReducer";
 import addImageReducer from "../reducer/addImageReducer";
 
 const combinedReducer = combineReducers({
@@ -22,6 +25,9 @@ const combinedReducer = combineReducers({
   singleExperience: idExperienceReducer,
   editExperience: editExperienceReducer,
   deleteExperience: deleteExperienceReducer,
+  jobs: getJobReducer,
+  singleJob: getSingleJobReducer,
+  companyJob: getJobCompanyReducer,
   newImageExperience: addImageReducer,
 });
 

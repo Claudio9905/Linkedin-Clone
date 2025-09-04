@@ -15,6 +15,7 @@ const MainProfile = () => {
   // console.log(Profile);
 
   const [showModale, setShowModale] = useState(false);
+
   if (!Profile || !Profile._id) {
     return <p>Caricamento profilo...</p>;
   }
