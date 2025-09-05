@@ -23,6 +23,7 @@ const MyEsperienza = () => {
     if (Profile && Profile._id) {
       dispatch1(getExperiencesAction(Profile._id));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Profile]);
 
   const dispatch4 = useDispatch();
