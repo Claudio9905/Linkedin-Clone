@@ -7,14 +7,13 @@ import "./alfoCss/placeholder.css";
 
 import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addImageExperiencesAction,
   addNewExperiencesAction,
   getExperiencesAction,
 } from "../redux/actions";
-import { useState } from "react";
 
 export default function ModaleEsperienza({ show, onHide }) {
   // const data = new Date();
