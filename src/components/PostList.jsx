@@ -1,13 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getMeProfileAction,
-  getPostsAction,
-  getProfileAction,
-} from "../redux/actions";
+import { getPostsAction, getProfileAction } from "../redux/actions";
 import { Alert, Spinner } from "react-bootstrap";
 
 import PostCard from "./PostCard";
+import PostCard2 from "./PostCard2";
 
 const PostList = () => {
   const dispatch = useDispatch();
@@ -36,7 +33,13 @@ const PostList = () => {
 
   return (
     <>
-      {" "}
+      <div>
+        {[...posts].slice(-1).map((post) => {
+          const user = getUserProfile(post.username);
+
+          return <PostCard2 key={post._id} post={post} user={user} />;
+        })}
+      </div>
       <div>
         {[...posts]
           .sort(() => Math.random() - 0.5)

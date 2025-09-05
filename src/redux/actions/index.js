@@ -583,7 +583,7 @@ export const deletePostAction = (postId, postData) => {
         console.log("Post eliminato", post);
         dispatch({
           type: DELETE_POST,
-          payload: post,
+          payload: postId,
         });
         dispatch({
           type: SET_LOADING,
@@ -790,4 +790,115 @@ export const uploadPostImageAction = (postId, formData) => {
         });
       });
   };
+};
+
+// commentActionTypes.js
+export const GET_COMMENTS_REQUEST = "GET_COMMENTS_REQUEST";
+export const GET_COMMENTS_SUCCESS = "GET_COMMENTS_SUCCESS";
+export const GET_COMMENTS_FAILURE = "GET_COMMENTS_FAILURE";
+
+export const ADD_COMMENT_REQUEST = "ADD_COMMENT_REQUEST";
+export const ADD_COMMENT_SUCCESS = "ADD_COMMENT_SUCCESS";
+export const ADD_COMMENT_FAILURE = "ADD_COMMENT_FAILURE";
+
+export const UPDATE_COMMENT_REQUEST = "UPDATE_COMMENT_REQUEST";
+export const UPDATE_COMMENT_SUCCESS = "UPDATE_COMMENT_SUCCESS";
+export const UPDATE_COMMENT_FAILURE = "UPDATE_COMMENT_FAILURE";
+
+export const DELETE_COMMENT_REQUEST = "DELETE_COMMENT_REQUEST";
+export const DELETE_COMMENT_SUCCESS = "DELETE_COMMENT_SUCCESS";
+export const DELETE_COMMENT_FAILURE = "DELETE_COMMENT_FAILURE";
+
+const API_URL = "https://striveschool-api.herokuapp.com/api/comments/";
+const TOKEN2 =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGJhYWQ1YjkxMjgyMTAwMTU0NGRiNDUiLCJpYXQiOjE3NTcwNjQ1MzksImV4cCI6MTc1ODI3NDEzOX0.-5BBVWJklnR6wC_CLlqQYPnSyJ8Fib_ddWbc86oP7nw";
+
+export const getComments = () => (dispatch) => {
+  dispatch({ type: GET_COMMENTS_REQUEST });
+
+  fetch(`${API_URL}`, {
+    headers: {
+      Authorization: TOKEN2,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Errore nel fetch dei commenti");
+      return res.json();
+    })
+    .then((data) => {
+      dispatch({
+        type: GET_COMMENTS_SUCCESS,
+        payload: data.slice(-15).reverse(),
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: GET_COMMENTS_FAILURE, payload: err.message });
+    });
+};
+
+export const addComment = (commentData) => (dispatch) => {
+  dispatch({ type: ADD_COMMENT_REQUEST });
+
+  fetch(API_URL, {
+    method: "POST",
+    headers: {
+      Authorization: TOKEN2,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(commentData),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Errore nell’aggiunta del commento");
+      return res.json();
+    })
+    .then((data) => {
+      dispatch({ type: ADD_COMMENT_SUCCESS, payload: data });
+    })
+    .catch((err) => {
+      dispatch({ type: ADD_COMMENT_FAILURE, payload: err.message });
+    });
+};
+
+export const updateComment = (commentId, updatedData) => (dispatch) => {
+  dispatch({ type: UPDATE_COMMENT_REQUEST });
+
+  fetch(`${API_URL}${commentId}`, {
+    method: "PUT",
+    headers: {
+      Authorization: TOKEN2,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedData),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Errore nell’aggiornamento del commento");
+      return res.json();
+    })
+    .then((data) => {
+      dispatch({ type: UPDATE_COMMENT_SUCCESS, payload: data });
+    })
+    .catch((err) => {
+      dispatch({ type: UPDATE_COMMENT_FAILURE, payload: err.message });
+    });
+};
+
+// 🔹 DELETE COMMENT
+export const deleteComment = (commentId) => (dispatch) => {
+  dispatch({ type: DELETE_COMMENT_REQUEST });
+
+  fetch(`${API_URL}${commentId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: TOKEN2,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Errore nell’eliminazione del commento");
+      dispatch({ type: DELETE_COMMENT_SUCCESS, payload: commentId });
+    })
+    .catch((err) => {
+      dispatch({ type: DELETE_COMMENT_FAILURE, payload: err.message });
+    });
 };
