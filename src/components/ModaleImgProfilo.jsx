@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { TrashFill, CameraFill } from "react-bootstrap-icons";
+import { TrashFill, CameraFill, SaveFill } from "react-bootstrap-icons";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,13 +30,13 @@ export default function ModaleImgProfilo({ show, onHide, src }) {
 
         <Modal.Footer className="bg-dark d-flex justify-content-between">
           <div className=" d-flex flex-column ">
-            <Button
+            <p
               variant="btn btn-outline-info"
-              className="text-light  d-flex flex-column daje"
+              className="text-light  d-flex flex-column mx-auto daje"
             >
-              <CameraFill className=" text-light  mx-auto" />
+              {/* <CameraFill className=" text-light  mx-auto" /> */}
               Aggiorna foto
-            </Button>
+            </p>
             <Form
               onSubmit={async (e) => {
                 e.preventDefault();
@@ -62,17 +62,23 @@ export default function ModaleImgProfilo({ show, onHide, src }) {
                   }}
                 />
               </Form.Group>
-              <Button type="submit" onClick={onHide}>
+              <Button
+                type="submit"
+                onClick={onHide}
+                variant="btn btn-outline-info"
+                className="text-light  d-flex daje mt-auto mx-auto"
+              >
+                {/* <SaveFill className="my-auto me-1 text-light " /> */}
                 SALVA
               </Button>
             </Form>
           </div>
           <Button
             variant="btn btn-outline-info"
-            className="text-light  d-flex flex-column daje"
+            className="text-light  d-flex daje mt-auto mx-auto"
           >
-            <TrashFill className="mx-auto text-light" />
-            Elimina
+            {/* <TrashFill className="my-auto me-1 text-light " /> */}
+            ELIMINA
           </Button>
         </Modal.Footer>
         {/* </Modal.Dialog> */}
