@@ -3,6 +3,7 @@ import { Card, Form } from "react-bootstrap";
 import { Modal, Button } from "react-bootstrap";
 import { CaretDownFill } from "react-bootstrap-icons";
 import ModaleCreaPost from "./ModaleCreaPost";
+import { Link } from "react-router-dom";
 
 const CreatePost = ({ profile }) => {
   const [show, setShow] = useState(false);
@@ -13,12 +14,14 @@ const CreatePost = ({ profile }) => {
   return (
     <Card>
       <div className="py-3 px-2 d-flex ">
-        <img
-          src={profile.image}
-          alt="immagine di profilo"
-          className="rounded-circle me-2"
-          width={50}
-        />
+        <Link to={"/profile"}>
+          <img
+            src={profile.image}
+            alt="immagine di profilo"
+            className="rounded-circle me-2"
+            width={50}
+          />
+        </Link>
         <button
           className="w-100 ps-3 border border-1 border-secondary text-start rounded-pill fw-bold btn-post"
           onClick={handleShow}

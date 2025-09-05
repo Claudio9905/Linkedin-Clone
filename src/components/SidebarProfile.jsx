@@ -22,13 +22,21 @@ const SidebarProfile = () => {
   return (
     <>
       <Card className="mb-2">
+        {/* <Link to={"/profile"}> */}
         <Card.Img
           variant="Top"
           src="https://i.ytimg.com/vi/_IevnsYI-EE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVShJMA8=&rs=AOn4CLCnEFnOSoxYr-Gm29bvRtT9g78erA"
           className="img-fluid overflow-hidden"
           id="img-card"
         />
-        <img src={profile.image} alt="immagine di profilo" id="icon-profile2" />
+        {/* </Link> */}
+        <Link to={"/profile"}>
+          <img
+            src={profile.image}
+            alt="immagine di profilo"
+            id="icon-profile2"
+          />
+        </Link>
         <Link to={"/profile"} className=" text-decoration-none">
           <Card.Title className="px-3 m-0">
             {profile.name} {profile.surname}
