@@ -329,12 +329,14 @@ const MyNavbar = () => {
                               <h4 className="ms-3">User Name</h4>
                             </div>
                             <div className="mt-2">
-                              <Button
-                                variant="outline-primary"
-                                className="rounded-pill me-2"
-                              >
-                                Visualizza Profilo
-                              </Button>
+                              <Link to={"/profile"}>
+                                <Button
+                                  variant="outline-primary"
+                                  className="rounded-pill me-2"
+                                >
+                                  Visualizza Profilo
+                                </Button>
+                              </Link>
                               <Button
                                 variant="primary"
                                 className="rounded-pill"
@@ -477,14 +479,14 @@ const MyNavbar = () => {
       <Navbar className="d-flex d-md-none bg-white">
         <div className="d-flex px-2 align-items-center flex-grow-1 position-sticky">
           <div>
-            <a href="">
+            <Link to={"/profile"}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
                 alt="User"
                 width={25}
                 className="rounded-circle"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="ms-3 d-flex flex-grow-1 d-md-none align-items-center border border-1 border-secondary py-1 z-3 position-relative">

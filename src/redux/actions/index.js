@@ -4,6 +4,7 @@ export const GET_MEPROFILE = "GET_MEPROFILE";
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_USER_ID_PROFILE = "GET_USER_ID_PROFILE";
 export const EDIT_PROFILE = "EDIT_PROFILE";
+export const ADD_NEW_IMAGE_PROFILE = "ADD_NEW_IMAGE_PROFILE";
 
 const endpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
 const endpoint1 = "https://striveschool-api.herokuapp.com/api/profile/";
@@ -259,6 +260,35 @@ export const addImageExperiencesAction = (idUser, idEXP, file) => {
       })
       .then((resData) => {
         dispatch({ type: ADD_NEW_IMAGE, payload: resData });
+        return resData;
+      })
+      .catch((err) => {
+        console.log("ERRORE", err);
+      });
+  };
+};
+export const addImageProfileAction = (idUser, file) => {
+  return (dispatch) => {
+    const formData = new FormData();
+    formData.append("profile", file);
+
+    return fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/picture`,
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+        body: formData,
+      }
+    )
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error("Errore nel caricamento dell'immagine");
+      })
+      .then((resData) => {
+        dispatch({ type: ADD_NEW_IMAGE_PROFILE, payload: resData });
         return resData;
       })
       .catch((err) => {
