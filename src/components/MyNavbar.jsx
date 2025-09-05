@@ -21,7 +21,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../redux/actions";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const MyNavbar = () => {
   const [focused, setFocused] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -44,6 +44,8 @@ const MyNavbar = () => {
       })
     : [];
   const profile = useSelector((state) => state.mainProfile.me_Profile);
+
+  const location = useLocation();
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -133,7 +135,9 @@ const MyNavbar = () => {
               {" "}
               <Link
                 to={"/"}
-                className=" text-decoration-none d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3"
+                className={`text-decoration-none d-flex flex-column justify-content-center align-items-center recolor mx-3 ${
+                  location.pathname === "/" ? "text-black" : "text-secondary"
+                }`}
               >
                 <HouseDoorFill className="icons" />
                 Home
@@ -144,7 +148,11 @@ const MyNavbar = () => {
               </NavLink>
               <Link
                 to="/jobs"
-                className="d-flex flex-column justify-content-center align-items-center text-secondary recolor mx-3 text-decoration-none"
+                className={`text-decoration-none d-flex flex-column justify-content-center align-items-center recolor mx-3 ${
+                  location.pathname === "/jobs"
+                    ? "text-black"
+                    : "text-secondary"
+                }`}
               >
                 <SuitcaseLgFill className="icons" />
                 Lavoro
@@ -289,15 +297,29 @@ const MyNavbar = () => {
                       onClick={() => setShowSearch(true)}
                     />
 
-                    <Link to={"/"}>
-                      <HouseDoorFill className="fs-4 text-secondary mx-3 recolor" />
+                    <Link
+                      to={"/"}
+                      className={`recolor  ${
+                        location.pathname === "/"
+                          ? "text-black"
+                          : "text-secondary"
+                      }`}
+                    >
+                      <HouseDoorFill className="fs-4 mx-3" />
                     </Link>
                     <a href="">
                       <PeopleFill className="fs-4 text-secondary mx-3 recolor" />
                     </a>
-                    <a href="">
-                      <SuitcaseLgFill className="fs-4 text-secondary mx-3 recolor" />
-                    </a>
+                    <Link
+                      to="/jobs"
+                      className={`recolor  ${
+                        location.pathname === "/jobs"
+                          ? "text-black"
+                          : "text-secondary"
+                      }`}
+                    >
+                      <SuitcaseLgFill className="fs-4 mx-3 recolor" />
+                    </Link>
                     <a href="">
                       <ChatDotsFill className="fs-4 text-secondary mx-3 recolor" />
                     </a>
@@ -309,7 +331,7 @@ const MyNavbar = () => {
                         align="end"
                         title={
                           <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                            src={profile.image}
                             alt="User"
                             width={30}
                             className="rounded-circle"
@@ -321,12 +343,14 @@ const MyNavbar = () => {
                           <Container fluid className="d-flex flex-column">
                             <div className="d-flex justify-content-start align-items-center">
                               <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                                src={profile.image}
                                 alt="User"
                                 width={50}
                                 className="rounded-circle"
                               />
-                              <h4 className="ms-3">User Name</h4>
+                              <h4 className="ms-3">
+                                {profile.name} {profile.surname}
+                              </h4>
                             </div>
                             <div className="mt-2">
                               <Link to={"/profile"}>
@@ -481,7 +505,7 @@ const MyNavbar = () => {
           <div>
             <Link to={"/profile"}>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                src={profile.image}
                 alt="User"
                 width={25}
                 className="rounded-circle"
@@ -537,7 +561,9 @@ const MyNavbar = () => {
           <div>
             <Link
               to={"/"}
-              className="d-flex flex-column justify-content-center align-items-center text-secondary recolor text-decoration-none"
+              className={`d-flex flex-column justify-content-center align-items-center recolor text-decoration-none ${
+                location.pathname === "/" ? "text-black" : "text-secondary"
+              }`}
             >
               <HouseDoorFill className="icons" />
               Home
@@ -562,10 +588,15 @@ const MyNavbar = () => {
             </NavLink>
           </div>
           <div>
-            <NavLink className="d-flex flex-column justify-content-center align-items-center text-secondary recolor">
+            <Link
+              to="/jobs"
+              className={`d-flex flex-column justify-content-center align-items-center recolor ${
+                location.pathname === "/jobs" ? "text-black" : "text-secondary"
+              }`}
+            >
               <SuitcaseLgFill className="icons" />
               Lavoro
-            </NavLink>
+            </Link>
           </div>
         </div>
       </Navbar>
