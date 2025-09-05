@@ -1,32 +1,43 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
 const MyLicenze = () => {
+  const [valore, setValore] = useState("");
   return (
     <>
       <Container className=" p-0">
-        {" "}
-        <Card className=" my-4">
+        <Card className=" animation-start all-card my-4">
           <Card.Body>
-            <Card.Title className=" fs-4 mb-4">
-              Licenze e certificazioni
-            </Card.Title>
             <Row>
-              <Col xs={2}>
-                <img
-                  src="src/assets/cambridge_assessment_logo.jpeg"
-                  alt=""
-                  className=" img-fluid"
-                />
-              </Col>
-              <Col xs={10}>
-                <h6>
-                  Cambridge English Level 2 Certificate in ESOL International
-                  (First) - Grade A Level C1
-                </h6>
-                <p>Cambridge University Press & Assessment</p>
-                <small>Data di rilascio: lug 2014</small>
+              <Card.Title className=" fs-4 mb-4">
+                Licenze e Certificazioni
+              </Card.Title>
+
+              <Col xs={12}>
+                <Form
+                  onSubmit={() => {
+                    localStorage.setItem("licenze", valore);
+                  }}
+                  className=" d-flex "
+                >
+                  <Form.Group
+                    className="mb-3 flex-grow-1"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="Inserisci licenze o certificazioni"
+                      onChange={(e) => {
+                        setValore(e.target.value);
+                      }}
+                    />
+                  </Form.Group>
+
+                  <Button type="submit">SALVA</Button>
+                </Form>
               </Col>
             </Row>
+            <h5>{localStorage.getItem("licenze") || ""}</h5>
           </Card.Body>
         </Card>
       </Container>
