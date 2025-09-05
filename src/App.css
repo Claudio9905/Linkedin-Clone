@@ -172,3 +172,10 @@
 .navbar {
   z-index: 1000;
 }
+.btnCancellaExp:hover {
+  color: red;
+  cursor: pointer;
+}
+.btnMostraTutto:hover {
+  color: black !important;
+}

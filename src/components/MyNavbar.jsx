@@ -29,10 +29,7 @@ const MyNavbar = () => {
   const [ricerca, setRicerca] = useState("");
   const navigate = useNavigate();
   const [nascondiRicerca, setNascondiRicerca] = useState("");
-  console.log(ricerca);
 
-  // console.log(store);
-  // console.log(ricerca);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProfileAction());
@@ -46,8 +43,7 @@ const MyNavbar = () => {
         return nomeCompleto.includes(ricerca.toLowerCase());
       })
     : [];
-  // console.log(profiles);
-  // console.log(profiliFiltrati);
+  const profile = useSelector((state) => state.mainProfile.me_Profile);
   // se clicco fuori dalla barra di ricerca scompare
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -160,7 +156,7 @@ const MyNavbar = () => {
               </NavLink>
               <div className="d-flex flex-column align-items-center">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                  src={profile.image}
                   alt="User"
                   width={23}
                   className=" rounded-circle"
@@ -170,12 +166,14 @@ const MyNavbar = () => {
                     <Container fluid className="d-flex flex-column">
                       <div className="d-flex justify-content-start align-items-center">
                         <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                          src={profile.image}
                           alt="User"
                           width={50}
                           className=" rounded-circle"
                         />
-                        <h4 className="ms-3">User Name</h4>
+                        <h4 className="ms-3">
+                          {profile.name} {profile.surname}
+                        </h4>
                       </div>
                       <div className="mt-2">
                         <Link to={"/profile"}>
@@ -267,10 +265,12 @@ const MyNavbar = () => {
 
       {/* Navbar Tablet */}
 
-      <Navbar className="d-none d-md-flex d-lg-none bg-white">
+      <Navbar className="d-none d-md-flex d-lg-none bg-white sticky-top">
         <Container fluid>
           <div className="d-flex align-items-center w-100">
-            <img src="/public/linkedin.png" alt="Logo" width={40} />
+            <Link to={"/"}>
+              <img src="/public/linkedin.png" alt="Logo" width={40} />
+            </Link>
             {/* se la barra di ricerca non è true allora viene mostrato tutta la nav */}
             {!showSearch && (
               <div className="align-items-center me-3 d-none d-md-flex flex-1 d-lg-none w-100 ">

@@ -130,6 +130,7 @@ export const editProfileAction = (id, editProfile) => {
 
 export const GET_LIST_EXPERIENCES = "GET_LIST_EXPERIENCES";
 export const ADD_NEW_EXPERIENCES = "ADD_NEW_EXPERIENCES";
+export const ADD_NEW_IMAGE = "ADD_NEW_IMAGE";
 export const GET_ID_EXPERIENCES = "GET_ID_EXPERIENCES";
 export const EDIT_EXPERIENCES = "EDIT_EXPERIENCES";
 export const DELETE_EXPERIENCES = "DELETE_EXPERIENCES";
@@ -180,7 +181,7 @@ export const getExperiencesAction = (idUser) => {
 
 export const addNewExperiencesAction = (idUser, newExp) => {
   return (dispatch) => {
-    fetch(
+    return fetch(
       `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences`,
       {
         method: "POST",
@@ -193,21 +194,15 @@ export const addNewExperiencesAction = (idUser, newExp) => {
       }
     )
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Errore nel recupero dei dati");
-        }
+        if (response.ok) return response.json();
+        throw new Error("Errore nel recupero dei dati");
       })
       .then((resData) => {
-        console.log(resData);
-        dispatch({
-          type: ADD_NEW_EXPERIENCES,
-          payload: resData,
-        });
+        dispatch({ type: ADD_NEW_EXPERIENCES, payload: resData });
+        return resData;
       })
       .catch((err) => {
-        console.log("ERRROR: ", err);
+        console("ERRORE CARICAMENTO DATI", err);
       });
   };
 };
@@ -215,7 +210,7 @@ export const addNewExperiencesAction = (idUser, newExp) => {
 export const getIdExperiencesAction = (idUser, idEXP) => {
   return (dispatch) => {
     fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/:${idEXP}`,
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/${idEXP}`,
       {
         headers: {
           Authorization:
@@ -239,6 +234,35 @@ export const getIdExperiencesAction = (idUser, idEXP) => {
       })
       .catch((err) => {
         console.log("ERRROR: ", err);
+      });
+  };
+};
+export const addImageExperiencesAction = (idUser, idEXP, file) => {
+  return (dispatch) => {
+    const formData = new FormData();
+    formData.append("experience", file);
+
+    return fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/${idEXP}/picture`,
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI3MDkwNDU2MzA1YzAwMTU1ODgzNWUiLCJpYXQiOjE3NTY4OTE3NTUsImV4cCI6MTc1ODEwMTM1NX0.skqYZbKAEApzCmv3qMX16r4brfb7aYAG9Y8LbwzJl9A",
+        },
+        body: formData,
+      }
+    )
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error("Errore nel caricamento dell'immagine");
+      })
+      .then((resData) => {
+        dispatch({ type: ADD_NEW_IMAGE, payload: resData });
+        return resData;
+      })
+      .catch((err) => {
+        console.log("ERRORE", err);
       });
   };
 };
@@ -418,11 +442,11 @@ export const createPostAction = (postData) => {
   return (dispatch) => {
     dispatch({ type: SET_LOADING, payload: true });
 
-    fetch(POSTS_ENDPOINT, {
+    return fetch(POSTS_ENDPOINT, {
       method: "POST",
       headers: {
         Authorization: TOKEN,
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
     })
@@ -445,6 +469,7 @@ export const createPostAction = (postData) => {
         });
         // ritorno tutti i post aggiornati
         dispatch(getPostsAction());
+        return post;
       })
       .catch((err) => {
         console.log("Errore nella creazione del post", err);
@@ -468,7 +493,7 @@ export const updatePostAction = (postId, postData) => {
       method: "PUT",
       headers: {
         Authorization: TOKEN,
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
     })
@@ -512,7 +537,7 @@ export const deletePostAction = (postId, postData) => {
       method: "DELETE",
       headers: {
         Authorization: TOKEN,
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
     })
@@ -536,6 +561,53 @@ export const deletePostAction = (postId, postData) => {
       })
       .catch((err) => {
         console.log("Errore nell'eliminazione del post", err);
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
+
+// -------------------------------- Action Immagini ----------------------
+
+export const uploadPostImageAction = (postId, formData) => {
+  return (dispatch) => {
+    dispatch({ type: SET_ERROR, payload: true });
+
+    fetch(`${POSTS_ENDPOINT}/${postId}`, {
+      method: "POST",
+      headers: {
+        Authorization: TOKEN,
+      },
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Errore nell'upload dell'immagine");
+        }
+      })
+      .then((data) => {
+        console.log("Immagine Caricata", data);
+        dispatch({
+          type: UPLOAD_IMAGE,
+          payload: data,
+        });
+        dispatch({
+          type: SET_LOADING,
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log("errore nel caricamento immagine", err);
         dispatch({
           type: SET_LOADING,
           payload: false,
