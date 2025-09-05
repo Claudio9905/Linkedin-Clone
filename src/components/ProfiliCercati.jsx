@@ -48,7 +48,7 @@ const ProfiliCercati = () => {
                   alt="immagine di profilo"
                   id="icon-profile"
                 />
-                <div className="position-relative w-50"></div>
+                {/* <div className="position-relative w-50"></div> */}
               </div>
 
               <Card.Body className="d-flex flex-column">
@@ -149,8 +149,9 @@ const ProfiliCercati = () => {
                                 <p>{exp?.company}</p>
                                 <p>{exp?.description}</p>
                                 <small>
-                                  dal: {exp?.startDate.slice(0, 10)} al:{" "}
-                                  {exp?.endDate.slice(0, 10)} <br /> {exp?.area}
+                                  dal: {exp?.startDate?.slice(0, 10)} al:{" "}
+                                  {exp?.endDate?.slice(0, 10)} <br />{" "}
+                                  {exp?.area}
                                 </small>
                               </Col>
 
