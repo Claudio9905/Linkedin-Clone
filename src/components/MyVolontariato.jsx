@@ -1,47 +1,41 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
 const MyVolontariato = () => {
+  const [valore, setValore] = useState("");
   return (
     <>
-      <Container className="p-0">
-        {" "}
-        <Card className=" my-4">
+      <Container className=" p-0">
+        <Card className=" animation-start all-card my-4">
           <Card.Body>
-            <Card.Title className=" fs-4 mb-4">Volotariato</Card.Title>
             <Row>
-              <Col xs={2}>
-                <img
-                  src="src/assets/hospitalrun_logo.jpeg"
-                  alt=""
-                  className=" img-fluid"
-                />
-              </Col>
-              <Col xs={10}>
-                <h6>Core Maintainer</h6>
-                <p>HospitalRun</p>
-                <small>ago 2019 - dic 2019 · 5 mesi </small>
+              <Card.Title className=" fs-4 mb-4">Volontariato</Card.Title>
 
-                <small>Scienza e tecnologia</small>
+              <Col xs={12}>
+                <Form
+                  onSubmit={() => {
+                    localStorage.setItem("volontariato", valore);
+                  }}
+                  className=" d-flex "
+                >
+                  <Form.Group
+                    className="mb-3 flex-grow-1"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="Inserisci esperienze di volontariato"
+                      onChange={(e) => {
+                        setValore(e.target.value);
+                      }}
+                    />
+                  </Form.Group>
+
+                  <Button type="submit">SALVA</Button>
+                </Form>
               </Col>
             </Row>
-          </Card.Body>
-          <hr />
-          <Card.Body>
-            <Row>
-              <Col xs={2}>
-                <img
-                  src="https://www.placebear.com/100/100"
-                  alt=""
-                  className=" img-fluid"
-                />
-              </Col>
-              <Col xs={10}>
-                <h6>Donatore di sangue</h6>
-                <p>Advsg Fidas Gorizia</p>
-                <small>set 2013 - presente · 12 anni 1 mese </small>
-                <small>Salute</small>
-              </Col>
-            </Row>
+            <h5>{localStorage.getItem("volontariato") || ""}</h5>
           </Card.Body>
         </Card>
       </Container>

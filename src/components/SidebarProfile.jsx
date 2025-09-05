@@ -24,7 +24,7 @@ const SidebarProfile = () => {
       <Card className="mb-2">
         <Card.Img
           variant="Top"
-          src="http://placecats.com/300/300"
+          src="https://i.ytimg.com/vi/_IevnsYI-EE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVShJMA8=&rs=AOn4CLCnEFnOSoxYr-Gm29bvRtT9g78erA"
           className="img-fluid overflow-hidden"
           id="img-card"
         />

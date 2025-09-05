@@ -7,16 +7,22 @@ import "./alfoCss/placeholder.css";
 
 import ModalInput from "./ModalInput";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addImageExperiencesAction,
   addNewExperiencesAction,
   getExperiencesAction,
 } from "../redux/actions";
-import { useState } from "react";
 
 export default function ModaleEsperienza({ show, onHide }) {
+  // const data = new Date();
+  // const anno = data.getFullYear();
+  // const mese = data.getMonth() + 1;
+  // const giorno = data.getDay();
+  // const dataCompleta =
+  //   anno.toString() + "-" + mese.toString() + "-" + giorno.toString();
+  // console.log(data);
   const dispatch2 = useDispatch();
   const Profile = useSelector((state) => {
     return state.mainProfile.me_Profile;
@@ -65,7 +71,7 @@ export default function ModaleEsperienza({ show, onHide }) {
 
               onHide();
             } catch (err) {
-              console.error("Errore durante il salvataggio:", err);
+              console.log("Errore durante il salvataggio:", err);
             }
           }}
         >

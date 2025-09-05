@@ -1,6 +1,8 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
 const MyFormazione = () => {
+  const [valore, setValore] = useState("");
   return (
     <>
       <Container className=" p-0">
@@ -8,23 +10,32 @@ const MyFormazione = () => {
           <Card.Body>
             <Row>
               <Card.Title className=" fs-4 mb-4">Formazione</Card.Title>
-              <Col xs={2}>
-                <img
-                  src="src/assets/universit_degli_studi_di_udine_logo.jpeg"
-                  alt=""
-                  className=" img-fluid"
-                />
-              </Col>
-              <Col xs={10}>
-                <h6>Universita degli Studi di Udine</h6>
-                <p>
-                  Laurea Triennale in Scienze e Tecnologie Multimediali,
-                  Dipartimento di Scienze matematiche, informatiche e
-                  multimediali
-                </p>
-                <small>2010-2013</small>
+
+              <Col xs={12}>
+                <Form
+                  onSubmit={() => {
+                    localStorage.setItem("formazione", valore);
+                  }}
+                  className=" d-flex "
+                >
+                  <Form.Group
+                    className="mb-3 flex-grow-1"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="Inserisci percorso di studi"
+                      onChange={(e) => {
+                        setValore(e.target.value);
+                      }}
+                    />
+                  </Form.Group>
+
+                  <Button type="submit">SALVA</Button>
+                </Form>
               </Col>
             </Row>
+            <h5>{localStorage.getItem("formazione") || ""}</h5>
           </Card.Body>
         </Card>
       </Container>

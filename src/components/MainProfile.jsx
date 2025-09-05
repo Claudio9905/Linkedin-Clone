@@ -44,11 +44,6 @@ const MainProfile = () => {
             onHide={() => setShowModale(false)}
             src={Profile.image}
           />
-
-          <CameraFill
-            className="hover position-absolute"
-            style={{ top: 20, right: 40 }}
-          />
         </div>
         <EditProfile
           style={{ bottom: 20, right: 40 }}

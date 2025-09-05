@@ -55,8 +55,11 @@ const MyEsperienza = () => {
                         <p>{exp?.company}</p>
                         <p>{exp?.description}</p>
                         <small>
-                          dal: {exp?.startDate.slice(0, 10)} al:{" "}
-                          {exp?.endDate.slice(0, 10)} <br /> {exp?.area}
+                          dal: {exp?.startDate?.slice(0, 10)}
+                          {exp.endDate
+                            ? " " + "al: " + exp?.endDate?.slice(0, 10)
+                            : " - Presente"}{" "}
+                          <br /> {exp?.area}
                         </small>
                       </Col>
                       <Col xs={1}>
