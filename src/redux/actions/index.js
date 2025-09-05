@@ -32,6 +32,7 @@ export const getMeProfileAction = () => {
           type: GET_MEPROFILE,
           payload: resData,
         });
+        return resData;
       })
       .catch((err) => {
         console.log("ERRROR: ", err);
@@ -300,7 +301,7 @@ export const addImageProfileAction = (idUser, file) => {
 export const editExperiencesAction = (idUser, idEXP, editData) => {
   return (dispatch) => {
     fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/:${idEXP}`,
+      `https://striveschool-api.herokuapp.com/api/profile/${idUser}/experiences/${idEXP}`,
       {
         method: "PUT",
         headers: {
