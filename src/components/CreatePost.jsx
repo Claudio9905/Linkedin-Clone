@@ -18,8 +18,9 @@ const CreatePost = ({ profile }) => {
           <img
             src={profile.image}
             alt="immagine di profilo"
-            className="rounded-circle me-2"
+            className="rounded-circle me-2 object-fit-cover"
             width={50}
+            height={50}
           />
         </Link>
         <button
