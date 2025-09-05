@@ -33,7 +33,13 @@ const MyLicenze = () => {
                     />
                   </Form.Group>
 
-                  <Button type="submit">SALVA</Button>
+                  <Button
+                    type="submit"
+                    className=" h-100 ms-1 rounded-5"
+                    variant="outline-primary"
+                  >
+                    SALVA
+                  </Button>
                 </Form>
               </Col>
             </Row>

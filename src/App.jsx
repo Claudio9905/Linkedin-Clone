@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProfiliCercati from "./components/ProfiliCercati";
 import Jobs from "./components/Jobs";
+import NotFound from "./components/notFound";
 
 function App() {
   const dispatch1 = useDispatch();
@@ -29,6 +30,7 @@ function App() {
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/profile/:userId" element={<ProfiliCercati />}></Route>
             <Route path="/jobs" element={<Jobs />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
           <MyFooter />
