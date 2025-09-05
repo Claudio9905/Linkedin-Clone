@@ -8,6 +8,7 @@ const deleteExperienceReducer = (state = initialState, action) => {
   switch (action.type) {
     case DELETE_EXPERIENCES:
       return {
+        ...state,
         deleteExp: state.deleteExp.filter((el) => {
           if (el._id === action.payload) {
             return false;

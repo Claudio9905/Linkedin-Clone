@@ -2,6 +2,7 @@ import { GET_SINGLE_JOB } from "../actions";
 
 const initialState = {
   singleJob: [],
+  found: false,
 };
 
 const getSingleJobReducer = (state = initialState, action) => {
@@ -10,6 +11,7 @@ const getSingleJobReducer = (state = initialState, action) => {
       return {
         ...state,
         singleJob: action.payload.data,
+        found: true,
       };
 
     default:

@@ -14,6 +14,7 @@ import getSingleJobReducer from "../reducer/getSingleJobReducer";
 import getJobCompanyReducer from "../reducer/getJobCompanyReducer";
 import addImageReducer from "../reducer/addImageReducer";
 import addImageProfileReducer from "../reducer/addImgProfile";
+import getJobCategoryReducer from "../reducer/getJobCategoryReducer";
 import { commentReducer } from "../reducer/commentReducer";
 
 const combinedReducer = combineReducers({
@@ -31,6 +32,7 @@ const combinedReducer = combineReducers({
   jobs: getJobReducer,
   singleJob: getSingleJobReducer,
   companyJob: getJobCompanyReducer,
+  categoryJob: getJobCategoryReducer,
   newImageExperience: addImageReducer,
   newImgProfile: addImageProfileReducer,
 });
