@@ -16,8 +16,9 @@ const CreatePost = ({ profile }) => {
         <img
           src={profile.image}
           alt="immagine di profilo"
-          className="rounded-circle me-2"
+          className="rounded-circle me-2 object-fit-cover"
           width={50}
+          height={50}
         />
         <button
           className="w-100 ps-3 border border-1 border-secondary text-start rounded-pill fw-bold btn-post"

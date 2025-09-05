@@ -162,7 +162,8 @@ const MyNavbar = () => {
                   src={profile.image}
                   alt="User"
                   width={23}
-                  className=" rounded-circle"
+                  height={23}
+                  className=" rounded-circle object-fit-cover"
                 />
                 <NavDropdown className="text-muted recolor" title="Tu">
                   <NavDropdown.Item className="p-0">
@@ -172,7 +173,8 @@ const MyNavbar = () => {
                           src={profile.image}
                           alt="User"
                           width={50}
-                          className=" rounded-circle"
+                          height={50}
+                          className=" rounded-circle object-fit-cover"
                         />
                         <h4 className="ms-3">
                           {profile.name} {profile.surname}

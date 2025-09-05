@@ -30,6 +30,7 @@ const MainProfile = () => {
             className="img-fluid "
             id="banner-img"
           />
+
           <img
             src={Profile.image}
             alt="immagine di profilo"
@@ -39,6 +40,7 @@ const MainProfile = () => {
               setShowModale(true);
             }}
           />
+
           <ModaleImgProfilo
             show={showModale}
             onHide={() => setShowModale(false)}
