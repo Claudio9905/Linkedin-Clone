@@ -28,7 +28,9 @@ const SidebarProfile = () => {
           className="img-fluid overflow-hidden"
           id="img-card"
         />
+
         <img src={profile.image} alt="immagine di profilo" id="icon-profile2" />
+
         <Link to={"/profile"} className=" text-decoration-none">
           <Card.Title className="px-3 m-0">
             {profile.name} {profile.surname}

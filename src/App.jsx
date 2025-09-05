@@ -18,6 +18,7 @@ function App() {
 
   useEffect(() => {
     dispatch1(getMeProfileAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

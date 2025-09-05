@@ -2,6 +2,7 @@ import { GET_JOB_CATEGORY } from "../actions";
 
 const initialState = {
   jobCategory: [],
+  foundJobCategory: false,
 };
 
 const getJobCategoryReducer = (state = initialState, action) => {
@@ -10,6 +11,7 @@ const getJobCategoryReducer = (state = initialState, action) => {
       return {
         ...state,
         jobCategory: action.payload.data,
+        foundJobCategory: true,
       };
 
     default:

@@ -1,6 +1,5 @@
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import EditProfile from "./EditProfile";
-import Modale from "./Modale";
 import ModaleEsperienza from "./ModaleEsperienza";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
