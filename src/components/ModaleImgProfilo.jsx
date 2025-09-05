@@ -34,7 +34,7 @@ export default function ModaleImgProfilo({ show, onHide, src }) {
               variant="btn btn-outline-info"
               className="text-light  d-flex flex-column mx-auto daje"
             >
-              <CameraFill className=" text-light  mx-auto" />
+              {/* <CameraFill className=" text-light  mx-auto" /> */}
               Aggiorna foto
             </p>
             <Form
