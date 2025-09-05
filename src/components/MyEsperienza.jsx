@@ -70,6 +70,7 @@ const MyEsperienza = () => {
                             dispatch4(
                               deleteExperiencesAction(Profile._id, exp._id)
                             );
+                            dispatch1(getExperiencesAction(Profile._id));
                           }}
                         />
                       </Col>

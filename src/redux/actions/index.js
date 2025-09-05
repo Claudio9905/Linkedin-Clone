@@ -149,7 +149,7 @@ export const DELETE_EXPERIENCES = "DELETE_EXPERIENCES";
 //   "https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId";
 
 export const getExperiencesAction = (idUser) => {
-  console.log(idUser);
+  // console.log(idUser);
 
   return (dispatch) => {
     fetch(
