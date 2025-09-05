@@ -14,10 +14,12 @@ import getSingleJobReducer from "../reducer/getSingleJobReducer";
 import getJobCompanyReducer from "../reducer/getJobCompanyReducer";
 import addImageReducer from "../reducer/addImageReducer";
 import addImageProfileReducer from "../reducer/addImgProfile";
+import { commentReducer } from "../reducer/commentReducer";
 
 const combinedReducer = combineReducers({
   mainProfile: profileMainReducer,
   profile: profileReducer,
+  comments: commentReducer,
   idProfile: userIdReducer,
   editProfile: editProfileReducer,
   posts: postsReducer,

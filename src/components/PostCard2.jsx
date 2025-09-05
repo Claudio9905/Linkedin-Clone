@@ -18,7 +18,7 @@ import {
   deleteComment,
 } from "../redux/actions";
 
-const PostCard = ({ post, user }) => {
+const PostCard2 = ({ post, user }) => {
   const [likes, setLikes] = useState(Math.floor(Math.random() * 1000));
   const [isliked, setisLiked] = useState(false);
   const [showComments, setShowComments] = useState(false);
@@ -273,4 +273,4 @@ const PostCard = ({ post, user }) => {
   );
 };
 
-export default PostCard;
+export default PostCard2;
